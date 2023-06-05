@@ -2,6 +2,7 @@ const conn = require('./conn');
 const { STRING, UUID, UUIDV4 } = conn.Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { BOOLEAN } = require('sequelize');
 const JWT = process.env.JWT;
 
 
@@ -68,7 +69,14 @@ const User = conn.define('user', {
     validate: {
       notEmpty: true
     }
-  }
+  },
+  permissions: {
+    type: BOOLEAN,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 });
 
 User.prototype.createOrder = async function(){

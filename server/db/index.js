@@ -15,11 +15,9 @@ const syncAndSeed = async()=> {
     User.create({ username: 'moe', password: '123' }),
     User.create({ username: 'lucy', password: '123' }),
     User.create({ username: 'larry', password: '123' }),
-    Product.create({ name: 'foo', description: 'it\'s a foo', rating: 1 }),
-    Product.create({ name: 'bar', description: 'it\'s a bar', rating: 2 }),
-    Product.create({ name: 'bazz', description: 'it\'s a bazz', rating: 3 }),
-    Product.create({ name: 'qux', description: 'it\'s a qux', rating: 4 }),
-    Product.create({ name: 'quux', description: 'it\'s a quux', rating: 5 }),
+    Product.create({ name: 'foo' }),
+    Product.create({ name: 'bar' }),
+    Product.create({ name: 'bazz' }),
     User.create({ username: 'ethyl', password: '123' }),
   ]);
 
