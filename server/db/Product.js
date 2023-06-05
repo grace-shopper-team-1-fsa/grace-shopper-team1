@@ -29,6 +29,13 @@ const Product = conn.define('product', {
       max: 5,
     }
   },
+  productImage: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 });
 
 module.exports = Product;
