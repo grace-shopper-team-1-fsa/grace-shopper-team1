@@ -88,6 +88,16 @@ const syncAndSeed = async()=> {
       rating: 1,
       productImage: 'https://tinyurl.com/4ws5v7zx'
     }),
+    Review.create({
+      name: 'Fire Vase',
+      rating: 4.5,
+      description: "Loved it",
+    }),
+    Review.create({
+      name: 'Timeless Vase',
+      rating: 1,
+      description: "Not great",
+    })
   ]);
 
   const cart = await ethyl.getCart();
