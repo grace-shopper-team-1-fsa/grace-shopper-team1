@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express.Router();
-const { Review } = require('../db');
+const { Review } = require('../../db');
 
-module.exports = app;
+
 
 app.post('/', async(req, res, next)=>{
     try{
@@ -21,3 +21,5 @@ app.get('/:id', async(req, res, next)=>{
         next(er);
     }
 })
+
+module.exports = app;

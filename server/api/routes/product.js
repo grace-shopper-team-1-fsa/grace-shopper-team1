@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express.Router();
-const { User } = require('../db');
+const { Product } = require('../../db');
 
-module.exports = app;
+
 
 app.post('/', async(req, res, next)=>{
     try{
-        const users = await User.findAll();
-        res.send(users);
+        const products = await Product.findAll();
+        res.send(products);
     } catch(ex){
         next(ex)
     }
@@ -15,9 +15,11 @@ app.post('/', async(req, res, next)=>{
 
 app.get('/:id', async(req, res, next)=>{
     try{
-        const user = await User.findByPk(req.params.id);
-        res.send(user);
+        const product = await Product.findByPk(req.params.id);
+        res.send(product);
     }catch(er){
         next(er);
     }
 })
+
+module.exports = app;

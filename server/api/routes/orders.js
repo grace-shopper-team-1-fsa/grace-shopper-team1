@@ -1,10 +1,9 @@
 const express = require('express');
-const app = express.Router();
-const { User } = require('../db');
+const router = express.Router();
+const { User } = require('../../db');
 
-module.exports = app;
 
-app.post('/', async(req, res, next)=> {
+router.post('/', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.createOrder());
@@ -14,7 +13,7 @@ app.post('/', async(req, res, next)=> {
   }
 });
 
-app.get('/cart', async(req, res, next)=> {
+router.get('/cart', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.getCart());
@@ -24,7 +23,7 @@ app.get('/cart', async(req, res, next)=> {
   }
 });
 
-app.post('/cart', async(req, res, next)=> {
+router.post('/cart', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.addToCart(req.body));
@@ -34,7 +33,7 @@ app.post('/cart', async(req, res, next)=> {
   }
 });
 
-app.put('/cart', async(req, res, next)=> {
+router.put('/cart', async(req, res, next)=> {
   try {
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.removeFromCart(req.body));
@@ -45,3 +44,4 @@ app.put('/cart', async(req, res, next)=> {
 });
 
 
+module.exports = router;
