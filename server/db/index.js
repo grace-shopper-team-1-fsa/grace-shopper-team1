@@ -11,14 +11,54 @@ LineItem.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, foo, bar, bazz, ethyl] = await Promise.all([
-    User.create({ username: 'moe', password: '123' }),
-    User.create({ username: 'lucy', password: '123' }),
-    User.create({ username: 'larry', password: '123' }),
+  const [moe, lucy, larry, ethyl, foo, bar, bazz] = await Promise.all([
+    User.create({ 
+      username: 'moe',
+      password: '123',
+      firstName: 'Moe',
+      lastName: 'Doe',
+      email: 'moed@gmail.com',
+      homeAddress: '123 Main St, City A',
+      shipAddress: '123 Main St, City A',
+      avatar: 'https://tinyurl.com/2ssnj3cf',
+      permissions: true,
+    }),
+    User.create({ 
+      username: 'lucy',
+      password: '123',
+      firstName: 'Lucy',
+      lastName: 'Brown',
+      email: 'lucyb@gmail.com',
+      homeAddress: '456 Elm St, City B',
+      shipAddress: '456 Elm St, City B',
+      avatar: 'https://tinyurl.com/2ssnj3cf',
+      permissions: false,
+    }),
+    User.create({ 
+      username: 'larry',
+      password: '123',
+      firstName: 'Larry',
+      lastName: 'Green',
+      email: 'larryg@gmail.com',
+      homeAddress: '789 Oak St, City C',
+      shipAddress: '789 Oak St, City C',
+      avatar: 'https://tinyurl.com/2ssnj3cf',
+      permissions: false,
+    }),
+    User.create({ 
+      username: 'ethyl',
+      password: '123',
+      firstName: 'Ethyl',
+      lastName: 'Red',
+      email: 'ethylr@gmail.com',
+      homeAddress: '987 Pine St, City D',
+      shipAddress: '987 Pine St, City D',
+      avatar: 'https://tinyurl.com/2ssnj3cf',
+      permissions: false,
+    }),
     Product.create({ name: 'foo' }),
     Product.create({ name: 'bar' }),
     Product.create({ name: 'bazz' }),
-    User.create({ username: 'ethyl', password: '123' }),
   ]);
 
   const cart = await ethyl.getCart();
