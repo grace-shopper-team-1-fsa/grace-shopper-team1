@@ -4,7 +4,7 @@ const { Review } = require('../db');
 
 module.exports = app;
 
-app.post('/reviews', async(req, res, next)=>{
+app.post('/', async(req, res, next)=>{
     try{
         const review = await Review.findAll();
         res.send(review);
@@ -13,7 +13,7 @@ app.post('/reviews', async(req, res, next)=>{
     }
 })
 
-app.get('/reviews/:id', async(req, res, next)=>{
+app.get('/:id', async(req, res, next)=>{
     try{
         const reviews = await Review.findAll({where:{productId: req.params.id}});
         res.send(reviews);
