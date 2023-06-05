@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../db');
+const { User, Order } = require('../../db');
+
+router.get('/', async(req, res, next)=> {
+  try {
+    const order = await Order.findAll();;
+    res.send(order)
+  }
+  catch(ex){
+    next(ex);
+  }
+});
 
 
 router.post('/', async(req, res, next)=> {

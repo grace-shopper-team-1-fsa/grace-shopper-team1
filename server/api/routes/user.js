@@ -2,14 +2,12 @@ const express = require('express');
 const app = express.Router();
 const { User } = require('../../db');
 
-
-
-app.post('/', async(req, res, next)=>{
+app.get('/', async(req, res, next)=>{
     try{
-        const users = await User.findAll();
-        res.send(users);
-    } catch(ex){
-        next(ex)
+        const user = await User.findAll();
+        res.send(user)
+    }catch(er){
+        next(er);
     }
 })
 
@@ -21,5 +19,16 @@ app.get('/:id', async(req, res, next)=>{
         next(er);
     }
 })
+
+app.post('/', async(req, res, next)=>{
+    try{
+        const users = await User.findAll();
+        res.send(users);
+    } catch(ex){
+        next(ex)
+    }
+})
+
+
 
 module.exports = app;

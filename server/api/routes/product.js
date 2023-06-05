@@ -3,13 +3,12 @@ const app = express.Router();
 const { Product } = require('../../db');
 
 
-
-app.post('/', async(req, res, next)=>{
+app.get('/', async(req, res, next)=>{
     try{
-        const products = await Product.findAll();
-        res.send(products);
-    } catch(ex){
-        next(ex)
+        const product = await Product.findAll();
+        res.send(product);
+    }catch(er){
+        next(er);
     }
 })
 
@@ -21,5 +20,14 @@ app.get('/:id', async(req, res, next)=>{
         next(er);
     }
 })
+
+app.post('/', async(req, res, next)=>{
+    try{
+        res.send('POST at api/product')
+    } catch(ex){
+        next(ex)
+    }
+})
+
 
 module.exports = app;

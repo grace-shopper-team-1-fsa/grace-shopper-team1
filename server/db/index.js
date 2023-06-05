@@ -5,6 +5,7 @@ const Order = require('./Order');
 const LineItem  = require('./LineItem');
 const Review = require('./Review');
 
+
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
@@ -121,5 +122,7 @@ const syncAndSeed = async()=> {
 module.exports = {
   syncAndSeed,
   User,
-  Product
+  Product,
+  Review,
+  Order
 };
