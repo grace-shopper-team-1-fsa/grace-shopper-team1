@@ -16,6 +16,7 @@ app.post('/', async(req, res, next)=>{
 app.get('/:id', async(req, res, next)=>{
     try{
         const reviews = await Review.findAll({where:{productId: req.params.id}});
+        res.send(reviews);
     }catch(er){
         next(er);
     }
