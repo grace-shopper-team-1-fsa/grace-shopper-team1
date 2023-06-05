@@ -3,11 +3,13 @@ const User = require('./User');
 const Product = require('./Product');
 const Order = require('./Order');
 const LineItem  = require('./LineItem');
+const Review = require('./Review');
 
 Order.belongsTo(User);
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
+Review.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
