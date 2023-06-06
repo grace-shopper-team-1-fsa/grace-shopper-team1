@@ -1,6 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const fetchAllUsers = createAsyncThunk('user/fetchUserProfile', async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/users`);
+    console.log(response.data)
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 export const fetchUserProfile = createAsyncThunk('user/fetchUserProfile', async (userId, thunkAPI) => {
   try {
@@ -34,7 +44,7 @@ export const updateUserProfile = createAsyncThunk('user/updateUserProfile', asyn
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    profile: {},
+    profile: [],
     status: 'idle',
     error: null
   },
