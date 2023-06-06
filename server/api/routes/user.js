@@ -29,7 +29,8 @@ app.post('/', async(req, res, next)=>{
 })
 
 app.put('/:id', async(req, res, next)=>{
-    try{
+    const userId = req.params.id;
+    try {
         const user = await User.findByPk(req.params.id);
         if (!user) {
             res.status(404).send('User not found');

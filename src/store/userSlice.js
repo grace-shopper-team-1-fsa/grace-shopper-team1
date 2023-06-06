@@ -11,6 +11,15 @@ export const fetchUserProfile = createAsyncThunk('user/fetchUserProfile', async 
   }
 });
 
+export const addUserProfile =createAsyncThunk('/api/user', async(data) => {
+  try {
+    const response = await axios.post('http://localhost:3000/api/users', data)
+    return data
+  } catch(err){
+    console.log(err)
+  }
+})
+
 
 export const updateUserProfile = createAsyncThunk('user/updateUserProfile', async ({ userId, updatedData }, thunkAPI) => {
   try {
@@ -51,6 +60,17 @@ const userSlice = createSlice({
         state.profile = action.payload;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload.error;
+      })
+      .addCase(addUserProfile.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(addUserProfile.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.profile = action.payload;
+      })
+      .addCase(addUserProfile.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload.error;
       });
