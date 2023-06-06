@@ -2,7 +2,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import logger from 'redux-logger';
 import auth from './auth';
 import cart from './cart';
-import orders from './orders';
+import ordersSlice from './ordersSlice';
 import productsSlice from './productsSlice';
 import reviewSlice from './reviewSlice';
 import user from './user';
@@ -12,7 +12,7 @@ const store = configureStore({
   reducer:{
     auth: auth,
     cart: cart,
-    orders: orders,
+    orders: ordersSlice,
     reviews: reviewSlice,
     products: productsSlice,
     users: user,
@@ -22,7 +22,7 @@ const store = configureStore({
 export default store;
 export * from './auth';
 export * from './cart';
-export * from './orders';
+export * from './ordersSlice';
 export * from './productsSlice';
 export * from './reviewSlice';
 export * from './user';
