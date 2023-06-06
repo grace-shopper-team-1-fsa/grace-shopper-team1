@@ -29,6 +29,19 @@ app.post('/', async(req, res, next)=>{
     }
 })
 
+app.put('/:id', async(req, res, next)=>{
+    try{
+        const user = await User.findByPk(req.params.id);
+        if (!user) {
+            res.status(404).send('User not found');
+        } else {
+            const updatedUser = await user.update(req.body);
+            res.send(updatedUser);
+        }
+    }catch(er){
+        next(er);
+    }
+})
 
 
 module.exports = app;
