@@ -22,8 +22,7 @@ app.get('/:id', async(req, res, next)=>{
 
 app.post('/', async(req, res, next)=>{
     try{
-        const newUser = await User.create(req.body);
-        res.send(newUser);
+        res.status(201).send(await User.create(req.body));
     } catch(ex){
         next(ex)
     }
