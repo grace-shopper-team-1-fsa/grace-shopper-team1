@@ -6,14 +6,16 @@ const LineItem  = require('./LineItem');
 const Review = require('./Review');
 
 Order.belongsTo(User);
+User.hasMany(Order)
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
+Product.hasMany(LineItem)
 Review.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire] = await Promise.all([
+  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Dummy] = await Promise.all([
     User.create({ 
       username: 'moe',
       password: '123',
@@ -93,6 +95,11 @@ const syncAndSeed = async()=> {
       productImage: 'https://tinyurl.com/4ws5v7zx',
       price: 329.99
     }),
+    Review.create({
+      name: 'Timeless Vase',
+      rating: 1,
+      description: "Not great",
+    }),
   ]);
 
   const cart = await ethyl.getCart();
@@ -116,5 +123,7 @@ const syncAndSeed = async()=> {
 module.exports = {
   syncAndSeed,
   User,
-  Product
+  Product,
+  Review,
+  Order
 };
