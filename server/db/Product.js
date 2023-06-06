@@ -36,6 +36,13 @@ const Product = conn.define('product', {
       notEmpty: true
     }
   },
+  price: {
+    type: DECIMAL (10,2),
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
 });
 
 module.exports = Product;
