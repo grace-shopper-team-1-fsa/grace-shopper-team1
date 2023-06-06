@@ -12,9 +12,10 @@
 - A non-logged in user should be able to add to their cart and have those items added to their cart after authenticating
 - A user should be able to review a product
 - A user should be able to update their profile
-- An administrator should be able to add a new product
+- A administrator should be able to add a new product
 
 # Bonus Features
+
 - A user should be able to search for products
 - A user should be able to create a wish list
 - A user should be able to checkout using stripe
@@ -22,5 +23,3 @@
 - A user should be able to upload an avatar to their profile
 - An administrator should be able to add a coupon code
 - A user should be able to use a coupon code
-
-
