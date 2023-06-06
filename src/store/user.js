@@ -1,10 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchAllUsers = createAsyncThunk('user/fetchUserProfile', async () => {
+const initialState = {
+  usersList: [],
+  status: 'idle',
+  error: null,
+};
+
+export const fetchAllUsers = createAsyncThunk('user/fetchAllUsers', async () => {
   try {
     const response = await axios.get(`http://localhost:3000/api/users`);
-    console.log(response.data)
     return response.data;
   } catch (error) {
     console.log(error);
@@ -42,15 +47,22 @@ export const updateUserProfile = createAsyncThunk('user/updateUserProfile', asyn
 
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    profile: [],
-    status: 'idle',
-    error: null
-  },
+  name: 'users',
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllUsers.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.usersList = action.payload;
+      })
+      .addCase(fetchAllUsers.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload.error;
+      })
       .addCase(fetchUserProfile.pending, (state) => {
         state.status = 'loading';
       })
