@@ -22,8 +22,7 @@ app.get('/:id', async(req, res, next)=>{
 
 app.post('/', async(req, res, next)=>{
     try{
-        const review = await Review.findAll();
-        res.send(review);
+        res.status(201).send(await Review.create(req.body));
     } catch(er){
         next(er)
     }

@@ -23,7 +23,7 @@ app.get('/:id', async(req, res, next)=>{
 
 app.post('/', async(req, res, next)=>{
     try{
-        res.send('POST at api/lineitem')
+        res.status(201).send(await LineItem.create(req.body));
     } catch(ex){
         next(ex)
     }
