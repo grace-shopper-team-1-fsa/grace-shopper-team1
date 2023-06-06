@@ -1,5 +1,5 @@
 const conn = require('./conn');
-const { STRING, UUID, UUIDV4, TEXT, DOUBLE } = conn.Sequelize;
+const { STRING, UUID, UUIDV4, TEXT, DOUBLE, DECIMAL } = conn.Sequelize;
 
 const Product = conn.define('product', {
   id: {
@@ -31,6 +31,13 @@ const Product = conn.define('product', {
   },
   productImage: {
     type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  price: {
+    type: DECIMAL (10,2),
     allowNull: false,
     validate: {
       notEmpty: true
