@@ -23,7 +23,8 @@ app.get('/:id', async(req, res, next)=>{
 
 app.post('/', async(req, res, next)=>{
     try{
-        res.send('POST at api/product')
+        const product = await Product.create(req.body);
+        res.send(product);
     } catch(ex){
         next(ex)
     }
