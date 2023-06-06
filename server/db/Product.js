@@ -29,7 +29,7 @@ const Product = conn.define('product', {
       max: 5,
     }
   },
-  productImage: {
+  image: {
     type: STRING,
     allowNull: false,
     validate: {
