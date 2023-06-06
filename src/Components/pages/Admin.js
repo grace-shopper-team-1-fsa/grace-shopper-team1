@@ -32,6 +32,10 @@ const Admin = () =>{
                         <img src={product.image} alt={product.name} style={{ width: '200px' }} />
                         <p>Price: {product.price}</p>
                         <p>Rating: {product.rating}</p>
+                        <Link to={`/updateproduct/${product.id}`}>
+                            <h3>update</h3>
+                        </Link>
+                        <button>Remove</button>
                     </li>
                   )  
                 })}
@@ -49,8 +53,10 @@ const Admin = () =>{
                         <p>{user.homeAddress}</p>
                         <p>{user.shippingAddress}</p>
                         <p>{user.avatar}</p>
-                        <button>update</button>
-                        <button>remove</button>
+                        <Link to={`/updateuser/${user.id}`}>
+                            <h3>update</h3>
+                        </Link>
+                        <button>Remove</button>
                     </li>
                 )
             })}

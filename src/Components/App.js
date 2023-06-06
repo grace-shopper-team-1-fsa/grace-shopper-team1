@@ -39,8 +39,8 @@ const App = ()=> {
               <Route path='/:id' element={<SingleProduct/>} />
               <Route path='/login' element={<LoginRegister/>} />
               <Route path='/about' element={<About/>} />
-              <Route path='/updateproduct' element={<UpdateProductForm />} />
-              <Route path='/updateuser' element={<UpdateUserForm />} />
+              <Route path='/updateproduct/:id' element={<UpdateProductForm />} />
+              <Route path='/updateuser/:id' element={<UpdateUserForm />} />
             </Routes>
           </div>
         )

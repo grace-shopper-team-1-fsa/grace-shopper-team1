@@ -19,17 +19,33 @@ export const addProduct = createAsyncThunk('addProduct', async(product)=>{
     }
 })
 
+
+export const updateProduct = createAsyncThunk('/api/product/id', async (formData) => {
+  const { id } = formData;
+  try {
+    const response = await axios.put(`http://localhost:3000/api/users/${id}`, formData)
+    return response.data;
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 const productsSlice = createSlice({
     name:"products",
     initialState: [],
     reducers: {},
     extraReducers: (builder)=>{
-      builder.addCase(fetchProducts.fulfilled, (state, action)=>{
+      builder
+      .addCase(fetchProducts.fulfilled, (state, action)=>{
         return action.payload;
-      }),
-      builder.addCase(addProduct.fulfilled, (state, action)=>{
+      })
+      .addCase(addProduct.fulfilled, (state, action)=>{
         return [...state, action.payload];
       })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.products.map(product =>
+          product.id === action.payload.id ? action.payload : product
+      )})
     }
   })
 
