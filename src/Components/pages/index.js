@@ -4,3 +4,5 @@ export {default as Home} from './Home.js';
 export {default as MyAccount} from './MyAccount.js';
 export {default as Navbar} from './Navbar.js';
 export {default as SingleProduct} from './SingleProduct.js';
+export {default as LoginRegister} from './LoginRegister.js';
+export {default as About} from './About.js';

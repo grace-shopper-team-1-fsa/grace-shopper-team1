@@ -5,7 +5,7 @@ import Login from './Login';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
-import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct } from './pages';
+import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, LoginRegister } from './pages';
 
 const App = ()=> {
   const { auth } = useSelector(state => state);
@@ -37,6 +37,8 @@ const App = ()=> {
               <Route path='/myaccount' element={<MyAccount/>}/>
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/:id' element={<SingleProduct/>} />
+              <Route path='/login' element={<LoginRegister/>} />
+              <Route path='/about' element={<About/>} />
             </Routes>
           </div>
         )
