@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
+import { addItem } from '../../store';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -11,11 +12,20 @@ const SingleProduct = () => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
 
-const product = useSelector((state) => state.products.find((product) => product.id === id));
-
+  const product = useSelector((state) => state.products.find((product) => product.id === id));
+  const user = useSelector(state =>  state)
+  console.log(user)
   if (!product) {
     return <p>Loading...</p>;
   }
+
+  const handleClick = () => {
+    dispatch(addItem({
+      product: product, 
+      quantity: 1
+    }))
+  }
+
 
   return (
     <div className="product-page">
@@ -34,6 +44,7 @@ const product = useSelector((state) => state.products.find((product) => product.
       <div className="product-rating">
         <p>Rating: {product.rating} / 5</p>
       </div>
+      <button onClick={handleClick}>add to cart</button>
     </div>
   );
 };

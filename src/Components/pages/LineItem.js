@@ -21,6 +21,7 @@ const LineItem = (props) => {
         ev.preventDefault();
         console.log(ev.target.value);
         const quantityDiff = ev.target.value - lineItem.quantity;
+        console.log(quantityDiff)
         if(quantityDiff < 0){
             const payload = {product: product, quantity: Math.abs(quantityDiff)};
             dispatch(removeItem(payload));
