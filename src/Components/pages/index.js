@@ -6,3 +6,4 @@ export {default as Navbar} from './Navbar.js';
 export {default as SingleProduct} from './SingleProduct.js';
 export {default as LoginRegister} from './LoginRegister.js';
 export {default as About} from './About.js';
+export {default as ProductCard} from './ProductCard.js';
