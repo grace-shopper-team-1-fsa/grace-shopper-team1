@@ -10,3 +10,4 @@ export {default as ProductCard} from './ProductCard.js';
 export {default as LineItem} from './LineItem.js';
 export {default as UpdateProductForm} from './UpdateProductForm.js';
 export {default as UpdateUserForm} from './UpdateUserForm.js';
+export {default as AddProductForm} from './AddProductForm.js'

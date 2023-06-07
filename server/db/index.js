@@ -15,7 +15,7 @@ Review.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Dummy] = await Promise.all([
+  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Ariadne] = await Promise.all([
     User.create({ 
       username: 'moe',
       password: '123',
@@ -94,6 +94,13 @@ const syncAndSeed = async()=> {
       rating: 5,
       image: 'https://tinyurl.com/4ws5v7zx',
       price: 329.99
+    }),
+    Product.create({ 
+      name: 'Ariadne',
+      description: 'Introducing our exquisite red crystal vase, a breathtaking symbol of opulence and refined beauty. Crafted with precision and artistry, this elegant masterpiece showcases the allure of red crystal in all its splendor. The deep, rich hue of the crystal radiates warmth and passion, creating a captivating focal point in any space. Every facet of this vase has been carefully shaped to enhance the play of light, adding an ethereal glow to its surroundings. The graceful curves and flawless craftsmanship exude sophistication, making it a statement piece that commands attention. Whether displayed on a grand dining table or as a luxurious accent on a mantle, this red crystal vase exudes elegance and elevates the ambiance of any room. The brilliance of the red crystal is a testament to the skill of our master craftsmen who have created a piece that combines beauty, artistry, and timeless allure. Indulge in the allure of luxury with our red crystal vase, a testament to the exquisite beauty that only crystal can bring.',
+      rating: 3,
+      image: 'https://tinyurl.com/4ws5v7zx',
+      price: 279.99
     }),
     Review.create({
       name: 'Timeless Vase',

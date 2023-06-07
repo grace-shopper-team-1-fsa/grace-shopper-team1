@@ -16,11 +16,14 @@ const Admin = () =>{
         dispatch(fetchProducts())
         dispatch(fetchAllUsers())
     }, [dispatch])
-    
+
     return(
         <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: '1', marginRight: '20px' }}>
           <h2>Product List</h2>
+          <Link>
+            <h3>Add Product</h3>
+          </Link>
           <ul>
             {products.map((product) => {
                 return (
