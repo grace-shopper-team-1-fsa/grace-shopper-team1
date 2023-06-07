@@ -42,7 +42,7 @@ const App = ()=> {
               <Route path='/about' element={<About/>} />
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
               <Route element={<UpdateUserForm />} />
-              <Route path='/addproduct'element={<AddProductForm />} />
+              <Route path='/admin/addproduct'element={<AddProductForm />} />
             </Routes>
           </div>
         )

@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers, updateUserProfile } from '../../store';
 
@@ -55,7 +55,9 @@ const UpdateUserForm = () =>{
 
     return (
         <div>
-        <h2>User</h2>
+        <Link to={`/myaccount/${id}`}>
+                <p>back to your dashboard</p>
+            </Link>
         {user && (
           <div>
             <p>Full Name: {user.firstName} {user.lastName}</p>
@@ -111,7 +113,9 @@ const UpdateUserForm = () =>{
             />
              <button type="submit">Submit Changes</button>
         </form>
-        
+        <Link to={`/myaccount/${id}`}>
+                <p>back to your dashboard</p>
+            </Link>
       </div>
     );
 }
