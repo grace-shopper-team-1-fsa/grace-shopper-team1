@@ -35,12 +35,12 @@ const App = ()=> {
             <Routes>
               <Route path='/cart' element={ <Cart /> } />
               <Route path='/myaccount/:id' element={<MyAccount/>}/>
+              <Route path='/myaccount/:id/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/product/:id' element={<SingleProduct/>} />
               <Route path='/login' element={<LoginRegister/>} />
               <Route path='/about' element={<About/>} />
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
-              <Route path='/admin/updateuser/:id' element={<UpdateUserForm />} />
               <Route element={<UpdateUserForm />} />
               <Route path='/addproduct'element={<AddProductForm />} />
             </Routes>
