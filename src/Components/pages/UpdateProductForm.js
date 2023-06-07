@@ -9,13 +9,15 @@ const UpdateProductForm = () => {
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
-    const [rating, setRating] = useState();
-    const [imgUrl, setImgUrl] = useState('');
+    const [productImgUrl, setProductImgUrl] = useState('');
+    const [productDescription, setProductDescription] = useState('');
+    const [productRating, setProductRating] = useState(0);
 
     const handleProductNameChange = (e) => setProductName(e.target.value);
     const handlePriceChange = (e) => setProductPrice(e.target.value);
-    const handleRatingChange = (e) => setRating(e.target.value);
-    const handleImgUrlChange = (e) => setImgUrl(e.target.value);
+    const handleRatingChange = (e) => setProductRating(e.target.value);
+    const handleImgUrlChange = (e) => setProductImgUrl(e.target.value);
+    const handleDescriptionChange = (e) => setProductDescription(e.target.value);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,10 +25,11 @@ const UpdateProductForm = () => {
             id: id,
             name: productName,
             price: productPrice,
-            rating: rating,
-            imgUrl: imgUrl
+            rating: productRating,
+            imgUrl: productImgUrl,
+            description: productDescription
         }
-       // dispatch(updateProduct(updatedProductData))
+       dispatch(updateProduct(updatedProductData))
     }
     
 
@@ -45,12 +48,24 @@ const UpdateProductForm = () => {
                 <label>Product Price</label>
                 <input 
                     type="text"
-                    id="name"
-                    name="name"
-                    value={productName}            
-                    onChange={handleProductNameChange}
+                    id="price"
+                    name="price"
+                    value={productPrice}            
+                    onChange={handlePriceChange}
                 />
-
+                <label>Product Rating</label>
+                <input 
+                    name="rating"
+                    value={productRating}            
+                    onChange={handleRatingChange}
+                />
+                <label>Product Description</label>
+                <input 
+                    name="description"
+                    value={productDescription}            
+                    onChange={handleDescriptionChange}
+                />
+                <button type="submit">Submit Changes</button>
             </form>
         </div>
     );

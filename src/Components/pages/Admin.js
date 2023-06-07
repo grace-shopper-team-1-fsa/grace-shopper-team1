@@ -16,9 +16,7 @@ const Admin = () =>{
         dispatch(fetchProducts())
         dispatch(fetchAllUsers())
     }, [dispatch])
-
-    console.log(users)
-
+    
     return(
         <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: '1', marginRight: '20px' }}>
