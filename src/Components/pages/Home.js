@@ -1,12 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { products } from '../../store';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchProducts} from '../../store/productsSlice';
+import {ProductCard} from './';
 
 const Home = () =>{
-    const {products} = useSelector(state => state);
+    const dispatch = useDispatch();
+    
+    const products = useSelector(state => state.products);
+
+    useEffect(()=>{
+        dispatch(fetchProducts())
+    }, [dispatch])
+
     return(
         <div>
-            
+            {
+                products.map(product=>{
+                    return <ProductCard key={product.id} product={product}/>
+                })
+            }
         </div>
     )
 }
