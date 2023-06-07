@@ -18,18 +18,19 @@ const MyAccount = () =>{
 
     return (
         <div>
-          <h2>Users</h2>
+          <h2>User</h2>
           {user && (
             <div>
-              <h3>Username: {user.username}</h3>
-              <p>First Name: {user.firstName}</p>
-              <p>Last Name: {user.lastName}</p>
+              <p>Full Name: {user.firstName} {user.lastName}</p>
               <p>Email: {user.email}</p>
               <p>Home Address: {user.homeAddress}</p>
               <p>Shipping Address: {user.shippingAddress}</p>
               <p>Avatar: {user.avatar}</p>
             </div>
           )}
+          <Link to={`/myaccount/${id}/updateuserinfo`}>
+            <h3>Update your information</h3>
+          </Link>
         </div>
       );
     };
