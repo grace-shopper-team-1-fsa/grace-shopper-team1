@@ -34,6 +34,20 @@ export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
   }
 })
 
+export const addItem = createAsyncThunk("addItem", async(addItem)=>{
+  try{
+    const token = window.localStorage.getItem('token');
+    const {data} = await axios.post('/api/orders/cart', addItem, {
+      headers:{
+        authorization: token
+      }
+    });
+    return data;
+  }catch(er){
+    console.log(er);
+  }
+})
+
 const cartSlice = createSlice({
   name:"cart",
   initialState,
@@ -43,6 +57,9 @@ const cartSlice = createSlice({
       return action.payload;
     }),
     builder.addCase(removeItem.fulfilled, (state, action)=>{
+      return action.payload;
+    }),
+    builder.addCase(addItem.fulfilled, (state, action)=>{
       return action.payload;
     })
   }

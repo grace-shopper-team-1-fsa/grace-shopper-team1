@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import ReactModal from 'react-modal';
 import UpdateProduct from './UpdateProduct';
-import { removeItem } from '../../store';
+import { removeItem, addItem } from '../../store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,9 +13,22 @@ const LineItem = (props) => {
 
     const deleteItem = () => {
         const payload={product: product, quantity: lineItem.quantity};
-        console.log(payload);
         dispatch(removeItem(payload));
         navigate('/cart');
+    }
+
+    const updateQuantity=(ev)=>{
+        ev.preventDefault();
+        console.log(ev.target.value);
+        const quantityDiff = ev.target.value - lineItem.quantity;
+        if(quantityDiff < 0){
+            const payload = {product: product, quantity: Math.abs(quantityDiff)};
+            dispatch(removeItem(payload));
+            navigate('/cart') 
+        } else{
+            const payload = {product: product, quantity: quantityDiff};
+            dispatch(addItem(payload));
+        }
     }
 
     return(
@@ -33,7 +46,7 @@ const LineItem = (props) => {
                 </div>
                 <div className='lineQty'>
                     <p>Qty</p>
-                    <p>{lineItem.quantity}</p>
+                    <input type="number" value={lineItem.quantity} min="0" max="10" onChange={updateQuantity}/>
                 </div>  
             </div>
             <div className='lineModify'>
