@@ -34,7 +34,7 @@ const App = ()=> {
             </nav>
             <Routes>
               <Route path='/cart' element={ <Cart /> } />
-              <Route path='/myaccount/:id' element={<MyAccount/>}/>
+              <Route path='/myaccount/' element={<MyAccount/>}/>
               <Route path='/myaccount/:id/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/product/:id' element={<SingleProduct/>} />

@@ -53,10 +53,6 @@ const Admin = () =>{
                         <p>{user.homeAddress}</p>
                         <p>{user.shippingAddress}</p>
                         <p>{user.avatar}</p>
-                        <Link to={`/updateuser/${user.id}`}>
-                            <h3>update</h3>
-                        </Link>
-                        <button>Remove</button>
                     </li>
                 )
             })}
