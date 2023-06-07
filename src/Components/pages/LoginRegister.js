@@ -6,10 +6,10 @@ import { addUserProfile } from '../../store/user.js'
 const LoginRegister = ()=> {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: ''
   });
-  const [ username, setUsername ] = useState('');
+  const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
   const onChange = ev => {
@@ -23,8 +23,8 @@ const LoginRegister = ()=> {
 
   const register = (ev)=> {
     ev.preventDefault();
-    dispatch(addUserProfile({username, password}));
-    setUsername('')
+    dispatch(addUserProfile({email, password}));
+    setEmail('')
     setPassword('')
   };
 
@@ -33,9 +33,9 @@ const LoginRegister = ()=> {
       <h2>Login</h2>
       <form onSubmit={ login }>
         <input
-          placeholder='username'
-          value = { credentials.username }
-          name = 'username'
+          placeholder='email'
+          value = { credentials.email }
+          name = 'email'
           onChange = { onChange }
           />
         <input
@@ -50,10 +50,10 @@ const LoginRegister = ()=> {
       <h2>Register</h2>
       <form onSubmit={ register }>
         <input
-          placeholder='username'
-          name = 'username'
-          value = { username }
-          onChange={(event) => setUsername(event.target.value)}
+          placeholder='email'
+          name = 'email'
+          value = { email }
+          onChange={(event) => setEmail(event.target.value)}
           />
         <input
           placeholder='password'
