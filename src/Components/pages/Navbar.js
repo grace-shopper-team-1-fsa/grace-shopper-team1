@@ -6,6 +6,7 @@ import { logout } from '../../store/auth';
 const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
+  console.log(user)
 
   const handleLogout = () => {
     dispatch(logout());

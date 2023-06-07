@@ -28,10 +28,10 @@ const App = ()=> {
       {
         !!auth.id  && (
           <div>
-            <nav>
+            {/* <nav>
               <Link to='/'>Home</Link>
               <Link to='/cart'>Cart</Link>
-            </nav>
+            </nav> */}
             <Routes>
               <Route path='/cart' element={ <Cart /> } />
               <Route path='/myaccount/' element={<MyAccount/>}/>
