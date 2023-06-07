@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { addProduct } from '../../store';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom'
+
 
 function AddProductForm() {
 
@@ -38,6 +40,9 @@ function AddProductForm() {
 
     return (
         <div>
+            <Link to="/admin">
+                <p>back to admin dashboard</p>
+            </Link>
             <h3>Update Product Information</h3>
             <form onSubmit={handleSubmit}>
                 <label>Product Name</label>
@@ -72,6 +77,7 @@ function AddProductForm() {
                 />
                 <button type="submit">Submit Changes</button>
             </form>
+            
         </div>
     );
 }

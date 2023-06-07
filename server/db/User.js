@@ -12,13 +12,13 @@ const User = conn.define('user', {
     primaryKey: true,
     defaultValue: UUIDV4
   },
-  username: {
+  email: {
     type: STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
-    },
-    unique: true
+      notEmpty: true,
+      isEmail: true,
+    }
   },
   password: {
     type: STRING,
@@ -29,36 +29,28 @@ const User = conn.define('user', {
   },
   firstName: {
     type: STRING,
-    allowNull: false,
+    defaultValue: '',
     validate: {
       notEmpty: true
     }
   },
   lastName: {
     type: STRING,
-    allowNull: false,
+    defaultValue: '',
     validate: {
       notEmpty: true
     }
   },
-  email: {
-    type: STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-      isEmail: true,
-    }
-  },
   homeAddress: {
     type: STRING,
-    allowNull: false,
+    defaultValue: '',
     validate: {
       notEmpty: true
     }
   },
   shipAddress: {
     type: STRING,
-    allowNull: false,
+    defaultValue: '',
     validate: {
       notEmpty: true
     }

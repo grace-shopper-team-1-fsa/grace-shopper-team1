@@ -34,9 +34,8 @@ const Admin = () =>{
                         <p>Price: {product.price}</p>
                         <p>Rating: {product.rating}</p>
                         <Link to={`/updateproduct/${product.id}`}>
-                            <h3>update</h3>
+                            <h3>Update</h3>
                         </Link>
-                        <button>Remove</button>
                     </li>
                   )  
                 })}

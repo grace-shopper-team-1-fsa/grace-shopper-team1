@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { updateProduct, deleteProduct } from '../../store';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { updateProduct, deleteProduct, fetchProductById } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UpdateProductForm = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const product = useSelector((state) => state.products.find((product) => product.id === id));
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
@@ -20,6 +21,11 @@ const UpdateProductForm = () => {
     const handleImgUrlChange = (e) => setProductImgUrl(e.target.value);
     const handleDescriptionChange = (e) => setProductDescription(e.target.value);
 
+    useEffect(() => {
+        dispatch(fetchProductById(id));
+      }, [dispatch, id]);
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const updatedProductData = {
@@ -27,7 +33,7 @@ const UpdateProductForm = () => {
             name: productName,
             price: productPrice,
             rating: productRating,
-            imgUrl: productImgUrl,
+            image: productImgUrl,
             description: productDescription
         }
        dispatch(updateProduct(updatedProductData));
@@ -39,12 +45,28 @@ const UpdateProductForm = () => {
        
     }
     const handleDelete = () => {
-        dispatch(deleteProduct(id));
-        
+        dispatch(deleteProduct(id))
       };
 
     return (
         <div>
+            <Link to="/admin">
+                <p>back to admin dashboard</p>
+            </Link>
+            <h2>Product Details</h2>
+            {product ? (
+                <div>
+                    <p>Name: {product.name}</p>
+                    <p>Price: {product.price}</p>
+                    <p>Rating: {product.rating}</p>
+                    <p>Description: {product.description}</p>
+                    
+                </div>
+                    ) : (
+                    <p>Loading...</p>
+            )}
+
+
             <h3>Update Product Information</h3>
             <form onSubmit={handleSubmit}>
                 <label>Product Name</label>
