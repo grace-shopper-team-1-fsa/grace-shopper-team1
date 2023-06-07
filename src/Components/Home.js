@@ -9,7 +9,7 @@ const Home = ()=> {
     <div>
       <h1>Home</h1>
       <div>
-        Welcome { auth.username }!!
+        Welcome!!
         <button onClick={()=> dispatch(logout())}>Logout</button>
       </div>
     </div>
