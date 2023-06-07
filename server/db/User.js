@@ -165,10 +165,10 @@ User.prototype.generateToken = function(){
   return jwt.sign({ id: this.id }, JWT);
 };
 
-User.authenticate = async function({ username, password }){
+User.authenticate = async function({ email, password }){
   const user = await this.findOne({
     where: {
-      username
+      email
     }
   });
   if(user && await bcrypt.compare(password, user.password)){
