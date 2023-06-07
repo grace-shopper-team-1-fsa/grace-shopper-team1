@@ -7,8 +7,8 @@ import { fetchAllUsers, updateUserProfile } from '../../store';
 const UpdateUserForm = () =>{
     const { id } = useParams();
     const dispatch = useDispatch();
-    const users = useSelector(state => state.users.usersList)
-    const user = users.find((user) => user.id === id);
+    const user = useSelector(state => state.auth)
+    //const user = users.find((user) => user.id === id);
     console.log(user)
 
     const [userFirstName, setUserFirstName] = useState('');
@@ -34,7 +34,7 @@ const UpdateUserForm = () =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         const updatedUserData = {
-            id: id,
+            id: user.id,
             firstName: userFirstName,
             lastName: userLastName,
             email: userEmail,
@@ -55,7 +55,7 @@ const UpdateUserForm = () =>{
 
     return (
         <div>
-        <Link to={`/myaccount/${id}`}>
+        <Link to={`/myaccount`}>
                 <p>back to your dashboard</p>
             </Link>
         {user && (
@@ -113,7 +113,7 @@ const UpdateUserForm = () =>{
             />
              <button type="submit">Submit Changes</button>
         </form>
-        <Link to={`/myaccount/${id}`}>
+        <Link to={`/myaccount`}>
                 <p>back to your dashboard</p>
             </Link>
       </div>

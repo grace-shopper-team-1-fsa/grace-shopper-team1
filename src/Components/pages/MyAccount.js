@@ -1,16 +1,15 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchAllUsers } from '../../store';
 
 
 const MyAccount = () =>{
 
-    const { id } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth)
    
-    console.log(user)
+    console.log("User info after Auth", user)
 
     useEffect(() => {
         dispatch(fetchAllUsers())
@@ -28,7 +27,7 @@ const MyAccount = () =>{
               <p>Avatar: {user.avatar}</p>
             </div>
           )}
-          <Link to={`/myaccount/${id}/updateuserinfo`}>
+          <Link to={`/myaccount/updateuserinfo`}>
             <h3>Update your information</h3>
           </Link>
         </div>

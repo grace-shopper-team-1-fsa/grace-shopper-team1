@@ -35,7 +35,7 @@ const App = ()=> {
             <Routes>
               <Route path='/cart' element={ <Cart /> } />
               <Route path='/myaccount/' element={<MyAccount/>}/>
-              <Route path='/myaccount/:id/updateuserinfo' element={<UpdateUserForm />} />
+              <Route path='/myaccount/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/product/:id' element={<SingleProduct/>} />
               <Route path='/login' element={<LoginRegister/>} />
