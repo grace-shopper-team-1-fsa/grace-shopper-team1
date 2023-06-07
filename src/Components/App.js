@@ -21,10 +21,18 @@ const App = ()=> {
   }, [auth]);
   return (
     <div>
-      <Navbar/>
-      {
-        auth.id ? <Home /> : <LoginRegister />
-      }
+      <Navbar />
+
+      {/* {
+        auth.id && <LoginRegister />
+      } */}
+      <Routes>
+        <Route path='/cart' element={ <Cart /> } />
+        <Route path='/'element={<Home />} />
+        <Route path='/product/:id' element={<SingleProduct/>} />
+        <Route path='/login' element={<LoginRegister/>} />
+        <Route path='/about' element={<About/>} />
+      </Routes>
       {
         !!auth.id  && (
           <div>
@@ -33,13 +41,13 @@ const App = ()=> {
               <Link to='/cart'>Cart</Link>
             </nav> */}
             <Routes>
-              <Route path='/cart' element={ <Cart /> } />
+              
+              
               <Route path='/myaccount/' element={<MyAccount/>}/>
               <Route path='/myaccount/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/admin' element={<Admin/>}/>
-              <Route path='/product/:id' element={<SingleProduct/>} />
-              <Route path='/login' element={<LoginRegister/>} />
-              <Route path='/about' element={<About/>} />
+              
+              
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
               <Route element={<UpdateUserForm />} />
               <Route path='/admin/addproduct'element={<AddProductForm />} />
