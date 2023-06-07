@@ -23,7 +23,7 @@ const LoginRegister = ()=> {
 
   const register = (ev)=> {
     ev.preventDefault();
-    dispatch(addUserProfile({email, password}));
+    dispatch(addUserProfile({email, password, permissions: false}));
     setEmail('')
     setPassword('')
   };
