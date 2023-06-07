@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { fetchProducts, fetchAllUsers } from '../../store';
 import { Link } from 'react-router-dom';
 
@@ -17,11 +16,12 @@ const Admin = () =>{
         dispatch(fetchAllUsers())
     }, [dispatch])
 
+    console.log(products)
     return(
         <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: '1', marginRight: '20px' }}>
           <h2>Product List</h2>
-          <Link>
+          <Link to={'/admin/addproduct'}>
             <h3>Add Product</h3>
           </Link>
           <ul>
@@ -33,10 +33,9 @@ const Admin = () =>{
                         <img src={product.image} alt={product.name} style={{ width: '200px' }} />
                         <p>Price: {product.price}</p>
                         <p>Rating: {product.rating}</p>
-                        <Link to={`/updateproduct/${product.id}`}>
-                            <h3>update</h3>
+                        <Link to={`/admin/updateproduct/${product.id}`}>
+                            <h3>Update</h3>
                         </Link>
-                        <button>Remove</button>
                     </li>
                   )  
                 })}

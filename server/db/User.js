@@ -29,39 +29,20 @@ const User = conn.define('user', {
   },
   firstName: {
     type: STRING,
-    defaultValue: '',
-    validate: {
-      notEmpty: true
-    }
   },
   lastName: {
     type: STRING,
-    defaultValue: '',
-    validate: {
-      notEmpty: true
-    }
   },
   homeAddress: {
     type: STRING,
-    defaultValue: '',
-    validate: {
-      notEmpty: true
-    }
   },
   shipAddress: {
     type: STRING,
-    defaultValue: '',
-    validate: {
-      notEmpty: true
-    }
   },
   avatar: {
     type: STRING,
     allowNull: false,
     defaultValue: 'https://tinyurl.com/2ssnj3cf',
-    validate: {
-      notEmpty: true
-    }
   },
   permissions: {
     type: BOOLEAN,

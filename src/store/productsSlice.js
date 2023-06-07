@@ -23,7 +23,7 @@ export const fetchProductById = createAsyncThunk('fetchProductById', async (id) 
 
 export const addProduct = createAsyncThunk('addProduct', async(product)=>{
     try{
-        const {data} = await axios.post('/api/products', product);
+        const {data} = await axios.post('http://localhost:3000/api/products', product);
         return data;
     }catch(er){
         console.log(er);
@@ -37,6 +37,15 @@ export const updateProduct = createAsyncThunk('/api/product/id', async (formData
     const response = await axios.put(`http://localhost:3000/api/products/${id}`, formData)
     return response.data;
   } catch (err) {
+    console.log(err)
+  }
+})
+
+export const deleteProduct = createAsyncThunk('api/product/delete/id', async(productId) => {
+  try {
+    await axios.delete(`http://localhost:3000/api/products/${productId}`);
+    return productId;
+  } catch(err) {
     console.log(err)
   }
 })
@@ -68,6 +77,9 @@ const productsSlice = createSlice({
     .addCase(updateProduct.fulfilled, (state, action) => {
       return state.map(product => product.id === action.payload.id ? action.payload : product)
     })
+    .addCase(deleteProduct.fulfilled, (state, action)=>{
+      return state.filter(product => product.id !== action.payload);
+  })
   }
 })
 
