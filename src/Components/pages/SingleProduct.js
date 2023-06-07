@@ -1,23 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
 
-const SingleProduct = ({ productId }) => {
+const SingleProduct = () => {
   const dispatch = useDispatch();
-
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(fetchProductById(productId));
-  }, [dispatch, productId]);
-  
+    dispatch(fetchProductById(id));
+  }, [dispatch, id]);
 
-  
-  const products = useSelector(state => state.products);
+const product = useSelector((state) => state.products.find((product) => product.id === id));
 
-  
-  const product = products.find(product => product.id === productId);
-
-  
   if (!product) {
     return <p>Loading...</p>;
   }
@@ -34,7 +29,7 @@ const SingleProduct = ({ productId }) => {
         <p>{product.description}</p>
       </div>
       <div className="product-price">
-        <p>Price: ${product.price.toFixed(2)}</p>
+        <p>Price: ${product.price}</p>
       </div>
       <div className="product-rating">
         <p>Rating: {product.rating} / 5</p>
