@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-export const fetchProducts = createAsyncThunk('fetchProducts', async()=>{
+export const fetchProducts = createAsyncThunk('/api/fetchProducts', async()=>{
     try{
         const {data}  = await axios.get('/api/products');
         return data;
@@ -10,7 +10,7 @@ export const fetchProducts = createAsyncThunk('fetchProducts', async()=>{
     }
 })
 
-export const addProduct = createAsyncThunk('addProduct', async(product)=>{
+export const addProduct = createAsyncThunk('/api/addProduct', async(product)=>{
     try{
         const {data} = await axios.post('/api/products', product);
         return data;
@@ -21,9 +21,10 @@ export const addProduct = createAsyncThunk('addProduct', async(product)=>{
 
 
 export const updateProduct = createAsyncThunk('/api/product/id', async (formData) => {
-  //const { id } = formData;
+  const { id } = formData;
+  console.log(id)
   try {
-    const response = await axios.put(`http://localhost:3000/api/users/${formData.id}`, formData)
+    const response = await axios.put(`http://localhost:3000/api/products/${id}`, formData)
     console.log(response.data)
     return response.data;
   } catch (err) {
@@ -44,7 +45,7 @@ const productsSlice = createSlice({
         return [...state, action.payload];
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
-        return state.map(product=>product.id===action.payload.id ? action.payload:product);  
+        return state.map(product => product.id === action.payload.id ? action.payload : product)
       })
     }
   })

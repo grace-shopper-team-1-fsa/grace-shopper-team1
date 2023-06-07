@@ -11,7 +11,7 @@ const UpdateProductForm = () => {
     const [productPrice, setProductPrice] = useState('');
     const [productImgUrl, setProductImgUrl] = useState('');
     const [productDescription, setProductDescription] = useState('');
-    const [productRating, setProductRating] = useState(0);
+    const [productRating, setProductRating] = useState();
 
     const handleProductNameChange = (e) => setProductName(e.target.value);
     const handlePriceChange = (e) => setProductPrice(e.target.value);
@@ -29,14 +29,19 @@ const UpdateProductForm = () => {
             imgUrl: productImgUrl,
             description: productDescription
         }
-       dispatch(updateProduct(updatedProductData))
+       dispatch(updateProduct(updatedProductData));
+       setProductDescription('')
+       setProductImgUrl('')
+       setProductImgUrl('')
+       setProductName('')
+       setProductPrice('')
     }
     
 
     return (
         <div>
             <h3>Update Product Information</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Product Name</label>
                 <input 
                     type="text"
@@ -64,6 +69,12 @@ const UpdateProductForm = () => {
                     name="description"
                     value={productDescription}            
                     onChange={handleDescriptionChange}
+                />
+                <label>Product Image Url</label>
+                <input 
+                    name="imgUrl"
+                    value={productImgUrl}            
+                    onChange={handleImgUrlChange}
                 />
                 <button type="submit">Submit Changes</button>
             </form>
