@@ -15,13 +15,22 @@ const Cart = () =>{
 
     return (
         <div>
-            <h1>Cart</h1>
-            {
-                cart.lineItems.map(lineItem=>{
-                    const product = products.find(product => product.id === lineItem.productId);
-                    return <LineItem key={lineItem.id} lineItem={lineItem} product={product}/>
-                })
-            }
+            <div className='basket'>
+                <p>Shopping Basket</p>
+                {
+                    cart.lineItems.map(lineItem=>{
+                        const product = products.find(product => product.id === lineItem.productId);
+                        return <LineItem key={lineItem.id} lineItem={lineItem} product={product}/>
+                    })
+                }
+            </div>
+            <div className='summary'>
+                <p>Summary</p>
+                <div>
+                    <p>Items: </p><p></p>
+                </div>    
+                
+            </div>
         </div>
   );
         

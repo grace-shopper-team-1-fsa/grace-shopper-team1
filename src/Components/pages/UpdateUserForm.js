@@ -6,7 +6,7 @@ const UpdateUserForm = () =>{
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [userFirstName, setUserFirstName] = useState('')
     const [userLastName, setUserLastName] = useState('')
 

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 const Login = ()=> {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -22,9 +22,9 @@ const Login = ()=> {
       <h2>Login</h2>
       <form onSubmit={ login }>
         <input
-          placeholder='username'
-          value = { credentials.username }
-          name = 'username'
+          placeholder='email'
+          value = { credentials.email }
+          name = 'email'
           onChange = { onChange }
           />
         <input

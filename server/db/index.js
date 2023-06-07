@@ -17,7 +17,6 @@ const syncAndSeed = async()=> {
   await conn.sync({ force: true });
   const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Ariadne] = await Promise.all([
     User.create({ 
-      username: 'moe',
       password: '123',
       firstName: 'Moe',
       lastName: 'Doe',
@@ -28,7 +27,6 @@ const syncAndSeed = async()=> {
       permissions: true,
     }),
     User.create({ 
-      username: 'lucy',
       password: '123',
       firstName: 'Lucy',
       lastName: 'Brown',
@@ -39,7 +37,6 @@ const syncAndSeed = async()=> {
       permissions: false,
     }),
     User.create({ 
-      username: 'larry',
       password: '123',
       firstName: 'Larry',
       lastName: 'Green',
@@ -50,7 +47,6 @@ const syncAndSeed = async()=> {
       permissions: false,
     }),
     User.create({ 
-      username: 'ethyl',
       password: '123',
       firstName: 'Ethyl',
       lastName: 'Red',
