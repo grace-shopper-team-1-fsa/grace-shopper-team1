@@ -1,10 +1,23 @@
 import React,{useState} from 'react';
 import ReactModal from 'react-modal';
 import UpdateProduct from './UpdateProduct';
+import { removeItem } from '../../store';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const LineItem = (props) => {
     const {lineItem, product} = props;
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const deleteItem = () => {
+        const payload={product: product, quantity: lineItem.quantity};
+        console.log(payload);
+        dispatch(removeItem(payload));
+        navigate('/cart');
+    }
+
     return(
         <div className='line'>
             <div className='lineDetail'>
@@ -30,7 +43,7 @@ const LineItem = (props) => {
                     <button onClick={()=>setOpen(false)}>CANCEL</button>
                 </ReactModal>
                 <button>Save For Later</button>
-                <button>Remove</button>
+                <button onClick={deleteItem}>Remove</button>
             </div>  
         </div>
     )
