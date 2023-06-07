@@ -22,10 +22,8 @@ export const addProduct = createAsyncThunk('/api/addProduct', async(product)=>{
 
 export const updateProduct = createAsyncThunk('/api/product/id', async (formData) => {
   const { id } = formData;
-  console.log(id)
   try {
     const response = await axios.put(`http://localhost:3000/api/products/${id}`, formData)
-    console.log(response.data)
     return response.data;
   } catch (err) {
     console.log(err)
