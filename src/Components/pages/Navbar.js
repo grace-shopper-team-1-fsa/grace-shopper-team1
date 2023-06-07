@@ -15,20 +15,28 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/cart">Cart</Link>
+          <div className="nav-link-container">
+            <Link to="/cart">Cart</Link>
+          </div>
         </li>
         {user ? (
           <>
             <li>
-              <Link to="/myaccount">My Account</Link>
+              <div className="nav-link-container">
+                <Link to="/myaccount">My Account</Link>
+              </div>
             </li>
             <li>
-              <button onClick={handleLogout}>Logout</button>
+              <div className="nav-link-container">
+                <button onClick={handleLogout}>Logout</button>
+              </div>
             </li>
           </>
         ) : (
           <li>
-            <Link to="/login">Login</Link>
+            <div className="nav-link-container">
+              <Link to="/login">Login</Link>
+            </div>
           </li>
         )}
       </ul>

@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
+import ReactModal from 'react-modal';
 
 const initialState={
   lineItems: []
