@@ -1,15 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { logout } from '../../store/auth';
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
-  console.log(user)
+  const navigate = useNavigate();
+  const user = useSelector(state => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
+    navigate('/')
   };
 
   return (
@@ -20,7 +22,7 @@ const Navbar = () => {
             <Link to="/cart">Cart</Link>
           </div>
         </li>
-        {user ? (
+        {Object.keys(user).length > 0 ? (
           <>
             <li>
               <div className="nav-link-container">
