@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 //import Home from './Home';
-import Login from './Login';
+//import Login from './Login';
 //import Cart from './Cart';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart } from '../store';
@@ -23,7 +23,7 @@ const App = ()=> {
     <div>
       <Navbar/>
       {
-        auth.id ? <Home /> : <Login />
+        auth.id ? <Home /> : <LoginRegister />
       }
       {
         !!auth.id  && (
@@ -42,7 +42,7 @@ const App = ()=> {
               <Route path='/about' element={<About/>} />
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
               <Route element={<UpdateUserForm />} />
-              <Route path='/addproduct'element={<AddProductForm />} />
+              <Route path='/admin/addproduct'element={<AddProductForm />} />
             </Routes>
           </div>
         )

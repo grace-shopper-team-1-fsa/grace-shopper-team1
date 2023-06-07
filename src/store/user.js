@@ -37,12 +37,13 @@ export const addUserProfile =createAsyncThunk('/api/user', async(user) => {
 })
 
 
-export const updateUserProfile = createAsyncThunk('user/updateUserProfile', async ({ userId, updatedData }, thunkAPI) => {
+export const updateUserProfile = createAsyncThunk('user/updateUserProfile', async (formData) => {
+  const { id } = formData;
   try {
-    const response = await axios.put(`/api/users/${userId}`, updatedData);
+    const response = await axios.put(`/api/users/${id}`, formData);
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue({ error: error.message });
+    console.log(error)
   }
 });
 
