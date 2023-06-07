@@ -4,8 +4,9 @@ import { fetchCart, fetchProducts } from '../../store';
 import {LineItem} from './';
 
 const Cart = () =>{
-    const { cart } = useSelector(state => state);
-    const {products} = useSelector(state => state);
+    const cart = useSelector(state => state.cart);
+    console.log(cart);
+    const products = useSelector(state => state.products);
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(fetchCart());
