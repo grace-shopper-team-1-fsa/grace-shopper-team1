@@ -8,8 +8,8 @@ const MyAccount = () =>{
 
     const { id } = useParams();
     const dispatch = useDispatch();
-    const users = useSelector(state => state.users.usersList)
-    const user = users.find((user) => user.id === id);
+    const user = useSelector(state => state.auth)
+   
     console.log(user)
 
     useEffect(() => {
