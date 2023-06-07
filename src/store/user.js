@@ -80,7 +80,7 @@ const userSlice = createSlice({
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.profile = action.payload;
+        state.usersList.push(action.payload);
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.status = 'failed';
@@ -91,7 +91,7 @@ const userSlice = createSlice({
       })
       .addCase(addUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.profile = action.payload;
+        state.usersList.push(action.payload);
       })
       .addCase(addUserProfile.rejected, (state, action) => {
         state.status = 'failed';
