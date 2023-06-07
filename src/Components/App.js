@@ -34,13 +34,13 @@ const App = ()=> {
             </nav>
             <Routes>
               <Route path='/cart' element={ <Cart /> } />
-              <Route path='/myaccount' element={<MyAccount/>}/>
+              <Route path='/myaccount/:id' element={<MyAccount/>}/>
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/product/:id' element={<SingleProduct/>} />
               <Route path='/login' element={<LoginRegister/>} />
               <Route path='/about' element={<About/>} />
-              <Route path='/updateproduct/:id' element={<UpdateProductForm />} />
-              <Route path='/updateuser/:id' element={<UpdateUserForm />} />
+              <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
+              <Route path='/admin/updateuser/:id' element={<UpdateUserForm />} />
               <Route element={<UpdateUserForm />} />
               <Route path='/addproduct'element={<AddProductForm />} />
             </Routes>

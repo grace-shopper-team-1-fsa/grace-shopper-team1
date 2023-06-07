@@ -21,7 +21,7 @@ const Admin = () =>{
         <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: '1', marginRight: '20px' }}>
           <h2>Product List</h2>
-          <Link to={'/addproduct'}>
+          <Link to={'/admin/addproduct'}>
             <h3>Add Product</h3>
           </Link>
           <ul>
@@ -33,7 +33,7 @@ const Admin = () =>{
                         <img src={product.image} alt={product.name} style={{ width: '200px' }} />
                         <p>Price: {product.price}</p>
                         <p>Rating: {product.rating}</p>
-                        <Link to={`/updateproduct/${product.id}`}>
+                        <Link to={`/admin/updateproduct/${product.id}`}>
                             <h3>Update</h3>
                         </Link>
                     </li>

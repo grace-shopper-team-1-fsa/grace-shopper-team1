@@ -21,9 +21,9 @@ const UpdateProductForm = () => {
     const handleImgUrlChange = (e) => setProductImgUrl(e.target.value);
     const handleDescriptionChange = (e) => setProductDescription(e.target.value);
 
-    useEffect(() => {
-        dispatch(fetchProductById(id));
-      }, [dispatch, id]);
+    // useEffect(() => {
+    //     dispatch(fetchProductById(id));
+    //   }, [dispatch]);
     
 
     const handleSubmit = (e) => {
@@ -105,7 +105,7 @@ const UpdateProductForm = () => {
                 />
                 <button type="submit">Submit Changes</button>
             </form>
-            <button type="button" onClick={handleDelete(id)}>Delete Product</button>
+            <button onClick={() => handleDelete(id)}>Delete Product</button>
         </div>
     );
 }
