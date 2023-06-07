@@ -64,7 +64,7 @@ const syncAndSeed = async()=> {
       name: 'Essense',
       description: 'Introducing our exquisite reproduction of a medieval vase, meticulously crafted to capture the essence of the era. This dark-colored masterpiece is a testament to the artistry and intricate details that defined medieval craftsmanship. Every facet of this reproduction has been carefully recreated, ensuring an authentic portrayal of the original medieval vase. From the graceful curves to the ornate patterns, each detail has been meticulously replicated to bring the essence of the medieval period into your space. The dark color palette adds a touch of mystery and elegance to the vase, making it a captivating centerpiece that demands attention. Its deep hues create a dramatic contrast, accentuating the intricate details that adorn its surface. The craftsmanship involved in creating this reproduction is a testament to the dedication and skill of our artisans. They have carefully studied historical references and employed traditional techniques to ensure an accurate representation of medieval artistry. Display this stunning reproduction in your home or office to evoke a sense of medieval charm and sophistication. Whether placed on a mantel, displayed in a curio cabinet, or gracing a prominent spot in your living space, this dark-colored vase is sure to become a cherished heirloom, captivating all who behold its beauty. Own a piece of history with our reproduction of a medieval vase, an embodiment of dark elegance and intricate craftsmanship.',
       rating: 4,
-      image: '/images/Essense.png',
+      image: '/static/images/Essense.png',
       price: 189.99
     }),
     Product.create({ 
