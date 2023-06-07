@@ -26,9 +26,10 @@ export const fetchUserProfile = createAsyncThunk('user/fetchUserProfile', async 
   }
 });
 
-export const addUserProfile =createAsyncThunk('/api/user', async(data) => {
+export const addUserProfile =createAsyncThunk('/api/user', async(user) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/users', data)
+    const {data} = await axios.post('http://localhost:3000/api/users', user)
+    console.log(data)
     return data
   } catch(err){
     console.log(err)
