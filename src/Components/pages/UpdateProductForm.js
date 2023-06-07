@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { updateProduct } from '../../store';
+import { useParams, useNavigate } from 'react-router-dom';
+import { updateProduct, deleteProduct } from '../../store';
 import { useDispatch } from 'react-redux';
 
 const UpdateProductForm = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
@@ -35,8 +36,12 @@ const UpdateProductForm = () => {
        setProductImgUrl('')
        setProductName('')
        setProductPrice('')
+       
     }
-    
+    const handleDelete = () => {
+        dispatch(deleteProduct(id));
+        
+      };
 
     return (
         <div>
@@ -78,6 +83,7 @@ const UpdateProductForm = () => {
                 />
                 <button type="submit">Submit Changes</button>
             </form>
+            <button type="button" onClick={handleDelete(id)}>Delete Product</button>
         </div>
     );
 }

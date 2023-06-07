@@ -39,5 +39,14 @@ app.put('/:id', async (req, res, next) => {
     }
 })
 
+app.delete('/:id', async(req, res, next) =>{
+    try{
+        await Product.destroy({where: { id: req.params.id} });
+        res.sendStatus(204);
+    } catch(er) {
+        next(er);
+    }
+})
+
 
 module.exports = app;
