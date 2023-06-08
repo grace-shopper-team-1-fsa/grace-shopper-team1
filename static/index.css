@@ -16,3 +16,6 @@ button {
   background-color: #796556;
   color: white;
 }
+#loginRegisterBox {
+  flex-wrap: wrap;
+}
