@@ -1,3 +1,4 @@
+const { DOUBLE } = require('sequelize');
 const conn = require('./conn');
 const { STRING, BOOLEAN, UUID, UUIDV4 } = conn.Sequelize;
 
@@ -15,6 +16,10 @@ const Order = conn.define('order', {
   userId: {
     type: UUID,
     allowNull: false
+  },
+  total:{
+    type: DOUBLE,
+    defaultValue: 0,
   }
 });
 
