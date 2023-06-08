@@ -19,3 +19,46 @@ button {
 #loginRegisterBox {
   flex-wrap: wrap;
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  margin-left: 10px;
+}
+.nav-link-container {
+  display: flex;
+}
+.nav-link-container > * {
+  margin: auto;
+}
+.nav-link-container a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+}
+.nav-link-container button {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 5px;
+  cursor: pointer;
+}
+.nav-link-container a:hover,
+.nav-link-container button:hover {
+  color: #666;
+}
