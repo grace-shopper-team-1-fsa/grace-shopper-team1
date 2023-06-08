@@ -31,11 +31,7 @@ const Product = conn.define('product', {
   },
   image: {
     type: STRING,
-    allowNull: false,
     defaultvalue: '/static/images/Default.gif',
-    validate: {
-      notEmpty: true
-    }
   },
   price: {
     type: DECIMAL (10,2),
