@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { addProduct } from '../../store';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function AddProductForm() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
@@ -35,6 +36,7 @@ function AddProductForm() {
        setProductRating()
        setProductImgUrl('')
        setProductDescription('')
+       navigate('/admin')
     }
 
 
