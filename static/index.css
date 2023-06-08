@@ -16,6 +16,16 @@ button {
   background-color: #796556;
   color: white;
 }
-#loginRegisterBox {
+.loginRegister {
+  display: flex;
   flex-wrap: wrap;
+}
+.loginRegisterBox {
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .loginRegister {
+    display: flex;
+    flex-direction: column;
+  }
 }
