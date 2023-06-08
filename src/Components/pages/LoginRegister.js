@@ -24,11 +24,16 @@ const LoginRegister = ()=> {
     navigate('/')
   };
 
-  const register = (ev)=> {
+  const register = async(ev)=> {
+    
     ev.preventDefault();
-    dispatch(addUserProfile({email, password, permissions: false}));
+    await dispatch(addUserProfile({email, password, permissions: false}));
+    credentials.email = email;
+    credentials.password = password;
+    dispatch(attemptLogin(credentials));
     setEmail('')
     setPassword('')
+    navigate('/')
   };
 
   return (

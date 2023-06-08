@@ -15,12 +15,13 @@ const App = ()=> {
   useEffect(()=> {
     dispatch(loginWithToken());
   }, []);
-
+  
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
     }
   }, [auth]);
+  
   return (
     <div>
       <Navbar />
@@ -37,20 +38,23 @@ const App = ()=> {
       </Routes>
       {
         !!auth.id  && (
+          
           <div>
-            {/* <nav>
-              <Link to='/'>Home</Link>
-              <Link to='/cart'>Cart</Link>
-            </nav> */}
             <Routes>
-              
-              
               <Route path='/myaccount' element={<MyAccount/>}/>
               <Route path='/myaccount/updateuserinfo' element={<UpdateUserForm />} />
+              <Route path='/checkout'element={<Checkout />} />
+            </Routes>
+          </div>
+        )
+      }
+      {
+        !!auth.id && auth.permissions && (
+          <div>
+            <Routes>
               <Route path='/admin' element={<Admin/>}/>
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
               <Route path='/admin/addproduct'element={<AddProductForm />} />
-              <Route path='/checkout'element={<Checkout />} />
             </Routes>
           </div>
         )
