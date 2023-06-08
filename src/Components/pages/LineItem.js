@@ -15,13 +15,11 @@ const LineItem = (props) => {
         const payload={product: product, quantity: lineItem.quantity};
         dispatch(removeItem(payload));
         navigate('/cart');
-        console.log(lineItem)
     }
 
     const updateQuantity=(ev)=>{
         ev.preventDefault();
         const quantityDiff = ev.target.value - lineItem.quantity;
-        console.log(quantityDiff)
         if(quantityDiff < 0){
             const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
             dispatch(removeItem(payload));
@@ -29,6 +27,7 @@ const LineItem = (props) => {
             const payload = {product: product, quantity: quantityDiff};
             dispatch(addItem(payload));
         }
+        setOpen(false);
     }
 
     return(
@@ -52,7 +51,7 @@ const LineItem = (props) => {
             <div className='lineModify'>
                 <button onClick={setOpen}>Edit</button>
                 <ReactModal isOpen={open} contentLabel="Update product page" ariaHideApp={false}>
-                    <UpdateProduct product={product} lineItem={lineItem}/>
+                    <UpdateProduct product={product} lineItem={lineItem} updateQuantity={updateQuantity}/>
                     <button onClick={()=>setOpen(false)}>CANCEL</button>
                 </ReactModal>
                 <button>Save For Later</button>
