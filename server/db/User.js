@@ -42,7 +42,7 @@ const User = conn.define('user', {
   avatar: {
     type: STRING,
     allowNull: false,
-    defaultValue: 'https://tinyurl.com/2ssnj3cf',
+    defaultValue: '/static/images/User Icon.png',
   },
   permissions: {
     type: BOOLEAN,
