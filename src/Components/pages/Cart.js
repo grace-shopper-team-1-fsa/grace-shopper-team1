@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, fetchProducts } from '../../store';
+import {useNavigate} from 'react-router-dom';
 import {LineItem} from './';
 
 const Cart = () =>{
     const cart = useSelector(state => state.cart);
-    console.log(cart);
     const products = useSelector(state => state.products);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     useEffect(()=>{
         dispatch(fetchCart());
         dispatch(fetchProducts());
     }, [dispatch]);
+
+    const handleClick = () =>{
+        navigate('/checkout');
+    }
 
     return (
         <div>
@@ -29,7 +34,7 @@ const Cart = () =>{
                 <div>
                     <p>Items: </p><p></p>
                 </div>    
-                
+                <button onClick={handleClick}>Checkout</button>
             </div>
         </div>
   );
