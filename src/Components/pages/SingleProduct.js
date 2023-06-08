@@ -9,13 +9,13 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const product = useSelector((state) => state.products.find((product) => product.id === id));
+  const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
+
   useEffect(() => {
     dispatch(fetchProductById(id));
     dispatch(fetchAllReviewsAsync());
   }, [dispatch, id]);
-
-  const product = useSelector((state) => state.products.find((product) => product.id === id));
-  const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
 
   if (!product) {
     return <p>Loading...</p>;
