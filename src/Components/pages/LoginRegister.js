@@ -21,7 +21,7 @@ const LoginRegister = ()=> {
   const login = (ev)=> {
     ev.preventDefault();
     dispatch(attemptLogin(credentials));
-    navigate('/', {replace: true})
+    navigate('/')
   };
 
   const register = (ev)=> {

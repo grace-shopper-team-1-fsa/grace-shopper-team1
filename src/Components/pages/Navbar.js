@@ -31,6 +31,11 @@ const Navbar = () => {
             </li>
             <li>
               <div className="nav-link-container">
+                <Link to="/checkout">Checkout</Link>
+              </div>
+            </li>
+            <li>
+              <div className="nav-link-container">
                 <button onClick={handleLogout}>Logout</button>
               </div>
             </li>
