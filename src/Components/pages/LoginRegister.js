@@ -37,7 +37,7 @@ const LoginRegister = ()=> {
   };
 
   return (
-    <div>
+    <div class="loginRegister">
       <h2>Login</h2>
       <form onSubmit={ login }>
         <input
