@@ -8,8 +8,13 @@ import {CartSummary} from './';
 const Cart = () =>{
     const cart = useSelector(state => state.cart);
     const products = useSelector(state => state.products);
+    let cartProducts = [];
+    cart.lineItems.forEach(e=>cartProducts.push(products.find(product=>product.id ==e.productId)));
+    console.log(cartProducts)
+    const total = cartProducts.reduce((total, current)=>total+Number(current.price), 0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     useEffect(()=>{
         dispatch(fetchCart());
         dispatch(fetchProducts());
@@ -30,13 +35,8 @@ const Cart = () =>{
                     })
                 }
             </div>
-            <div className='summary'>
-                <p>Summary</p>
-                <div>
-                    <p>Items: </p><p></p>
-                </div>    
-                <button onClick={handleClick}>Checkout</button>
-            </div>
+            <CartSummary total={total}/>
+            <button onClick={handleClick}>Continue to Checkout</button>
         </div>
   );
         
