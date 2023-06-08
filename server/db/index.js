@@ -23,7 +23,7 @@ const syncAndSeed = async()=> {
       email: 'moed@gmail.com',
       homeAddress: '123 Main St, City A',
       shipAddress: '123 Main St, City A',
-      avatar: 'https://tinyurl.com/2ssnj3cf',
+      avatar: '/static/images/User Icon.png',
       permissions: true,
     }),
     User.create({ 
@@ -33,7 +33,7 @@ const syncAndSeed = async()=> {
       email: 'lucyb@gmail.com',
       homeAddress: '456 Elm St, City B',
       shipAddress: '456 Elm St, City B',
-      avatar: 'https://tinyurl.com/2ssnj3cf',
+      avatar: '/static/images/User Icon.png',
       permissions: false,
     }),
     User.create({ 
@@ -43,7 +43,7 @@ const syncAndSeed = async()=> {
       email: 'larryg@gmail.com',
       homeAddress: '789 Oak St, City C',
       shipAddress: '789 Oak St, City C',
-      avatar: 'https://tinyurl.com/2ssnj3cf',
+      avatar: '/static/images/User Icon.png',
       permissions: false,
     }),
     User.create({ 
@@ -53,7 +53,7 @@ const syncAndSeed = async()=> {
       email: 'ethylr@gmail.com',
       homeAddress: '987 Pine St, City D',
       shipAddress: '987 Pine St, City D',
-      avatar: 'https://tinyurl.com/2ssnj3cf',
+      avatar: '/static/images/User Icon.png',
       permissions: false,
     }),
     Product.create({ 
