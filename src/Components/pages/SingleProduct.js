@@ -22,7 +22,7 @@ const SingleProduct = () => {
   const handleClick = () => {
     dispatch(addItem({
       product: product, 
-      quantity: 1
+      quantity : 1
     }))
   }
 

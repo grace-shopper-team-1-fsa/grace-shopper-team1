@@ -8,7 +8,6 @@ const MyAccount = () =>{
 
     const dispatch = useDispatch();
     const user = useSelector(state => state)
-   
     console.log("User info after Auth", user)
 
     useEffect(() => {

@@ -15,17 +15,19 @@ const LineItem = (props) => {
         const payload={product: product, quantity: lineItem.quantity};
         dispatch(removeItem(payload));
         navigate('/cart');
+        console.log(lineItem)
     }
 
     const updateQuantity=(ev)=>{
         ev.preventDefault();
-        console.log(ev.target.value);
+        console.log("clicked arrow down", ev.target.value);
         const quantityDiff = ev.target.value - lineItem.quantity;
         console.log(quantityDiff)
         if(quantityDiff < 0){
-            const payload = {product: product, quantity: Math.abs(quantityDiff)};
+            const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
+            console.log(payload)
             dispatch(removeItem(payload));
-            navigate('/cart') 
+            //navigate('/cart') 
         } else{
             const payload = {product: product, quantity: quantityDiff};
             dispatch(addItem(payload));

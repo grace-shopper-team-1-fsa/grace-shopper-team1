@@ -105,10 +105,12 @@ User.prototype.addToCart = async function({ product, quantity}){
 };
 
 User.prototype.removeFromCart = async function({ product, quantityToRemove}){
+  console.log(quantityToRemove)
   const cart = await this.getCart();
   const lineItem = cart.lineItems.find( lineItem => {
     return lineItem.productId === product.id; 
   });
+
   lineItem.quantity = lineItem.quantity - quantityToRemove;
   if(lineItem.quantity > 0){
     await lineItem.save();
