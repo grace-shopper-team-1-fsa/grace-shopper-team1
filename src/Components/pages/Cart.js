@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, fetchProducts } from '../../store';
 import {useNavigate} from 'react-router-dom';
 import {LineItem} from './';
+import {CartSummary} from './';
 
 const Cart = () =>{
     const cart = useSelector(state => state.cart);
