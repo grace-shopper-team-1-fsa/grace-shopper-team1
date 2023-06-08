@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { attemptLogin } from '../../store';
 import { useDispatch } from 'react-redux';
 import { addUserProfile } from '../../store/user.js';
 
 const LoginRegister = ()=> {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -19,6 +21,7 @@ const LoginRegister = ()=> {
   const login = (ev)=> {
     ev.preventDefault();
     dispatch(attemptLogin(credentials));
+    navigate('/', {replace: true})
   };
 
   const register = (ev)=> {
