@@ -22,6 +22,11 @@ const Navbar = () => {
             <Link to="/cart">Cart</Link>
           </div>
         </li>
+        <li>
+          <div className="nav-link-container">
+            <Link to="/">Home</Link>
+          </div>
+        </li>
         {Object.keys(user).length > 0 ? (
           <>
             <li>
