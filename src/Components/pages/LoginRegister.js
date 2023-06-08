@@ -25,8 +25,12 @@ const LoginRegister = ()=> {
   };
 
   const register = (ev)=> {
+    
     ev.preventDefault();
     dispatch(addUserProfile({email, password, permissions: false}));
+    setCredentials({email: email, password: password})
+    console.log(credentials)
+    dispatch(attemptLogin(credentials));
     setEmail('')
     setPassword('')
   };
