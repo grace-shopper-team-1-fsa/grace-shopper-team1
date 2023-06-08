@@ -12,15 +12,6 @@ router.get('/', async(req, res, next)=> {
   }
 });
 
-router.get('/:id', async(req, res, next)=>{
-  try{
-      const order = await Order.findByPk(req.params.id);
-      res.send(order);
-  }catch(er){
-      next(er);
-  }
-})
-
 
 router.post('/', async(req, res, next)=> {
   try {
