@@ -48,35 +48,39 @@ export const updateCampusAsync = createAsyncThunk('/api/reviews/update', async (
 */
 
 const reviewsSlice = createSlice({
-    name: 'reviews',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-      //FETCHING REVIEW DATA
-        .addCase(fetchAllReviewsAsync.pending, (state) => {
-          state.loading = true;
-        })
-        .addCase(fetchAllReviewsAsync.fulfilled, (state, action) => {
-          state.loading = false;
-          state.reviewsList = action.payload;
-        })
-        .addCase(fetchAllReviewsAsync.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.error.message;
-        })
-        //ADDING REVIEWS
-        .addCase(addReviewAsync.pending, (state) => {
-          state.loading = true;
-        })
-        .addCase(addReviewAsync.fulfilled, (state, action) => {
-          state.loading = false;
-          state.reviewsList.push(action.payload)
-        })
-        .addCase(addReviewAsync.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.error.message;
-        })
+  name: 'reviews',
+  initialState: {
+    reviewsList: [],
+    loading: false,
+    error: null
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      // FETCHING REVIEW DATA
+      .addCase(fetchAllReviewsAsync.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAllReviewsAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.reviewsList = action.payload;
+      })
+      .addCase(fetchAllReviewsAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // ADDING REVIEWS
+      .addCase(addReviewAsync.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addReviewAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.reviewsList.push(action.payload);
+      })
+      .addCase(addReviewAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
         // DELETE REVIEW 
         /*
         .addCase(deleteReviewsAsync.pending, (state) => {

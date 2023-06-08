@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
-import { addItem } from '../../store';
+import { fetchAllReviewsAsync } from '../../store/reviewSlice';
+import { addItem } from '../../store/cart';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -10,11 +11,12 @@ const SingleProduct = () => {
 
   useEffect(() => {
     dispatch(fetchProductById(id));
+    dispatch(fetchAllReviewsAsync());
   }, [dispatch, id]);
 
   const product = useSelector((state) => state.products.find((product) => product.id === id));
-  const user = useSelector(state =>  state)
-  console.log(user)
+  const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
+
   if (!product) {
     return <p>Loading...</p>;
   }
@@ -25,7 +27,6 @@ const SingleProduct = () => {
       quantity : 1
     }))
   }
-
 
   return (
     <div className="product-page">
@@ -43,6 +44,16 @@ const SingleProduct = () => {
       </div>
       <div className="product-rating">
         <p>Rating: {product.rating} / 5</p>
+      </div>
+      <div className="product-reviews">
+        {reviews.map((review) => (
+          console.log(review),
+          <div key={review.id}>
+            <h3>{review.name}</h3>
+            <p>Rating: {review.rating} / 5</p>
+            <p>{review.description}</p>
+          </div>
+        ))}
       </div>
       <button onClick={handleClick}>add to cart</button>
     </div>
