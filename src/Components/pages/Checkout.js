@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers, updateIsCart } from '../../store';
+import CartSummary from './CartSummary';
 
 const Checkout = () => {
 
@@ -17,6 +18,9 @@ const Checkout = () => {
     console.log("CURRENT USER STATE", user)
     const cart = useSelector(state => state.cart)
     console.log('CURRENT Cart', cart)
+    const lineItems = useSelector(state => state.cart.lineItems)
+    console.log('CURRENT LINE ITEMS', lineItems)
+
 
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
@@ -56,20 +60,12 @@ const Checkout = () => {
         e.preventDefault();
         setOpen(true)
         console.log('handled click')
-        //navigate('/myaccount')
-        // dispatch(updateIsCart(
-        //     {
-        //         id: user.id,
-        //         isCart: false
-        //     }
-        // ))
     }
     const closeModalAndSubmit = (e) => {
         e.preventDefault
         setOpen(false)
         navigate('/')
     }
-
 
     return (
         <div>
@@ -107,6 +103,7 @@ const Checkout = () => {
             </form>
             <div className='lineModify'>
                 <ReactModal isOpen={open} contentLabel="" ariaHideApp={true}>
+                    <CartSummary items={lineItems}/>
                     <h3>Confirm Details</h3>
                     <p>Name: {userFirstName} {userLastName}</p>
                     <p>Email: {userEmail}</p>

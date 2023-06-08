@@ -46,6 +46,7 @@ const UpdateProductForm = () => {
     }
     const handleDelete = () => {
         dispatch(deleteProduct(id))
+        navigate('/admin')
       };
 
     return (

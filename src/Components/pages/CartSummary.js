@@ -1,7 +1,9 @@
 import React from 'react';
 
 const CartSummary = (props) => {
-    const {total} = props;
+    const itemsToCalc = props;
+
+    console.log("FROM CART SUMMARY", itemsToCalc)
 
     return(
     <div className='summary'>
