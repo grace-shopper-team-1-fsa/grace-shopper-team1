@@ -16,6 +16,22 @@ button {
   background-color: #796556;
   color: white;
 }
+.link {
+  color: #0B0C10;
+}
+a {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.home {
+  display: flex;
+  flex-wrap: wrap;
+}
+.productCard {
+  margin: 20px 20px 20px 20px;
+}
 .loginRegister {
   display: flex;
   flex-wrap: wrap;
@@ -28,4 +44,7 @@ button {
     display: flex;
     flex-direction: column;
   }
+}
+.link:hover {
+  text-decoration: underline;
 }
