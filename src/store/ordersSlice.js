@@ -20,13 +20,30 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
   }
 })
 
+export const updateIsCart = createAsyncThunk('orders/toggleCartStatus', async (data) => {
+  console.log('From cart reducer!', data)
+  const { id } = data;
+  try {
+    const response = await axios.put(`http://localhost:3000/api/orders/${id}`, data);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+
 const ordersSlice = createSlice({
   name:"orders",
   initialState,
   reducers: {},
   extraReducers: (builder)=>{
-    builder.addCase(fetchOrders.fulfilled, (state, action)=>{
+    builder
+    .addCase(fetchOrders.fulfilled, (state, action)=>{
       return action.payload;
+    })
+    .addCase(updateIsCart.fulfilled, (state, action) => {
+      //state.status = 'succeeded';
+      state.isCart = action.payload.isCart;
     })
   }
 })

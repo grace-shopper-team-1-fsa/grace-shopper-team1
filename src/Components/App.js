@@ -5,7 +5,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
-import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, LoginRegister, ProductCard, UpdateProductForm, UpdateUserForm, AddProductForm } from './pages';
+import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, 
+  LoginRegister, ProductCard, UpdateProductForm, 
+  UpdateUserForm, AddProductForm, Checkout } from './pages';
 
 const App = ()=> {
   const { auth } = useSelector(state => state);
@@ -43,14 +45,12 @@ const App = ()=> {
             <Routes>
               
               
-              <Route path='/myaccount/' element={<MyAccount/>}/>
+              <Route path='/myaccount' element={<MyAccount/>}/>
               <Route path='/myaccount/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/admin' element={<Admin/>}/>
-              
-              
               <Route path='/admin/updateproduct/:id' element={<UpdateProductForm />} />
-              <Route element={<UpdateUserForm />} />
               <Route path='/admin/addproduct'element={<AddProductForm />} />
+              <Route path='/checkout'element={<Checkout />} />
             </Routes>
           </div>
         )

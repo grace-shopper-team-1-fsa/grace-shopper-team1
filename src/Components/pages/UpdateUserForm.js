@@ -8,7 +8,6 @@ const UpdateUserForm = () =>{
     const { id } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth)
-    //const user = users.find((user) => user.id === id);
     console.log(user)
 
     const [userFirstName, setUserFirstName] = useState('');
