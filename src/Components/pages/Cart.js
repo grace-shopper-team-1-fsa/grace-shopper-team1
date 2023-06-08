@@ -10,7 +10,6 @@ const Cart = () =>{
     const products = useSelector(state => state.products);
     let cartProducts = [];
     cart.lineItems.forEach(e=>cartProducts.push(products.find(product=>product.id ==e.productId)));
-    console.log(cartProducts)
     const total = cartProducts.reduce((total, current)=>total+Number(current.price), 0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
