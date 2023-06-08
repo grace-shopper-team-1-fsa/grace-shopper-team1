@@ -8,12 +8,13 @@ import { Link } from 'react-router-dom';
 const Admin = () =>{
 
     const products = useSelector(state => state.products);
-    const users = useSelector(state => state.users.usersList)
+    const users = useSelector(state => state.users.usersList);
+    console.log(users)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchProducts())
-        dispatch(fetchAllUsers())
+       // dispatch(fetchAllUsers())
     }, [dispatch])
 
     console.log(products)

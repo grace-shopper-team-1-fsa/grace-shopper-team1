@@ -35,16 +35,6 @@ try{
 }
 })
 
-export const updateCampusAsync = createAsyncThunk('/api/reviews/update', async (formData) => {
-    const { id } = formData;
-    try {
-        const response = await axios.put(`http://localhost:3000/api/reviews/${id}`, formData);
-        return response.data;
-    } catch(err) {
-        console.log(err);
-    }
-}
-);
 */
 
 const reviewsSlice = createSlice({
