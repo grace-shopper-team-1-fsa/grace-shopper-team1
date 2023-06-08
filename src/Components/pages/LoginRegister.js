@@ -37,40 +37,44 @@ const LoginRegister = ()=> {
   };
 
   return (
-    <div class="loginRegister">
-      <h2>Login</h2>
-      <form onSubmit={ login }>
-        <input
-          placeholder='email'
-          value = { credentials.email }
-          name = 'email'
-          onChange = { onChange }
+    <div id="loginRegisterBox">
+      <div>
+        <h2>Login</h2>
+        <form onSubmit={ login }>
+          <input
+            placeholder='email'
+            value = { credentials.email }
+            name = 'email'
+            onChange = { onChange }
+            />
+          <input
+            placeholder='password'
+            name = 'password'
+            value={ credentials.password }
+            onChange = { onChange }
           />
-        <input
-          placeholder='password'
-          name = 'password'
-          value={ credentials.password }
-          onChange = { onChange }
-        />
-        <button>Login</button>
-      </form>
+          <button>Login</button>
+        </form>
+      </div>
 
-      <h2>Register</h2>
-      <form onSubmit={ register }>
-        <input
-          placeholder='email'
-          name = 'email'
-          value = { email }
-          onChange={(event) => setEmail(event.target.value)}
+      <div>
+        <h2>Register</h2>
+        <form onSubmit={ register }>
+          <input
+            placeholder='email'
+            name = 'email'
+            value = { email }
+            onChange={(event) => setEmail(event.target.value)}
+            />
+          <input
+            placeholder='password'
+            name = 'password'
+            value={ password }
+            onChange={(event) => setPassword(event.target.value)}
           />
-        <input
-          placeholder='password'
-          name = 'password'
-          value={ password }
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button>Register</button>
-      </form>
+          <button>Register</button>
+        </form>
+      </div>
     </div>
   );
 };

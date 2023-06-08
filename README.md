@@ -1,18 +1,19 @@
 # Basic Features
 
-- A user should be able to see products
+x A user should be able to see products
+
 - A logged in user should be able to
-  - see the items in their cart
-  - add a new product to their cart
-  - remove an item from their cart
+  x see the items in their cart
+  x add a new product to their cart
+  x remove an item from their cart
   - create an order
 - A user should be able to see their orders
 - A user should be able to create an account
 - A user should be able to see their past orders
 - A non-logged in user should be able to add to their cart and have those items added to their cart after authenticating
 - A user should be able to review a product
-- A user should be able to update their profile
-- A administrator should be able to add a new product
+  x A user should be able to update their profile
+  x A administrator should be able to add a new product
 
 # Bonus Features
 
