@@ -1,9 +1,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const initialState={
-  lineItems: []
-}
+//const initialState={
+ // lineItems: []
+//}
 // I'm not really sure what the initial state is supposed to be. - Grant
 
 export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
@@ -48,7 +48,7 @@ export const updateIsCart = createAsyncThunk('orders/toggleCartStatus', async (d
 
 const ordersSlice = createSlice({
   name:"orders",
-  initialState,
+  initialState:[],
   reducers: {},
   extraReducers: (builder)=>{
     builder

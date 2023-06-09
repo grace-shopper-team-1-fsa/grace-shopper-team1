@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAllUsers } from '../../store';
-
+import { fetchAllUsers, fetchOrders } from '../../store';
+import OrderHistoryLine from './OrderHistoryLine';
 
 const MyAccount = () =>{
 
     const dispatch = useDispatch();
     const userAuthObj = useSelector(state => state.auth);
     const user = useSelector(state=>state.users.usersList.find(e=>e.id === userAuthObj.id));
-
-    console.log("User info after Auth", user)
-
+    const orders = useSelector(state=>state.orders).filter(order=>order.isCart == false)
+ 
     useEffect(() => {
         dispatch(fetchAllUsers())
+        dispatch(fetchOrders())
     }, [dispatch])
 
     return (
@@ -31,6 +31,25 @@ const MyAccount = () =>{
           <Link to={`/myaccount/updateuserinfo`}>
             <h3>Update your information</h3>
           </Link>
+          <p>Order History</p>
+          <div className="orderRow">
+            <div className='orderCell'>
+              <p>Order #</p>
+            </div>
+            <div className='orderCell'>
+              <p>Date</p>
+            </div>
+            <div className='orderCell'>
+              <p>Total</p>
+            </div>
+          </div>
+          { orders.length > 0 ?
+            orders.map(order=>{
+              return(
+                <OrderHistoryLine key={order.id} order={order}/>
+                )
+            }): <p>No order history</p>
+          }
         </div>
       );
     };

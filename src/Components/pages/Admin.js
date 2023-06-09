@@ -9,7 +9,6 @@ const Admin = () =>{
 
     const products = useSelector(state => state.products);
     const users = useSelector(state => state.users.usersList);
-    console.log(users)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,7 +16,6 @@ const Admin = () =>{
        // dispatch(fetchAllUsers())
     }, [dispatch])
 
-    console.log(products)
     return(
         <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: '1', marginRight: '20px' }}>
