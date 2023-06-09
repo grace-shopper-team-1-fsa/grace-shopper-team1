@@ -136,3 +136,36 @@ img {
   font-size: 1em;
   margin: 20px 20px 20px 20px;
 }
+.line {
+  margin: 20px 20px 20px 20px;
+  border-top: 1px solid #9D958F;
+}
+.line-item-image,
+.lineDescription,
+.linePrice,
+.lineQty,
+.lineModify {
+  margin: 5px 5px 5px 20px;
+}
+.line-item-image {
+  width: 200px;
+  height: 150px;
+}
+.line-modify-button {
+  margin-right: 5px;
+}
+.shopping-cart-header {
+  margin: 20px 20px 20px 40px;
+}
+.summary {
+  margin: 10px 10px 10px 30px;
+  border-top: 1px solid #9D958F;
+}
+.summary-title,
+.summaryRow,
+.totalRow {
+  margin: 10px 10px 10px 10px;
+}
+.to-checkout-button {
+  margin-left: 40px;
+}

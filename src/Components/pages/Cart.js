@@ -26,7 +26,7 @@ const Cart = () =>{
     return (
         <div>
             <div className='basket'>
-                <p>Shopping Basket</p>
+                <h2 className='shopping-cart-header'>Shopping Cart</h2>
                 {
                     cart.lineItems.map(lineItem=>{
                         const product = products.find(product => product.id === lineItem.productId);
@@ -35,7 +35,7 @@ const Cart = () =>{
                 }
             </div>
             <CartSummary total={total}/>
-            <button onClick={handleClick}>Continue to Checkout</button>
+            <button className='to-checkout-button' onClick={handleClick}>Continue to Checkout</button>
         </div>
   );
         

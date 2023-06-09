@@ -34,7 +34,7 @@ const LineItem = (props) => {
         <div className='line'>
             <div className='lineDetail'>
                 <div className='lineImg'>
-                    <img src={window.location.origin + `${product.image}`} width="200" height="150" alt="Image"/>
+                    <img className="line-item-image" src={window.location.origin + `${product.image}`} alt="Image"/>
                 </div>
                 <div className='lineDescription'>
                     <p>{product.name}</p>
@@ -49,13 +49,13 @@ const LineItem = (props) => {
                 </div>  
             </div>
             <div className='lineModify'>
-                <button onClick={setOpen}>Edit</button>
+                <button className="line-modify-button" onClick={setOpen}>Edit</button>
                 <ReactModal isOpen={open} contentLabel="Update product page" ariaHideApp={false}>
                     <UpdateProduct product={product} lineItem={lineItem} updateQuantity={updateQuantity}/>
                     <button onClick={()=>setOpen(false)}>CANCEL</button>
                 </ReactModal>
-                <button>Save For Later</button>
-                <button onClick={deleteItem}>Remove</button>
+                <button className="line-modify-button">Save For Later</button>
+                <button className="line-modify-button" onClick={deleteItem}>Remove</button>
             </div>  
         </div>
     )
