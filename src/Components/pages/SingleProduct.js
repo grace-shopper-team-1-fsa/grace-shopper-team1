@@ -30,32 +30,37 @@ const SingleProduct = () => {
 
   return (
     <div className="product-page">
-      <div className="product-image">
-        <img src={product.image} alt={product.name} />
+      <div className="product-page-box">
+        <div className="product-image">
+          <img src={product.image} alt={product.name} />
+        </div>
       </div>
-      <div className="product-name">
-        <h1>{product.name}</h1>
+
+      <div className="product-page-box">
+        <div className="product-name">
+          <h1>{product.name}</h1>
+        </div>
+        <div className="product-description">
+          <p>{product.description}</p>
+        </div>
+        <div className="product-price">
+          <p>Price: ${product.price}</p>
+        </div>
+        <div className="product-rating">
+          <p>Rating: {product.rating} / 5</p>
+        </div>
+        <div className="product-reviews">
+          {reviews.map((review) => (
+            console.log(review),
+            <div key={review.id}>
+              <h3>{review.name}</h3>
+              <p>Rating: {review.rating} / 5</p>
+              <p>{review.description}</p>
+            </div>
+          ))}
+        </div>
+        <button className="add-to-cart" onClick={handleClick}>Add to Cart</button>
       </div>
-      <div className="product-description">
-        <p>{product.description}</p>
-      </div>
-      <div className="product-price">
-        <p>Price: ${product.price}</p>
-      </div>
-      <div className="product-rating">
-        <p>Rating: {product.rating} / 5</p>
-      </div>
-      <div className="product-reviews">
-        {reviews.map((review) => (
-          console.log(review),
-          <div key={review.id}>
-            <h3>{review.name}</h3>
-            <p>Rating: {review.rating} / 5</p>
-            <p>{review.description}</p>
-          </div>
-        ))}
-      </div>
-      <button className="addToCart" onClick={handleClick}>Add to Cart</button>
     </div>
   );
 };
