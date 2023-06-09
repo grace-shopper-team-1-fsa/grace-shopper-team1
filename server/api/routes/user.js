@@ -30,14 +30,13 @@ app.post('/', async(req, res, next)=>{
 })
 
 app.put('/:id', async(req, res, next)=>{
-    const userId = req.params.id;
     try {
         const user = await User.findByPk(req.params.id);
         if (!user) {
             res.status(404).send('User not found');
         } else {
-            const updatedUser = await user.update(req.body);
-            res.send(updatedUser);
+            await user.update(req.body);
+            res.send(user);
         }
     }catch(er){
         next(er);

@@ -13,7 +13,7 @@ const Home = () =>{
     }, [dispatch])
 
     return(
-        <div>
+        <div className="home">
             {
                 products.map(product=>{
                     return <ProductCard key={product.id} product={product}/>
