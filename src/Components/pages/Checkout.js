@@ -4,6 +4,7 @@ import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers, updateIsCart } from '../../store';
 import CartSummary from './CartSummary';
+import CartSummaryTotals from './CartSummaryTotals';
 
 const Checkout = () => {
 
@@ -104,6 +105,7 @@ const Checkout = () => {
             <div className='lineModify'>
                 <ReactModal isOpen={open} contentLabel="" ariaHideApp={true}>
                     <CartSummary items={lineItems}/>
+                    <CartSummaryTotals items={lineItems}/>
                     <h3>Confirm Details</h3>
                     <p>Name: {userFirstName} {userLastName}</p>
                     <p>Email: {userEmail}</p>
