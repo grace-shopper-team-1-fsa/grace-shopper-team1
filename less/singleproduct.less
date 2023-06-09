@@ -1,9 +1,38 @@
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height: auto;
 }
 
-.product-name, .product-description, .product-price, .product-rating, .product-reviews, .addToCart {
+.product-page {
+    display: flex;
+}
+
+.product-page-box {
+    flex: 1;
+}
+
+.product-image, .product-name, .product-description, .product-price, .product-rating, .product-reviews, .add-to-cart {
     margin: 20px 20px 20px 20px;
+    color: @licorice;
+}
+
+.add-to-cart {
+    width: 200;
+    height: 50;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20;
+}
+
+@media (max-width: 750px) {
+    .product-page {
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+.product-quantity input {
+  width: 7ch;
+  padding: 5px 10px;
+  font-size: 1em;
+  margin: 20px 20px 20px 20px;
 }
