@@ -1,22 +1,22 @@
 import React, { useState , useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers, updateUserProfile } from '../../store';
 
 
 const UpdateUserForm = () =>{
-    const { id } = useParams();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.auth)
-    console.log(user)
+    const userAuthObj = useSelector(state => state.auth)
+    const user = useSelector(state=>state.users.usersList.find(e=>e.id === userAuthObj.id));
+    const navigate = useNavigate();
 
-    const [userFirstName, setUserFirstName] = useState('');
-    const [userLastName, setUserLastName] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userHomeAddress, setUserHomeAddress] = useState('');
-    const [userShippingAddress, setUserShippingAddress] = useState('');
-    const [userAvatar, setUserAvatar] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+    const [userFirstName, setUserFirstName] = useState(user.firstName);
+    const [userLastName, setUserLastName] = useState(user.lastName);
+    const [userEmail, setUserEmail] = useState(user.email);
+    const [userHomeAddress, setUserHomeAddress] = useState(user.homeAddress);
+    const [userShippingAddress, setUserShippingAddress] = useState(user.shipAddress);
+    const [userAvatar, setUserAvatar] = useState(user.avatar);
+    const [userPassword, setUserPassword] = useState(user.password);
 
     const handleFirstNameChange = (e) => setUserFirstName(e.target.value);
     const handleLastNameChange = (e) => setUserLastName(e.target.value);
@@ -50,6 +50,7 @@ const UpdateUserForm = () =>{
         setUserShippingAddress('')
         setUserAvatar('')
         setUserPassword('')
+        navigate('/myaccount')
     }
 
     return (

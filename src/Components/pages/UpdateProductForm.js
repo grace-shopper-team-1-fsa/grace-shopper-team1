@@ -8,12 +8,12 @@ const UpdateProductForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const product = useSelector((state) => state.products.find((product) => product.id === id));
-
-    const [productName, setProductName] = useState('');
-    const [productPrice, setProductPrice] = useState('');
-    const [productImgUrl, setProductImgUrl] = useState('');
-    const [productDescription, setProductDescription] = useState('');
-    const [productRating, setProductRating] = useState();
+    console.log(product);
+    const [productName, setProductName] = useState(product.name);
+    const [productPrice, setProductPrice] = useState(product.price);
+    const [productImgUrl, setProductImgUrl] = useState(product.image);
+    const [productDescription, setProductDescription] = useState(product.description);
+    const [productRating, setProductRating] = useState(product.rating);
 
     const handleProductNameChange = (e) => setProductName(e.target.value);
     const handlePriceChange = (e) => setProductPrice(e.target.value);
@@ -28,6 +28,7 @@ const UpdateProductForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const updatedProductData = {
             id: id,
             name: productName,
@@ -42,10 +43,12 @@ const UpdateProductForm = () => {
        setProductImgUrl('')
        setProductName('')
        setProductPrice('')
+       navigate('/admin')
        
     }
     const handleDelete = () => {
         dispatch(deleteProduct(id))
+        navigate('/admin')
       };
 
     return (

@@ -16,8 +16,31 @@ button {
   background-color: #796556;
   color: white;
 }
-#loginRegisterBox {
+.link {
+  color: #0B0C10;
+}
+a {
+  text-decoration: none;
+}
+.home {
+  display: flex;
   flex-wrap: wrap;
+}
+.productCard {
+  margin: 20px 20px 20px 20px;
+}
+.loginRegister {
+  display: flex;
+  flex-wrap: wrap;
+}
+.loginRegisterBox {
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .loginRegister {
+    display: flex;
+    flex-direction: column;
+  }
 }
 * {
   box-sizing: border-box;
@@ -63,4 +86,7 @@ li {
 .nav-link-container a:hover,
 .nav-link-container button:hover {
   color: #666;
+}
+.link:hover {
+  text-decoration: underline;
 }

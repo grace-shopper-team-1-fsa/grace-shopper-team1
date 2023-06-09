@@ -14,7 +14,7 @@ const Admin = () =>{
 
     useEffect(() => {
         dispatch(fetchProducts())
-       // dispatch(fetchAllUsers())
+        dispatch(fetchAllUsers())
     }, [dispatch])
 
     console.log(products)

@@ -37,8 +37,8 @@ const LoginRegister = ()=> {
   };
 
   return (
-    <div id="loginRegisterBox">
-      <div>
+    <div className="loginRegister">
+      <div className="loginRegisterBox">
         <h2>Login</h2>
         <form onSubmit={ login }>
           <input
@@ -57,7 +57,7 @@ const LoginRegister = ()=> {
         </form>
       </div>
 
-      <div>
+      <div className="loginRegisterBox">
         <h2>Register</h2>
         <form onSubmit={ register }>
           <input
