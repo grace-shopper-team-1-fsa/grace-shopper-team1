@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllUsers, fetchOrders } from '../../store';
-import OrderHistoryLine from './OrderHistoryLine';
+import {OrderLine} from './OrderLine';
 
 const MyAccount = () =>{
 

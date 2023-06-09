@@ -12,4 +12,5 @@ export {default as UpdateProductForm} from './UpdateProductForm.js';
 export {default as UpdateUserForm} from './UpdateUserForm.js';
 export {default as AddProductForm} from './AddProductForm.js'
 export {default as Checkout} from './Checkout.js';
-export {default as CartSummary} from './CartSummary.js'
+export {default as CartSummary} from './CartSummary.js';
+export {default as PastOrder} from './PastOrder.js';

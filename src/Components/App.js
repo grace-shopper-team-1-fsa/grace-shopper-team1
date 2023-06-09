@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loginWithToken, fetchCart } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
 import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, 
-  LoginRegister, ProductCard, UpdateProductForm, 
-  UpdateUserForm, AddProductForm, Checkout } from './pages';
+  LoginRegister, UpdateProductForm, 
+  UpdateUserForm, AddProductForm, Checkout, PastOrder } from './pages';
 
 const App = ()=> {
   const { auth } = useSelector(state => state);
@@ -30,6 +30,7 @@ const App = ()=> {
         auth.id && <LoginRegister />
       } */}
       <Routes>
+        <Route path='order/:id' element={<PastOrder/>}/>
         <Route path='/cart' element={ <Cart /> } />
         <Route path='/'element={<Home />} />
         <Route path='/product/:id' element={<SingleProduct/>} />

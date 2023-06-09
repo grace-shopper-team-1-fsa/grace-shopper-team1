@@ -1,10 +1,11 @@
 import React from 'react';
 
-const OrderHistoryLine = (props) => {
+const OrderLine = (props) => {
     const {order} = props;
 
     return(
-        <div className='orderRow'>
+        <Link to={`/order/${order.id}`}>
+         <div className='orderRow'>
             <div className='orderCell'>
                 <p>{order.id}</p>
             </div>
@@ -15,7 +16,8 @@ const OrderHistoryLine = (props) => {
                 <p>{order.total}</p>
             </div>
         </div>
+        </Link>
     )
 }
 
-export default OrderHistoryLine;
+export default OrderLine;
