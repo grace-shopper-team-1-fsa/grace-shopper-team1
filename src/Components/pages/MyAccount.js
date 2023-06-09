@@ -7,7 +7,9 @@ import { fetchAllUsers } from '../../store';
 const MyAccount = () =>{
 
     const dispatch = useDispatch();
-    const user = useSelector(state => state.auth)
+    const userAuthObj = useSelector(state => state.auth);
+    const user = useSelector(state=>state.users.usersList.find(e=>e.id === userAuthObj.id));
+
     console.log("User info after Auth", user)
 
     useEffect(() => {

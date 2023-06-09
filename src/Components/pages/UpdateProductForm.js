@@ -28,7 +28,7 @@ const UpdateProductForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(id);
+
         const updatedProductData = {
             id: id,
             name: productName,
@@ -48,6 +48,7 @@ const UpdateProductForm = () => {
     }
     const handleDelete = () => {
         dispatch(deleteProduct(id))
+        navigate('/admin')
       };
 
     return (
