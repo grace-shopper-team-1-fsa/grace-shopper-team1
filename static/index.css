@@ -22,9 +22,6 @@ button {
 a {
   text-decoration: none;
 }
-.link:hover {
-  text-decoration: underline;
-}
 .home {
   display: flex;
   flex-wrap: wrap;
@@ -54,7 +51,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   font-family: 'Franklin Gothic Medium', sans-serif;
-  background-color: #f2f2f2;
+  background-color: #F2F2F2;
   padding: 10px;
 }
 ul {
