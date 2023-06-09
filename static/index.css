@@ -107,3 +107,9 @@ img {
 .addToCart {
   margin: 20px 20px 20px 20px;
 }
+.product-quantity input {
+  width: 7ch;
+  padding: 5px 10px;
+  font-size: 1em;
+  margin: 20px 20px 20px 20px;
+}

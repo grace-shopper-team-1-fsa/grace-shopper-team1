@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
@@ -12,6 +12,8 @@ const SingleProduct = () => {
   const product = useSelector((state) => state.products.find((product) => product.id === id));
   const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
 
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     dispatch(fetchProductById(id));
     dispatch(fetchAllReviewsAsync());
@@ -24,7 +26,7 @@ const SingleProduct = () => {
   const handleClick = () => {
     dispatch(addItem({
       product: product, 
-      quantity : 1
+      quantity : quantity
     }))
   }
 
@@ -41,6 +43,9 @@ const SingleProduct = () => {
       </div>
       <div className="product-price">
         <p>Price: ${product.price}</p>
+      </div>
+      <div className="product-quantity">
+        <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
       </div>
       <div className="product-rating">
         <p>Rating: {product.rating} / 5</p>
