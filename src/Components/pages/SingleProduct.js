@@ -55,7 +55,7 @@ const SingleProduct = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleClick}>add to cart</button>
+      <button className="addToCart" onClick={handleClick}>Add to Cart</button>
     </div>
   );
 };

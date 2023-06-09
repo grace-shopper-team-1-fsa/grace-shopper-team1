@@ -13,7 +13,7 @@ const Admin = () =>{
 
     useEffect(() => {
         dispatch(fetchProducts())
-       // dispatch(fetchAllUsers())
+        dispatch(fetchAllUsers())
     }, [dispatch])
 
     return(
