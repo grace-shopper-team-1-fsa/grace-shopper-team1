@@ -10,28 +10,43 @@ export const loginWithToken = createAsyncThunk("loginWithToken", async (_, { rej
         authorization: token
       }
     });
-    return response.data;
+    const userData = response.data;
+    const userWithPermissions = {
+      ...userData,
+      permissions: userData.permissions,
+    };
+    return userWithPermissions;
   }
   else {
     return rejectWithValue();
   }
 });
 
-export const attemptLogin = createAsyncThunk("attemptLogin", async (cred, { rejectWithValue }) => {
-  try {
-    let response = await axios.post('/api/auth', cred);
-    window.localStorage.setItem('token', response.data);
-    response = await axios.get('/api/auth', {
-      headers: {
-        authorization: response.data 
-      }
-    });
-    return response.data;
+export const attemptLogin = createAsyncThunk(
+  "attemptLogin",
+  async (cred, { rejectWithValue }) => {
+    try {
+      let response = await axios.post("/api/auth", cred);
+      window.localStorage.setItem("token", response.data);
+      response = await axios.get("/api/auth", {
+        headers: {
+          authorization: response.data,
+        },
+      });
+
+      const userData = response.data;
+
+      const userWithPermissions = {
+        ...userData,
+        permissions: userData.permissions,
+      };
+
+      return userWithPermissions;
+    } catch (ex) {
+      return rejectWithValue(ex.response.data);
+    }
   }
-  catch(ex){
-    return rejectWithValue(ex.response.data);
-  }
-});
+);
 
 const authSlice = createSlice({
   name:"auth",

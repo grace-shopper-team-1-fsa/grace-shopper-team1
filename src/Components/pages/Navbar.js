@@ -39,6 +39,13 @@ const Navbar = () => {
                 <Link to="/checkout">Checkout</Link>
               </div>
             </li>
+            {user.permissions === true && (
+              <li>
+                <div className="nav-link-container">
+                  <Link to="/admin">Admin</Link>
+                </div>
+              </li>
+            )}
             <li>
               <div className="nav-link-container">
                 <button onClick={handleLogout}>Logout</button>
