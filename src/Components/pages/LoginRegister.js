@@ -49,7 +49,8 @@ const LoginRegister = ()=> {
             />
           <input
             placeholder='password'
-            name = 'password'
+            type = 'password'
+            name ="password"
             value={ credentials.password }
             onChange = { onChange }
           />
@@ -68,6 +69,7 @@ const LoginRegister = ()=> {
             />
           <input
             placeholder='password'
+            type ="password"
             name = 'password'
             value={ password }
             onChange={(event) => setPassword(event.target.value)}
