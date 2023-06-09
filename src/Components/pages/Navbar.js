@@ -34,11 +34,6 @@ const Navbar = () => {
                 <Link to="/myaccount">My Account</Link>
               </div>
             </li>
-            <li>
-              <div className="nav-link-container">
-                <Link to="/checkout">Checkout</Link>
-              </div>
-            </li>
             {user.permissions === true && (
               <li>
                 <div className="nav-link-container">
