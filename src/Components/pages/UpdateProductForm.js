@@ -8,7 +8,7 @@ const UpdateProductForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const product = useSelector((state) => state.products.find((product) => product.id === id));
-    console.log(product);
+  
     const [productName, setProductName] = useState(product.name);
     const [productPrice, setProductPrice] = useState(product.price);
     const [productImgUrl, setProductImgUrl] = useState(product.image);
