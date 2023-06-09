@@ -81,7 +81,7 @@ const userSlice = createSlice({
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.usersList.push(action.payload);
+        state.usersList = state.usersList.map(user=>user.id === action.payload.id ? action.payload:user);
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.status = 'failed';
