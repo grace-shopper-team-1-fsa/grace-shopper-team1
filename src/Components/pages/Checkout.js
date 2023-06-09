@@ -104,7 +104,7 @@ const Checkout = () => {
             </form>
             <div className='lineModify'>
                 <ReactModal isOpen={open} contentLabel="" ariaHideApp={true}>
-                    <CartSummary items={lineItems}/>
+                    {/* <CartSummary items={lineItems}/> */}
                     <CartSummaryTotals items={lineItems}/>
                     <h3>Confirm Details</h3>
                     <p>Name: {userFirstName} {userLastName}</p>
