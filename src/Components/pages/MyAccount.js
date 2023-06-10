@@ -18,20 +18,20 @@ const MyAccount = () =>{
 
     return (
         <div>
-          <h2>User</h2>
+          <h2 className='my-account-header'>User</h2>
           {user && (
             <div>
-              <p>Full Name: {user.firstName} {user.lastName}</p>
-              <p>Email: {user.email}</p>
-              <p>Home Address: {user.homeAddress}</p>
-              <p>Shipping Address: {user.shippingAddress}</p>
-              <p>Avatar: {user.avatar}</p>
+              <img className='user-avatar' src={user.avatar}/>
+              <p className='my-account-p'>Full Name: {user.firstName} {user.lastName}</p>
+              <p className='my-account-p'>Email: {user.email}</p>
+              <p className='my-account-p'>Home Address: {user.homeAddress}</p>
+              <p className='my-account-p'>Shipping Address: {user.shippingAddress}</p>
             </div>
           )}
           <Link to={`/myaccount/updateuserinfo`}>
-            <h3>Update your information</h3>
+            <button className='update-info-button'>Update your information</button>
           </Link>
-          <p>Order History</p>
+          <p className='my-account-p'>Order History</p>
           <div className="orderRow">
             <div className='orderCell'>
               <p>Order #</p>
@@ -48,7 +48,7 @@ const MyAccount = () =>{
               return(
                 <OrderHistoryLine key={order.id} order={order}/>
                 )
-            }): <p>No order history</p>
+            }): <p className='my-account-p'>No order history</p>
           }
         </div>
       );
