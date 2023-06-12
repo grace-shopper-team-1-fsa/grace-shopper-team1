@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
-import { fetchAllReviewsAsync } from '../../store/reviewSlice';
+import { fetchAllReviews } from '../../store/reviewSlice';
 import { addItem } from '../../store/cart';
 
 const SingleProduct = () => {
@@ -16,7 +16,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-    dispatch(fetchAllReviewsAsync());
+    dispatch(fetchAllReviews());
   }, [dispatch, id]);
 
   if (!product) {

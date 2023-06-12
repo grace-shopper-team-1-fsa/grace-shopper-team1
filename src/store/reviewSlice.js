@@ -56,7 +56,7 @@ const reviewsSlice = createSlice({
         state.loading = false;
         state.reviewsList.push(action.payload);
       })
-      .addCase(addReviewAsync.rejected, (state, action) => {
+      .addCase(addReview.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
