@@ -244,28 +244,19 @@ button {
 .product-details .product-description {
   max-width: auto;
 }
-<<<<<<< Updated upstream
 button[type="submit"] {
   padding: 8px 16px;
   font-size: 14px;
   width: 400px;
 }
 .admin-container {
-  display: flex;
-=======
-.admin-container {
   display: 'flex';
-  flex-wrap: wrap;
->>>>>>> Stashed changes
   flex-direction: 'row';
 }
 .admin-section {
   flex: 1;
-<<<<<<< Updated upstream
   padding: 5px;
 }
 .admin-product-container {
   border-top: 1px solid #9D958F;
-=======
->>>>>>> Stashed changes
 }
