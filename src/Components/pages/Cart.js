@@ -6,7 +6,16 @@ import {LineItem} from './';
 import {CartSummary} from './';
 
 const Cart = () =>{
-    const cart = useSelector(state => state.cart);
+    const {auth} = useSelector(state=>state);
+    let cart = {};
+    if(auth.id){
+        cart = useSelector(state => state.cart);
+        console.log(cart);
+    } else {
+        cart = JSON.parse(window.localStorage.getItem('cart'));
+        console.log(cart);
+    }
+    console.log(cart);
     const products = useSelector(state => state.products);
     let cartProducts = [];
     cart.lineItems.forEach(e=>cartProducts.push(products.find(product=>product.id ==e.productId)));

@@ -15,6 +15,15 @@ const App = ()=> {
     dispatch(fetchAllReviews());
     dispatch(fetchAllUsers());
     dispatch(fetchOrders());
+    console.log('creating cart');
+    const cart = {
+      lineItems: [],
+      total: 0,
+    }
+  
+    if(!auth.id){
+      window.localStorage.setItem('cart', JSON.stringify(cart));
+    }
   }, []);
   
   useEffect(()=> {
