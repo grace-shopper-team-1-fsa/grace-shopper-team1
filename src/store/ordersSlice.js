@@ -34,7 +34,7 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
 //   }
 // })
 
-export const updateIsCart = createAsyncThunk('orders/toggleCartStatus', async (data) => {
+export const updateIsCart = createAsyncThunk('toggleCartStatus', async (data) => {
   console.log('From cart reducer!', data)
   const { id } = data;
   try {
