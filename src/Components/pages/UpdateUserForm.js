@@ -55,69 +55,83 @@ const UpdateUserForm = () =>{
 
     return (
         <div>
-        <Link to={`/myaccount`}>
-                <p>back to your dashboard</p>
-            </Link>
-        {user && (
-          <div>
-            <p>Full Name: {user.firstName} {user.lastName}</p>
-            <p>Email: {user.email}</p>
-            <p>Home Address: {user.homeAddress}</p>
-            <p>Shipping Address: {user.shippingAddress}</p>
-            <p>Avatar: {user.avatar}</p>
-          </div>
-        )}
-        <h2>Update Information</h2>
-        <form onSubmit={handleSubmit}>
-        <label>First Name</label>
-            <input 
+          <Link to={`/myaccount`}>
+            <p>Back to Dashboard</p>
+          </Link>
+          {user && (
+            <div className='user-details-container'>
+              <p>Full Name: {user.firstName} {user.lastName}</p>
+              <p>Email: {user.email}</p>
+              <p>Home Address: {user.homeAddress}</p>
+              <p>Shipping Address: {user.shippingAddress}</p>
+              <p>Avatar: {user.avatar}</p>
+            </div>
+          )}
+          <h2>Update Information</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>First Name</label>
+              <input
                 name="firstName"
-                value={userFirstName}            
+                value={userFirstName}
                 onChange={handleFirstNameChange}
-            />
-            <label>Last Name</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Last Name</label>
+              <input
                 name="lastName"
-                value={userLastName}            
+                value={userLastName}
                 onChange={handleLastNameChange}
-            />
-            <label>Email</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
                 name="email"
-                value={userEmail}            
+                value={userEmail}
                 onChange={handleEmailChange}
-            />
-            <label>Password</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
                 name="password"
-                value={userPassword}            
+                type= "password"
+                value={userPassword}
                 onChange={handlePasswordChange}
-            />
-            <label>Home Address</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Home Address</label>
+              <input
                 name="homeAddress"
-                value={userHomeAddress}            
+                value={userHomeAddress}
                 onChange={handleHomeAddressChange}
-            />
-            <label>Shipping Address</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Shipping Address</label>
+              <input
                 name="shipAddress"
-                value={userShippingAddress}            
+                value={userShippingAddress}
                 onChange={handleShippingAddressChange}
-            />
-            <label>Avatar</label>
-            <input 
+              />
+            </div>
+            <div className="form-group">
+              <label>Avatar</label>
+              <input
                 name="avatar"
-                value={userAvatar}            
+                value={userAvatar}
                 onChange={handleAvatarChange}
-            />
-             <button type="submit">Submit Changes</button>
-        </form>
-        <Link to={`/myaccount`}>
-                <p>back to your dashboard</p>
-            </Link>
-      </div>
-    );
-}
-
-export default UpdateUserForm;
+              />
+            </div>
+            <div className="form-group">
+              <button type="submit">Submit Changes</button>
+            </div>
+          </form>
+        </div>
+      );
+    };
+    
+    export default UpdateUserForm;
