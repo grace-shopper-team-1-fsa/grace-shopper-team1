@@ -8,7 +8,7 @@ const ReviewForm = () => {
     const dispatch = useDispatch();
     const [reviewTitle, setReviewTitle] = useState('');
     const [reviewBody, setReviewBody] = useState('');
-    const [reviewRating, setReviewRating] = useState(0);
+    const [reviewRating, setReviewRating] = useState(1);
 
     const handleTitleChange = (e) => setReviewTitle(e.target.value);
     const handleReviewBodyChange = (e) => setReviewBody(e.target.value);
@@ -16,7 +16,6 @@ const ReviewForm = () => {
 
 
     const handleSubmit = (e) => {
-        console.log(e)
         e.preventDefault();
         const reviewData = {
             name: reviewTitle,
@@ -24,7 +23,6 @@ const ReviewForm = () => {
             description: reviewBody,
             productId: id
         }
-        console.log("REVIEW DATA:", reviewData)
         dispatch(addReview(reviewData));
         setReviewTitle('');
         setReviewBody('');

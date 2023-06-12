@@ -11,7 +11,6 @@ app.get('/', async(req, res, next)=>{
     }
 })
 app.post('/', async(req, res, next)=>{
-    console.log(req.body)
     try{
         res.status(201).send(await Review.create(req.body));
     } catch(er){
