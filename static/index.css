@@ -106,6 +106,13 @@ li {
   flex-grow: 1;
   text-decoration: underline;
 }
+.about-us-header,
+.about-us-p {
+  margin: 10px 20px 10px 20px;
+}
+.about-us-header {
+  border-bottom: 1px solid #9D958F;
+}
 .link:hover {
   text-decoration: underline;
 }
@@ -183,6 +190,7 @@ img {
 }
 .to-checkout-button {
   margin-left: 40px;
+  margin-bottom: 10px;
 }
 .user-avatar {
   width: 300px;
@@ -277,4 +285,15 @@ button[type="submit"] {
   font-size: 14px;
   width: 400px;
   padding-left: 20px;
+}
+.admin-container {
+  display: 'flex';
+  flex-direction: 'row';
+}
+.admin-section {
+  flex: 1;
+  padding: 5px;
+}
+.admin-product-container {
+  border-top: 1px solid #9D958F;
 }
