@@ -2,23 +2,31 @@ import React,{useState} from 'react';
 import ReactModal from 'react-modal';
 import UpdateProduct from './UpdateProduct';
 import { removeItem, addItem } from '../../store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const LineItem = (props) => {
-    const {lineItem, product} = props;
+    const {product, guest} = props;
+    let {lineItem} = props;
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const deleteItem = () => {
-        const payload={product: product, quantity: lineItem.quantity};
-        dispatch(removeItem(payload));
+        if(!guest){
+            const payload={product: product, quantity: lineItem.quantity};
+            dispatch(removeItem(payload));
+        } else {
+            const cart = JSON.parse(window.localStorage.getItem('cart'));
+            cart.lineItems = cart.lineItems.filter(e=> product.id !== e.product.id);
+            window.localStorage.setItem('cart', JSON.stringify(cart));
+        }
         navigate('/cart');
     }
 
     const updateQuantity=(ev)=>{
         ev.preventDefault();
+        if(!guest){
         const quantityDiff = ev.target.value - lineItem.quantity;
         if(quantityDiff < 0){
             const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
@@ -27,7 +35,19 @@ const LineItem = (props) => {
             const payload = {product: product, quantity: quantityDiff};
             dispatch(addItem(payload));
         }
+    } else {
+        if(ev.target.value == 0){
+            deleteItem();
+        }
+
+        lineItem.quantity = Number(ev.target.value);
+        const cart = JSON.parse(window.localStorage.getItem('cart'));
+        const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
+        modifyItem.quantity = Number(ev.target.value);
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+    }
         setOpen(false);
+        //navigate('/cart');
     }
 
     return(
@@ -45,7 +65,7 @@ const LineItem = (props) => {
                 </div>
                 <div className='lineQty'>
                     <p>Qty</p>
-                    <input type="number" value={lineItem.quantity} min="0" max="10" onChange={updateQuantity}/>
+                    <input type="number" defaultValue={lineItem.quantity} min="0" max="10" onChange={updateQuantity}/>
                 </div>  
             </div>
             <div className='lineModify'>
