@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
-//import Home from './Home';
-//import Login from './Login';
-//import Cart from './Cart';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginWithToken, fetchCart } from '../store';
+import { loginWithToken, fetchCart, fetchAllReviews, fetchAllUsers, fetchOrders, fetchProducts } from '../store';
 import { Link, Routes, Route } from 'react-router-dom';
 import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, 
   LoginRegister, UpdateProductForm, 
@@ -14,6 +11,10 @@ const App = ()=> {
   const dispatch = useDispatch();
   useEffect(()=> {
     dispatch(loginWithToken());
+    dispatch(fetchProducts());
+    dispatch(fetchAllReviews());
+    dispatch(fetchAllUsers());
+    dispatch(fetchOrders());
   }, []);
   
   useEffect(()=> {
@@ -25,10 +26,6 @@ const App = ()=> {
   return (
     <div>
       <Navbar />
-
-      {/* {
-        auth.id && <LoginRegister />
-      } */}
       <Routes>
         <Route path='order/:id' element={<PastOrder/>}/>
         <Route path='/cart' element={ <Cart /> } />
@@ -38,8 +35,7 @@ const App = ()=> {
         <Route path='/about' element={<About/>} />
       </Routes>
       {
-        !!auth.id  && (
-          
+        !!auth.id  && (        
           <div>
             <Routes>
               <Route path='/myaccount' element={<MyAccount/>}/>
