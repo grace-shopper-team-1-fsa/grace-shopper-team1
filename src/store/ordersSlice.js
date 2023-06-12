@@ -1,19 +1,16 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-//const initialState={
- // lineItems: []
-//}
-// I'm not really sure what the initial state is supposed to be. - Grant
-
 export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
   try{
+    console.log('fetching orders')
     const token = window.localStorage.getItem('token');
     const response = await axios.get('/api/orders', {
       headers: {
         authorization: token
       }
     });
+    console.log(response.data);
     return response.data;
   }catch(err){
     console.log(err)
