@@ -10,7 +10,7 @@ const initialState = {
 
 export const fetchAllReviews = createAsyncThunk('fetchAllReviews', async ()=>{
     try {
-        const response = await axios.get('http://localhost:3000/api/reviews')
+        const response = await axios.get('/api/reviews')
         return response.data;
     } catch (err){
         console.log(err)
@@ -19,7 +19,7 @@ export const fetchAllReviews = createAsyncThunk('fetchAllReviews', async ()=>{
 
 export const addReview = createAsyncThunk('addReview', async (formData) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/reviews', formData)
+      const response = await axios.post('/api/reviews', formData)
       return response.data
     } catch(err){
       console.log(err)

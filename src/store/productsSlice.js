@@ -23,7 +23,7 @@ export const fetchProductById = createAsyncThunk('fetchProductById', async (id) 
 
 export const addProduct = createAsyncThunk('addProduct', async(product)=>{
     try{
-        const {data} = await axios.post('http://localhost:3000/api/products', product);
+        const {data} = await axios.post('/api/products', product);
         return data;
     }catch(er){
         console.log(er);
@@ -34,7 +34,7 @@ export const addProduct = createAsyncThunk('addProduct', async(product)=>{
 export const updateProduct = createAsyncThunk('updateProduct', async (formData) => {
   const { id } = formData;
   try {
-    const response = await axios.put(`http://localhost:3000/api/products/${id}`, formData)
+    const response = await axios.put(`/api/products/${id}`, formData)
     return response.data;
   } catch (err) {
     console.log(err)
@@ -43,7 +43,7 @@ export const updateProduct = createAsyncThunk('updateProduct', async (formData) 
 
 export const deleteProduct = createAsyncThunk('deleteProduct', async(productId) => {
   try {
-    await axios.delete(`http://localhost:3000/api/products/${productId}`);
+    await axios.delete(`/api/products/${productId}`);
     return productId;
   } catch(err) {
     console.log(err)
