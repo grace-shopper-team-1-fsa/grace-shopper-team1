@@ -250,7 +250,7 @@ button[type="submit"] {
   width: 400px;
 }
 .admin-container {
-  display: 'flex';
+  display: flex;
   flex-direction: 'row';
 }
 .admin-section {
