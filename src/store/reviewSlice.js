@@ -8,7 +8,7 @@ const initialState = {
     error: null
 };
 
-export const fetchAllReviewsAsync = createAsyncThunk('/api/reviews', async ()=>{
+export const fetchAllReviews = createAsyncThunk('fetchAllReviews', async ()=>{
     try {
         const response = await axios.get('http://localhost:3000/api/reviews')
         return response.data;
@@ -17,7 +17,7 @@ export const fetchAllReviewsAsync = createAsyncThunk('/api/reviews', async ()=>{
     }
 });
 
-export const addReviewAsync = createAsyncThunk('/api/reviews/', async (formData) => {
+export const addReview = createAsyncThunk('addReview', async (formData) => {
     try {
       const response = await axios.post('http://localhost:3000/api/reviews', formData)
       return response.data
@@ -25,17 +25,6 @@ export const addReviewAsync = createAsyncThunk('/api/reviews/', async (formData)
       console.log(err)
     }
   })
-/*
-export const deleteReviewAsync = createAsyncThunk('/api/reviews/delete', async (id) => {
-try{
-    await axios.delete(`http://localhost:3000/api/reviews/${id}`)
-    return id;
-} catch (err){
-    console.log(err)
-}
-})
-
-*/
 
 const reviewsSlice = createSlice({
   name: 'reviews',
@@ -48,22 +37,22 @@ const reviewsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // FETCHING REVIEW DATA
-      .addCase(fetchAllReviewsAsync.pending, (state) => {
+      .addCase(fetchAllReviews.pending, (state) => {
         state.loading = true;
       })
-      .addCase(fetchAllReviewsAsync.fulfilled, (state, action) => {
+      .addCase(fetchAllReviews.fulfilled, (state, action) => {
         state.loading = false;
         state.reviewsList = action.payload;
       })
-      .addCase(fetchAllReviewsAsync.rejected, (state, action) => {
+      .addCase(fetchAllReviews.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
       // ADDING REVIEWS
-      .addCase(addReviewAsync.pending, (state) => {
+      .addCase(addReview.pending, (state) => {
         state.loading = true;
       })
-      .addCase(addReviewAsync.fulfilled, (state, action) => {
+      .addCase(addReview.fulfilled, (state, action) => {
         state.loading = false;
         state.reviewsList.push(action.payload);
       })
