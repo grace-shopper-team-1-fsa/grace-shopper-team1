@@ -241,3 +241,14 @@ button[type="submit"] {
   font-size: 14px;
   width: 400px;
 }
+.admin-container {
+  display: flex;
+  flex-direction: 'row';
+}
+.admin-section {
+  flex: 1;
+  padding: 5px;
+}
+.admin-product-container {
+  border-top: 1px solid #9D958F;
+}
