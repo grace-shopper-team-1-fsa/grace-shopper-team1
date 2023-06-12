@@ -25,6 +25,11 @@ const Navbar = () => {
       </ul>
       <div className="brand-name">Vase Shopper</div>
       <ul className="other-ul">
+      <li>
+          <div className="nav-link-container">
+            <Link to="/about">About Us</Link>
+          </div>
+        </li>
         <li>
           <div className="nav-link-container">
             <Link to="/cart">Cart</Link>
