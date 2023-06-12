@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
 import { fetchAllReviews } from '../../store/reviewSlice';
 import { addItem } from '../../store/cart';
+import {ReviewForm} from './';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ const SingleProduct = () => {
               <h3>{review.name}</h3>
               <p>Rating: {review.rating} / 5</p>
               <p>{review.description}</p>
+              <ReviewForm id={id}/>
             </div>
           ))}
         </div>
