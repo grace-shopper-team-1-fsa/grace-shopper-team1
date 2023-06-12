@@ -14,7 +14,7 @@ const ReviewForm = () => {
                 <label>Title</label>
                 <input
                     name="name"
-                    value={formTitle}
+                    value={reviewTitle}
                     onChange={handleTitleChange}
                 />
                 <label>Review</label>
