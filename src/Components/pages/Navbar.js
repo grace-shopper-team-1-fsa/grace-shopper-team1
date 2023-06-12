@@ -16,15 +16,18 @@ const Navbar = () => {
 
   return (
     <nav>
-      <ul>
+      <ul className="home-ul">
+        <li>
+          <div className="home-link-container">
+            <Link to="/">Home</Link>
+          </div>
+        </li>
+      </ul>
+      <div className="brand-name">Vase Shopper</div>
+      <ul className="other-ul">
         <li>
           <div className="nav-link-container">
             <Link to="/cart">Cart</Link>
-          </div>
-        </li>
-        <li>
-          <div className="nav-link-container">
-            <Link to="/">Home</Link>
           </div>
         </li>
         {Object.keys(user).length > 0 ? (
