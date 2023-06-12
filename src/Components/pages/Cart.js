@@ -7,7 +7,7 @@ import {CartSummary} from './';
 
 const Cart = () =>{
     const {auth} = useSelector(state=>state);
-    const guest = true;
+    let guest = true;
     let cart = {};
     if(auth.id){
         cart = useSelector(state => state.cart);

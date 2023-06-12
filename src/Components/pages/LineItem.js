@@ -47,7 +47,6 @@ const LineItem = (props) => {
         window.localStorage.setItem('cart', JSON.stringify(cart));
     }
         setOpen(false);
-        //navigate('/cart');
     }
 
     return(

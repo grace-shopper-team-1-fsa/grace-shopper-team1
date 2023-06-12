@@ -15,7 +15,6 @@ const App = ()=> {
     dispatch(fetchAllReviews());
     dispatch(fetchAllUsers());
     dispatch(fetchOrders());
-    console.log('creating cart');
     const cart = {
       lineItems: [],
       total: 0,
@@ -29,6 +28,8 @@ const App = ()=> {
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
+      const cart = useSelector(state=>state);
+      console.log(cart);
     } 
   }, [auth]);
   
