@@ -50,7 +50,7 @@ const UpdateProductForm = () => {
   return (
     <div className="product-details-container">
       <Link to="/admin">
-        <p>back to admin dashboard</p>
+        <p>Back to Admin Dashboard</p>
       </Link>
       <div className='product-details'>
       <h2>Product Details</h2>
