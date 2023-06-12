@@ -11,6 +11,7 @@ export const fetchAllReviews = createAsyncThunk('fetchAllReviews', async ()=>{
 });
 
 export const addReview = createAsyncThunk('addReview', async (formData) => {
+  console.log("FROM ADDREVIEW THUNK:", formData)
     try {
       const response = await axios.post('/api/reviews', formData)
       return response.data
@@ -47,6 +48,7 @@ const reviewsSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.loading = false;
+        console.log(action.payload)
         state.reviewsList.push(action.payload);
       })
       .addCase(addReview.rejected, (state, action) => {
