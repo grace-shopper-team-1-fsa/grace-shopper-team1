@@ -69,14 +69,14 @@ const SingleProduct = () => {
               <h3>{review.name}</h3>
               <p>Rating: {review.rating} / 5</p>
               <p>{review.description}</p>
-              <ReviewForm id={id}/>
+              
             </div>
           ))}
         </div>
         <button className="add-to-cart" onClick={handleClick}>Add to Cart</button>
         <ReviewForm id={id}/>
       </div>
-          <ReviewForm />
+        
     </div>
   );
 };
