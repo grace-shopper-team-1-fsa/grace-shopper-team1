@@ -8,6 +8,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.auth);
+  console.log("USERNAME",user)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -25,6 +26,11 @@ const Navbar = () => {
       </ul>
       <div className="brand-name">Vase Shopper</div>
       <ul className="other-ul">
+        <li>
+          <div>
+            <h6>Hello, {user.firstName}</h6>
+          </div>
+        </li>
         <li>
           <div className="nav-link-container">
             <Link to="/cart">Cart</Link>
