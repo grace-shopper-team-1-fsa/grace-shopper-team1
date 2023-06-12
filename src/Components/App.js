@@ -28,7 +28,6 @@ const App = ()=> {
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
-      console.log(cart);
     } 
   }, [auth]);
   

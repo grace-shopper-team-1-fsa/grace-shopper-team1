@@ -14,7 +14,7 @@ const UpdateProduct = (props) => {
                 <div>
                     <p>{product.name}</p>
                     <p>{product.price}</p>
-                    <Link to={`/products/${product.id}`}>View Full Product Details</Link>
+                    <Link to={`/product/${product.id}`}>View Full Product Details</Link>
                 </div>
             </div>
             <div>
