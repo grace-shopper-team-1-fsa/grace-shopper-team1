@@ -19,7 +19,7 @@ const App = ()=> {
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
-    }
+    } 
   }, [auth]);
   
   return (

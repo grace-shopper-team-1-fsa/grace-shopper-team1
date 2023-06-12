@@ -11,7 +11,7 @@ const SingleProduct = () => {
 
   const product = useSelector((state) => state.products.find((product) => product.id === id));
   const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
-
+  const {auth} = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -24,10 +24,16 @@ const SingleProduct = () => {
   }
 
   const handleClick = () => {
-    dispatch(addItem({
-      product: product, 
-      quantity : quantity
-    }))
+    if(auth.id){
+      dispatch(addItem({
+        product: product, 
+        quantity : quantity
+      }))
+    } else {
+
+      console.log('did not dispatch')
+    }
+    
   }
 
   return (
