@@ -10,7 +10,13 @@ app.get('/', async(req, res, next)=>{
         next(er);
     }
 })
-
+app.post('/', async(req, res, next)=>{
+    try{
+        res.status(201).send(await Review.create(req.body));
+    } catch(er){
+        next(er)
+    }
+})
 app.get('/:id', async(req, res, next)=>{
     try{
         const reviews = await Review.findAll({where:{productId: req.params.id}});
@@ -20,13 +26,7 @@ app.get('/:id', async(req, res, next)=>{
     }
 })
 
-app.post('/', async(req, res, next)=>{
-    try{
-        res.status(201).send(await Review.create(req.body));
-    } catch(er){
-        next(er)
-    }
-})
+
 
 
 

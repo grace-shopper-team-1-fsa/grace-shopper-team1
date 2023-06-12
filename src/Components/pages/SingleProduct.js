@@ -9,32 +9,33 @@ import {ReviewForm} from './';
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const product = useSelector((state) => state.products.find((product) => product.id === id));
   const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
   const {auth} = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
-
+  
   useEffect(() => {
     dispatch(fetchProductById(id));
     dispatch(fetchAllReviews());
   }, [dispatch, id]);
-
+  
   if (!product) {
     return <p>Loading...</p>;
   }
 
   const handleClick = () => {
+    console.log(auth.id);
     if(auth.id){
+      console.log('reaching this')
       dispatch(addItem({
         product: product, 
         quantity : quantity
       }))
     } else {
-
-      console.log('did not dispatch')
+      const cart = JSON.parse(window.localStorage.getItem('cart'));
+      cart.lineItems.push({product:product, quantity: quantity, productId: product.id});
+      window.localStorage.setItem('cart', JSON.stringify(cart));
     }
-    
   }
 
   return (
@@ -68,12 +69,14 @@ const SingleProduct = () => {
               <h3>{review.name}</h3>
               <p>Rating: {review.rating} / 5</p>
               <p>{review.description}</p>
-              <ReviewForm id={id}/>
+              
             </div>
           ))}
         </div>
         <button className="add-to-cart" onClick={handleClick}>Add to Cart</button>
+        <ReviewForm id={id}/>
       </div>
+        
     </div>
   );
 };
