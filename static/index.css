@@ -245,3 +245,14 @@ textarea[name="description"] {
 button {
   margin-top: 1rem;
 }
+.product-details-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.product-details {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+.product-details .product-description {
+  max-width: auto;
+}
