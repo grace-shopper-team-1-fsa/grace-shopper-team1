@@ -36,7 +36,7 @@ const Cart = () =>{
                     cart.lineItems.map(lineItem=>{
                         return <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
                     })
-                : <p>Cart is Empty</p>}
+                : <p className='cart-is-empty'>Cart is Empty</p>}
             </div>
             <CartSummary total={cart.total}/>
             <button className='to-checkout-button' onClick={handleClick}>Continue to Checkout</button>
