@@ -28,10 +28,9 @@ a {
   font-family: 'Big Caslon', sans-serif;
   font-size: 20px;
   align-items: center;
-  justify-content: center;
 }
 .productCard {
-  margin: 20px 20px 20px 20px;
+  margin: 25px 25px 25px 25px;
 }
 .loginRegister {
   display: flex;
@@ -130,8 +129,8 @@ li {
   text-decoration: underline;
 }
 img.product-card-image {
-  width: 200;
-  height: 150;
+  width: 250;
+  height: 250;
 }
 img {
   width: 100%;
