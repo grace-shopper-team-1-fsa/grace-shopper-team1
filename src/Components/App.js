@@ -15,7 +15,6 @@ const App = ()=> {
     dispatch(fetchAllReviews());
     dispatch(fetchAllUsers());
     dispatch(fetchOrders());
-    console.log('creating cart');
     const cart = {
       lineItems: [],
       total: 0,

@@ -54,7 +54,7 @@ nav {
   display: flex;
   justify-content: space-between;
   font-family: 'Big Caslon', sans-serif;
-  background-color: #9d958f;
+  background-color: #9D958F;
   padding: 10px;
 }
 ul.home-ul,
@@ -248,6 +248,43 @@ button[type="submit"] {
   padding: 8px 16px;
   font-size: 14px;
   width: 400px;
+}
+body {
+  font-family: 'Big Caslon', sans-serif;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+  padding-left: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding-left: 20px;
+}
+input[type="text"],
+textarea {
+  width: 300px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  padding-left: 20px;
+}
+button {
+  margin-top: 1rem;
+  padding-left: 20px;
+}
+.user-details-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  background-color: #ccc;
+  padding-left: 20px;
+}
+button[type="submit"] {
+  padding: 8px 16px;
+  font-size: 14px;
+  width: 400px;
+  padding-left: 20px;
 }
 .admin-container {
   display: flex;

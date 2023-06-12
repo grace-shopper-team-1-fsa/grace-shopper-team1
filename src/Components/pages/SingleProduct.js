@@ -5,6 +5,7 @@ import { fetchProductById } from '../../store/productsSlice';
 import { fetchAllReviews } from '../../store/reviewSlice';
 import { addItem } from '../../store/cart';
 import {ReviewForm} from './';
+import ReactModal from 'react-modal';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,12 @@ const SingleProduct = () => {
   const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
   const {auth} = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
   
   useEffect(() => {
     dispatch(fetchProductById(id));
     dispatch(fetchAllReviews());
+    setOpen(false);
   }, [dispatch, id]);
   
   if (!product) {
@@ -69,12 +72,15 @@ const SingleProduct = () => {
               <h3>{review.name}</h3>
               <p>Rating: {review.rating} / 5</p>
               <p>{review.description}</p>
-              
-            </div>
+        </div>
           ))}
         </div>
         <button className="add-to-cart" onClick={handleClick}>Add to Cart</button>
-        <ReviewForm id={id}/>
+        <button onClick={() => setOpen(true)}>Write a review!</button>    
+        <ReactModal isOpen={open}>
+          <ReviewForm open={open} />
+          <button onClick={() => setOpen(false)}>Cancel</button>
+        </ReactModal>
       </div>
         
     </div>

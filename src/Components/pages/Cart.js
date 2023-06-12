@@ -7,19 +7,15 @@ import {CartSummary} from './';
 
 const Cart = () =>{
     const {auth} = useSelector(state=>state);
+    let guest = true;
     let cart = {};
     if(auth.id){
         cart = useSelector(state => state.cart);
-        console.log(cart);
+        guest = false;
     } else {
         cart = JSON.parse(window.localStorage.getItem('cart'));
-        console.log(cart);
     }
-    console.log(cart);
-    const products = useSelector(state => state.products);
-    let cartProducts = [];
-    cart.lineItems.forEach(e=>cartProducts.push(products.find(product=>product.id ==e.productId)));
-    const total = cartProducts.reduce((total, current)=>total+Number(current.price), 0);
+   
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -36,14 +32,13 @@ const Cart = () =>{
         <div>
             <div className='basket'>
                 <h2 className='shopping-cart-header'>Shopping Cart</h2>
-                {
+                { cart.lineItems.length > 0 ?
                     cart.lineItems.map(lineItem=>{
-                        const product = products.find(product => product.id === lineItem.productId);
-                        return <LineItem key={lineItem.id} lineItem={lineItem} product={product}/>
+                        return <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
                     })
-                }
+                : <p>Cart is Empty</p>}
             </div>
-            <CartSummary total={total}/>
+            <CartSummary total={cart.total}/>
             <button className='to-checkout-button' onClick={handleClick}>Continue to Checkout</button>
         </div>
   );
