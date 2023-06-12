@@ -35,7 +35,7 @@ export const updateIsCart = createAsyncThunk('toggleCartStatus', async (data) =>
   console.log('From cart reducer!', data)
   const { id } = data;
   try {
-    const response = await axios.put(`http://localhost:3000/api/orders/${id}`, data);
+    const response = await axios.put(`/api/orders/${id}`, data);
     return response.data;
   } catch (error) {
     throw new Error(error.message);
