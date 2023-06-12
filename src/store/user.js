@@ -7,17 +7,16 @@ const initialState = {
   error: null,
 };
 
-export const fetchAllUsers = createAsyncThunk('user/fetchAllUsers', async () => {
+export const fetchAllUsers = createAsyncThunk('fetchAllUsers', async () => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/users`);
+    const response = await axios.get(`/api/users`);
     return response.data;
   } catch (error) {
     console.log(error);
   }
 });
 
-
-export const fetchUserProfile = createAsyncThunk('user/fetchUserProfile', async (userId, thunkAPI) => {
+export const fetchUserProfile = createAsyncThunk('fetchUserProfile', async (userId, thunkAPI) => {
   try {
     const response = await axios.get(`/api/users/${userId}`);
     return response.data;
@@ -26,10 +25,9 @@ export const fetchUserProfile = createAsyncThunk('user/fetchUserProfile', async 
   }
 });
 
-export const addUserProfile =createAsyncThunk('/api/user', async(user) => {
+export const addUserProfile = createAsyncThunk('addUserProfile', async(user) => {
   try {
-    const {data} = await axios.post('http://localhost:3000/api/users', user)
-    //console.log(data)
+    const {data} = await axios.post('/api/users', user)
     return data
   } catch(err){
     console.log(err)
@@ -37,7 +35,7 @@ export const addUserProfile =createAsyncThunk('/api/user', async(user) => {
 })
 
 
-export const updateUserProfile = createAsyncThunk('user/updateUserProfile', async (formData) => {
+export const updateUserProfile = createAsyncThunk('updateUserProfile', async (formData) => {
   const { id } = formData;
   try {
     const response = await axios.put(`/api/users/${id}`, formData);
@@ -70,7 +68,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.profile = action.payload;
+        state.usersList = action.payload;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.status = 'failed';

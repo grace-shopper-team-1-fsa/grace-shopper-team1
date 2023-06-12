@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductById } from '../../store/productsSlice';
-import { fetchAllReviewsAsync } from '../../store/reviewSlice';
+import { fetchAllReviews } from '../../store/reviewSlice';
 import { addItem } from '../../store/cart';
 
 const SingleProduct = () => {
@@ -11,12 +11,12 @@ const SingleProduct = () => {
 
   const product = useSelector((state) => state.products.find((product) => product.id === id));
   const reviews = useSelector((state) => state.reviews.reviewsList.filter((review) => review.productId === id));
-
+  const {auth} = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-    dispatch(fetchAllReviewsAsync());
+    dispatch(fetchAllReviews());
   }, [dispatch, id]);
 
   if (!product) {
@@ -24,10 +24,16 @@ const SingleProduct = () => {
   }
 
   const handleClick = () => {
-    dispatch(addItem({
-      product: product, 
-      quantity : quantity
-    }))
+    if(auth.id){
+      dispatch(addItem({
+        product: product, 
+        quantity : quantity
+      }))
+    } else {
+
+      console.log('did not dispatch')
+    }
+    
   }
 
   return (

@@ -9,6 +9,28 @@ const PastOrder = () => {
     return(
         <div>
             <p>Order Details</p>
+            {
+                order.lineItems.map(lineItem=>{
+                    return(
+                        <div className='lineDetail'>
+                            <div className='lineImg'>
+                                <img src={window.location.origin + `${product.image}`} width="200" height="150" alt="Image"/>
+                            </div>
+                            <div className='lineDescription'>
+                                <p>{product.name}</p>
+                            </div>
+                            <div className='linePrice'>
+                                <p>Price</p>
+                                <p>{product.price}</p>
+                            </div>
+                            <div className='lineQty'>
+                                <p>Qty</p>
+                                <p>{lineItem.quantity} </p> 
+                            </div>  
+                        </div>
+                    )
+                })
+            }
         </div>    
     )
 }

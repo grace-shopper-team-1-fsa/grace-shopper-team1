@@ -1,19 +1,16 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
-//const initialState={
- // lineItems: []
-//}
-// I'm not really sure what the initial state is supposed to be. - Grant
-
 export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
   try{
+    console.log('fetching orders')
     const token = window.localStorage.getItem('token');
     const response = await axios.get('/api/orders', {
       headers: {
         authorization: token
       }
     });
+    console.log(response.data);
     return response.data;
   }catch(err){
     console.log(err)
@@ -34,11 +31,11 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
 //   }
 // })
 
-export const updateIsCart = createAsyncThunk('orders/toggleCartStatus', async (data) => {
+export const updateIsCart = createAsyncThunk('toggleCartStatus', async (data) => {
   console.log('From cart reducer!', data)
   const { id } = data;
   try {
-    const response = await axios.put(`http://localhost:3000/api/orders/${id}`, data);
+    const response = await axios.put(`/api/orders/${id}`, data);
     return response.data;
   } catch (error) {
     throw new Error(error.message);

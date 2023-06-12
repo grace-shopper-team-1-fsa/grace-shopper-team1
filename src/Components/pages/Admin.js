@@ -28,10 +28,10 @@ const Admin = () =>{
                 return (
                     <li key={product.id}>
                         <h3>{product.name}</h3>
-                        <p>{product.description}</p>
                         <img src={product.image} alt={product.name} style={{ width: '200px' }} />
                         <p>Price: {product.price}</p>
                         <p>Rating: {product.rating}</p>
+                        <p>{product.description}</p>
                         <Link to={`/admin/updateproduct/${product.id}`}>
                             <h3>Update</h3>
                         </Link>
