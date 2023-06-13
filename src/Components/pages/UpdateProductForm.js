@@ -3,18 +3,17 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { updateProduct, deleteProduct, fetchProductById } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const UpdateProductForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const product = useSelector((state) => state.products.find((product) => product.id === id));
 
-  const [productName, setProductName] = useState(product.name);
-  const [productPrice, setProductPrice] = useState(product.price);
-  const [productImgUrl, setProductImgUrl] = useState(product.image);
-  const [productDescription, setProductDescription] = useState(product.description);
-  const [productRating, setProductRating] = useState(product.rating);
+  const [productName, setProductName] = useState('');
+  const [productPrice, setProductPrice] = useState('');
+  const [productImgUrl, setProductImgUrl] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productRating, setProductRating] = useState('');
 
   const handleProductNameChange = (e) => setProductName(e.target.value);
   const handlePriceChange = (e) => setProductPrice(e.target.value);
@@ -58,26 +57,23 @@ const UpdateProductForm = () => {
   };
 
   return (
-
-
     <div className="product-details-container">
-        
       <Link to="/admin">
         <p>Back to Admin Dashboard</p>
       </Link>
-      <div className='product-details'>
+      <div className="product-details">
         <h2>Product Details</h2>
         {product ? (
-            <div>
-                <p>Name: {product.name}</p>
-                <p>Price: {product.price}</p>
-                <p>Rating: {product.rating}</p>
-                <p className="product-description">Description: {product.description}</p>
-            </div>
+          <div>
+            <p>Name: {product.name}</p>
+            <p>Price: {product.price}</p>
+            <p>Rating: {product.rating}</p>
+            <p className="product-description">Description: {product.description}</p>
+          </div>
         ) : (
-            <p>Loading...</p>
+          <p>Loading...</p>
         )}
-    </div>
+      </div>
 
       <h3>Update Product Information</h3>
       <form onSubmit={handleSubmit}>
@@ -132,7 +128,7 @@ const UpdateProductForm = () => {
         </div>
         <button type="submit">Submit Changes</button>
       </form>
-      <button onClick={() => handleDelete(id)}>Delete Product</button>
+      <button onClick={handleDelete}>Delete Product</button>
     </div>
   );
 };
