@@ -34,7 +34,6 @@ export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
 })
 
 export const addItem = createAsyncThunk("addItem", async(addItem)=>{
-  console.log(addItem)
   try{
     const token = window.localStorage.getItem('token');
     const {data} = await axios.post('/api/orders/cart', addItem, {
@@ -42,10 +41,8 @@ export const addItem = createAsyncThunk("addItem", async(addItem)=>{
         authorization: token
       }
     });
-    console.log(data)
     return data;
   }catch(er){
-    console.log('in the catch')
     console.log(er);
   }
 })

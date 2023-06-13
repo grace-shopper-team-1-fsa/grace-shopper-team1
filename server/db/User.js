@@ -112,36 +112,38 @@ User.prototype.getCart = async function(){
 }
 
 User.prototype.addToCart = async function({ product, quantity}){
+  const quantityNum = Number(quantity);
   const cart = await this.getCart();
   let lineItem = cart.lineItems.find( lineItem => {
     return lineItem.productId === product.id; 
   });
   if(lineItem){
-    lineItem.quantity += quantity;
+    lineItem.quantity += quantityNum;
     await lineItem.save();
   }
   else {
     await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity });
   }
-  cart.total += product.price * quantity;
+  cart.total += product.price * quantityNum;
   await cart.save();
   return this.getCart();
 };
 
 User.prototype.removeFromCart = async function({ product, quantityToRemove}){
+  const quantityNum = Number(quantityToRemove);
   const cart = await this.getCart();
   const lineItem = cart.lineItems.find( lineItem => {
     return lineItem.productId === product.id; 
   });
 
-  lineItem.quantity = lineItem.quantity - quantityToRemove;
+  lineItem.quantity = lineItem.quantity - quantityNum;
   if(lineItem.quantity > 0){
     await lineItem.save();
   }
   else {
     await lineItem.destroy();
   }
-  cart.total -= product.price * quantityToRemove;
+  cart.total -= product.price * quantityNum;
   await cart.save();
   return this.getCart();
 };

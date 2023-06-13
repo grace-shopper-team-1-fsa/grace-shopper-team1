@@ -11,33 +11,12 @@ const App = ()=> {
   const { auth } = useSelector(state => state);
   const newcart = useSelector(state=>state.cart);
   const dispatch = useDispatch();
-
   const cart = JSON.parse(window.localStorage.getItem('cart'));
-
-  if(!auth.id && cart === null){
-    let cart = {
-      lineItems: [],
-      total: 0,
-    }
-    window.localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  
-
-  if(auth.id && cart !== null){
-    console.log(cart.lineItems);
-      cart.lineItems.forEach(async(e)=>{
-        await dispatch(addItem({product: e.product, quantity: Number(e.quantity)}));
-      })
-      window.localStorage.removeItem("cart");
-      console.log(newcart);
-  }
 
   useEffect(()=> {
     dispatch(loginWithToken());
     dispatch(fetchProducts());
     dispatch(fetchAllReviews());
-    
   }, []);
   
   useEffect(()=> {
@@ -47,6 +26,21 @@ const App = ()=> {
       dispatch(fetchAllUsers());
     } 
   }, [auth]);
+
+  if(!auth.id && cart === null){
+    let cart = {
+      lineItems: [],
+      total: 0,
+    }
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  if(auth.id && cart !== null){
+      cart.lineItems.forEach(async(e)=>{
+        await dispatch(addItem({product: e.product, quantity: Number(e.quantity)}));
+      })
+      window.localStorage.removeItem("cart");
+  }
   
   return (
     <div>

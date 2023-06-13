@@ -17,7 +17,6 @@ export const fetchAllUsers = createAsyncThunk('fetchAllUsers', async () => {
 });
 
 export const addUserProfile = createAsyncThunk('addUserProfile', async(user) => {
-  console.log(user)
   try {
     const {data} = await axios.post('/api/users', user)
     return data
