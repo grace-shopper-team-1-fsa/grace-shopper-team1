@@ -28,10 +28,9 @@ const SingleProduct = () => {
 
   const handleClick = () => {
     if(auth.id){
-      console.log('reaching this')
       dispatch(addItem({
         product: product, 
-        quantity : quantity
+        quantity : quantity,
       }))
       window.location.reload();
     } else {
@@ -68,7 +67,6 @@ const SingleProduct = () => {
         </div>
         <div className="product-reviews">
           {reviews.map((review) => (
-            console.log(review),
             <div key={review.id}>
               <h3>{review.name}</h3>
               <p>Rating: {review.rating} / 5</p>
@@ -83,7 +81,6 @@ const SingleProduct = () => {
           <button onClick={() => setOpen(false)}>Cancel</button>
         </ReactModal>
       </div>
-        
     </div>
   );
 };

@@ -10,7 +10,6 @@ const MyAccount = () => {
   const user = useSelector(state => state.users.usersList.find(e => e.id === userAuthObj.id));
   //const orders = useSelector(state => state.orders).filter(order => order.isCart === false);
   const orders = useSelector(state => state.orders)
-  console.log('ORDERS FROM MYACCOUNT', orders)
 
   useEffect(() => {
     dispatch(fetchAllUsers());

@@ -11,17 +11,10 @@ const Checkout = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-
-
     const globalstate = useSelector(state => state)
-    console.log("CURRENT GLOBAL STATE", globalstate)
     const user = useSelector(state => state.auth)
-    console.log("CURRENT USER STATE", user)
     const cart = useSelector(state => state.cart)
-    console.log('CURRENT Cart', cart)
     const lineItems = useSelector(state => state.cart.lineItems)
-    console.log('CURRENT LINE ITEMS', lineItems)
-
 
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
@@ -59,7 +52,6 @@ const Checkout = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setOpen(true)
-        console.log('handled click')
     }
     const closeModalAndSubmit = (e) => {
         e.preventDefault
