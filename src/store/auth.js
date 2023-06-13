@@ -4,7 +4,6 @@ const initialState = {};
 
 export const loginWithToken = createAsyncThunk("loginWithToken", async (_, { rejectWithValue }) => {
   const token = window.localStorage.getItem('token');
-  console.log(token);
   if(token){
     const response = await axios.get('/api/auth', null,{
       headers: {
@@ -19,7 +18,6 @@ export const loginWithToken = createAsyncThunk("loginWithToken", async (_, { rej
     return userWithPermissions;
   }
   else {
-    console.log('in else')
     return rejectWithValue();
   }
 });
