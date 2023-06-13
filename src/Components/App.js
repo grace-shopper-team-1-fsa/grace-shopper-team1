@@ -50,7 +50,6 @@ const App = ()=> {
     <div>
       <Navbar />
       <Routes>
-        <Route path='order/:id' element={<PastOrder/>}/>
         <Route path='/cart' element={ <Cart /> } />
         <Route path='/'element={<Home />} />
         <Route path='/product/:id' element={<SingleProduct/>} />
@@ -61,6 +60,7 @@ const App = ()=> {
         !!auth.id  && (        
           <div>
             <Routes>
+              <Route path='order/:id' element={<PastOrder/>}/>
               <Route path='/myaccount' element={<MyAccount/>}/>
               <Route path='/myaccount/updateuserinfo' element={<UpdateUserForm />} />
               <Route path='/checkout'element={<Checkout />} />
