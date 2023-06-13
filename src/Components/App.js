@@ -10,11 +10,9 @@ import {addItem} from '../store';
 const App = ()=> {
   const { auth } = useSelector(state => state);
   const newcart = useSelector(state=>state.cart);
-      console.log(newcart);
   const dispatch = useDispatch();
 
   let cart = JSON.parse(window.localStorage.getItem('cart'));
-  console.log('line 17 app')
 
   if(auth.id && cart !== null){
     console.log(cart.lineItems);
@@ -29,8 +27,6 @@ const App = ()=> {
     dispatch(loginWithToken());
     dispatch(fetchProducts());
     dispatch(fetchAllReviews());
-    dispatch(fetchAllUsers());
-    dispatch(fetchOrders());
     const cart = {
       lineItems: [],
       total: 0,
@@ -45,7 +41,8 @@ const App = ()=> {
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
-      //window.localStorage.removeItem('cart');
+      dispatch(fetchOrders());
+      dispatch(fetchAllUsers());
     } 
   }, [auth]);
   

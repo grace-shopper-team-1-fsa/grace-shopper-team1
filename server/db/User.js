@@ -89,7 +89,7 @@ User.prototype.getCart = async function(){
       isCart: true
     }
   });
-  console.log(cart)
+
   if(!cart){
     cart = await conn.models.order.create({
       userId: this.id
@@ -141,6 +141,8 @@ User.prototype.removeFromCart = async function({ product, quantityToRemove}){
   else {
     await lineItem.destroy();
   }
+  cart.total -= product.price * quantityToRemove;
+  await cart.save();
   return this.getCart();
 };
 

@@ -27,7 +27,7 @@ const LineItem = (props) => {
     const updateQuantity=(ev)=>{
         ev.preventDefault();
         if(!guest){
-        const quantityDiff = ev.target.value - lineItem.quantity;
+        const quantityDiff = Number(ev.target.value) - lineItem.quantity;
         if(quantityDiff < 0){
             const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
             dispatch(removeItem(payload));
@@ -46,7 +46,6 @@ const LineItem = (props) => {
         modifyItem.quantity = Number(ev.target.value);
         cart.total = 0;
         cart.lineItems.forEach(e=> {
-            console.log(cart.total);
             cart.total += e.product.price*e.quantity
         });
         window.localStorage.setItem('cart', JSON.stringify(cart));
