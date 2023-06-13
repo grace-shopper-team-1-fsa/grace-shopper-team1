@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { updateProduct, deleteProduct, fetchProductById } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +21,16 @@ const UpdateProductForm = () => {
   const handleRatingChange = (e) => setProductRating(e.target.value);
   const handleImgUrlChange = (e) => setProductImgUrl(e.target.value);
   const handleDescriptionChange = (e) => setProductDescription(e.target.value);
+
+  useEffect(() => {
+    if (product) {
+      setProductName(product.name);
+      setProductPrice(product.price);
+      setProductImgUrl(product.image);
+      setProductDescription(product.description);
+      setProductRating(product.rating);
+    }
+  }, [product]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,22 +58,25 @@ const UpdateProductForm = () => {
   };
 
   return (
+
+
     <div className="product-details-container">
+        
       <Link to="/admin">
         <p>Back to Admin Dashboard</p>
       </Link>
       <div className='product-details'>
-      <h2>Product Details</h2>
-      {product ? (
-        <div>
-          <p>Name: {product.name}</p>
-          <p>Price: {product.price}</p>
-          <p>Rating: {product.rating}</p>
-          <p className="product-description">Description: {product.description}</p>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+        <h2>Product Details</h2>
+        {product ? (
+            <div>
+                <p>Name: {product.name}</p>
+                <p>Price: {product.price}</p>
+                <p>Rating: {product.rating}</p>
+                <p className="product-description">Description: {product.description}</p>
+            </div>
+        ) : (
+            <p>Loading...</p>
+        )}
     </div>
 
       <h3>Update Product Information</h3>

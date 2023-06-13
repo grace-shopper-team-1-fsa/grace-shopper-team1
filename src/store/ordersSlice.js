@@ -17,19 +17,19 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
   }
 })
 
-// export const createOrder = createAsyncThunk("createOrder", async()=>{
-//   try{
-//     const token = window.localStorage.getItem('token');
-//     const {data} = await axios.post('/api/orders/', addItem, {
-//       headers:{
-//         authorization: token
-//       }
-//     });
-//     return data;
-//   }catch(er){
-//     console.log(er);
-//   }
-// })
+export const createOrder = createAsyncThunk("createOrder", async()=>{
+  try{
+    const token = window.localStorage.getItem('token');
+    const {data} = await axios.post('/api/orders/', addItem, {
+      headers:{
+        authorization: token
+      }
+    });
+    return data;
+  }catch(er){
+    console.log(er);
+  }
+})
 
 export const updateIsCart = createAsyncThunk('toggleCartStatus', async (data) => {
   console.log('From cart reducer!', data)
