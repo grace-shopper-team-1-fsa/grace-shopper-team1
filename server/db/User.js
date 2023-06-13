@@ -82,8 +82,6 @@ User.prototype.getOrders = async function(){
     return orders;
 }
 
-
-
 User.prototype.getCart = async function(){
   let cart = await conn.models.order.findOne({
     where: {
@@ -91,6 +89,7 @@ User.prototype.getCart = async function(){
       isCart: true
     }
   });
+  console.log(cart)
   if(!cart){
     cart = await conn.models.order.create({
       userId: this.id
@@ -124,6 +123,8 @@ User.prototype.addToCart = async function({ product, quantity}){
   else {
     await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity });
   }
+  cart.total += product.price * quantity;
+  await cart.save();
   return this.getCart();
 };
 

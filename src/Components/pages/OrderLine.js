@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const OrderLine = (props) => {
     const {order} = props;
+    console.log(props)
 
     return(
         <Link to={`/order/${order.id}`}>

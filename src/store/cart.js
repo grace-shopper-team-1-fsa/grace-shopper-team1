@@ -42,8 +42,10 @@ export const addItem = createAsyncThunk("addItem", async(addItem)=>{
         authorization: token
       }
     });
+    console.log(data)
     return data;
   }catch(er){
+    console.log('in the catch')
     console.log(er);
   }
 })

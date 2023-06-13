@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 const PastOrder = () => {
     const {id} = useParams();
     const order = useSelector(state=>state.orders).find(order=>order.id===id);
+    const product = useSelector(state=>state.products)
     
     return(
         <div>
@@ -12,16 +13,16 @@ const PastOrder = () => {
             {
                 order.lineItems.map(lineItem=>{
                     return(
-                        <div className='lineDetail'>
+                        <div className='lineDetail' key={lineItem.product.id}>
                             <div className='lineImg'>
-                                <img src={window.location.origin + `${product.image}`} width="200" height="150" alt="Image"/>
+                                <img src={window.location.origin + `${lineItem.product.image}`} width="200" height="150" alt="Image"/>
                             </div>
                             <div className='lineDescription'>
-                                <p>{product.name}</p>
+                                <p>{lineItem.product.name}</p>
                             </div>
                             <div className='linePrice'>
                                 <p>Price</p>
-                                <p>{product.price}</p>
+                                <p>{lineItem.product.price}</p>
                             </div>
                             <div className='lineQty'>
                                 <p>Qty</p>
