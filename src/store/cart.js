@@ -62,6 +62,7 @@ const cartSlice = createSlice({
       return action.payload;
     }),
     builder.addCase(addItem.fulfilled, (state, action)=>{
+      console.log(action.payload)
       return action.payload;
     })
   }
