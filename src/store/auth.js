@@ -4,8 +4,9 @@ const initialState = {};
 
 export const loginWithToken = createAsyncThunk("loginWithToken", async (_, { rejectWithValue }) => {
   const token = window.localStorage.getItem('token');
+  console.log(token);
   if(token){
-    const response = await axios.get('/api/auth', null,{
+    const response = await axios.get('/api/auth', {
       headers: {
         authorization: token
       }

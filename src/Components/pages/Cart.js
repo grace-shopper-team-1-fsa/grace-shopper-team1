@@ -7,23 +7,8 @@ import {CartSummary} from './';
 
 const Cart = () =>{
     const {auth} = useSelector(state=>state);
-    let guest = true;
-    let cart = {};
-    if(auth.id){
-        cart = useSelector(state => state.cart);
-        guest = false;
-    } else {
-        cart = JSON.parse(window.localStorage.getItem('cart'));
-        cart.total = 0;
-        cart.lineItems.forEach(e=> {
-            console.log(e.product.price + ' ' + e.quantity);
-            console.log(cart.total);
-            cart.total += e.product.price*e.quantity
-        });
-        console.log(cart.total);
-        window.localStorage.setItem('cart', JSON.stringify(cart));
-    }
-   
+    let guest = false;
+    let cart = useSelector(state=>state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -33,6 +18,18 @@ const Cart = () =>{
         }
         dispatch(fetchProducts());
     }, [dispatch]);
+
+    if(!auth.id){
+        cart = JSON.parse(window.localStorage.getItem('cart'));
+        cart.total = 0;
+        cart.lineItems.forEach(e=> {
+            console.log(e.product.price + ' ' + e.quantity);
+            console.log(cart.total);
+            cart.total += e.product.price*e.quantity
+        });
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+    }
+   
 
     const handleClick = () =>{
         navigate('/checkout');
