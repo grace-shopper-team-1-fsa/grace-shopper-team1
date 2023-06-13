@@ -12,7 +12,15 @@ const App = ()=> {
   const newcart = useSelector(state=>state.cart);
   const dispatch = useDispatch();
 
-  let cart = JSON.parse(window.localStorage.getItem('cart'));
+  if(!auth.id){
+    let cart = {
+      lineItems: [],
+      total: 0,
+    }
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  const cart = JSON.parse(window.localStorage.getItem('cart'));
 
   if(auth.id && cart !== null){
     console.log(cart.lineItems);
@@ -27,15 +35,7 @@ const App = ()=> {
     dispatch(loginWithToken());
     dispatch(fetchProducts());
     dispatch(fetchAllReviews());
-    const cart = {
-      lineItems: [],
-      total: 0,
-    }
-  
-    if(!auth.id){
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-      console.log(cart);
-    }
+    
   }, []);
   
   useEffect(()=> {
