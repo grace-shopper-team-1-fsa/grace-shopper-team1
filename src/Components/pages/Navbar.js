@@ -67,7 +67,7 @@ const Navbar = () => {
             <Link to="/cart">Cart 
               ({
                 lineItems.reduce((acc,value) => {
-                  return acc+value.quantity;
+                  return Number(acc)+Number(value.quantity);
                 },0)
               })
             </Link>

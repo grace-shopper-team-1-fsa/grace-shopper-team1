@@ -33,10 +33,12 @@ const SingleProduct = () => {
         product: product, 
         quantity : quantity
       }))
+      window.location.reload();
     } else {
       const cart = JSON.parse(window.localStorage.getItem('cart'));
       cart.lineItems.push({product:product, quantity: quantity, productId: product.id});
       window.localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.reload();
     }
   }
 
