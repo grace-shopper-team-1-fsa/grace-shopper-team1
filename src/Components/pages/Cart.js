@@ -26,6 +26,7 @@ const Cart = () =>{
             cart.total += e.product.price*e.quantity
         });
         window.localStorage.setItem('cart', JSON.stringify(cart));
+        guest = true;
     }
    
 
