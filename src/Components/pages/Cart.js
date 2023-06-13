@@ -14,6 +14,14 @@ const Cart = () =>{
         guest = false;
     } else {
         cart = JSON.parse(window.localStorage.getItem('cart'));
+        cart.total = 0;
+        cart.lineItems.forEach(e=> {
+            console.log(e.product.price + ' ' + e.quantity);
+            console.log(cart.total);
+            cart.total += e.product.price*e.quantity
+        });
+        console.log(cart.total);
+        window.localStorage.setItem('cart', JSON.stringify(cart));
     }
    
     const dispatch = useDispatch();

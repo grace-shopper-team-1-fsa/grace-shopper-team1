@@ -27,7 +27,9 @@ const LoginRegister = () => {
   const register = async (ev) => {
     ev.preventDefault();
     await dispatch(addUserProfile({ email, password, permissions: false }));
-    setCredentials({ email: '', password: '' });
+    credentials.email = email;
+    credentials.password = password;
+    dispatch(attemptLogin(credentials));
     setEmail('');
     setPassword('');
     navigate('/');

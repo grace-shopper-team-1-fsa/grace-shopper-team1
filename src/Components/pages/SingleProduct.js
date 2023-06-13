@@ -27,7 +27,6 @@ const SingleProduct = () => {
   }
 
   const handleClick = () => {
-    console.log(auth.id);
     if(auth.id){
       console.log('reaching this')
       dispatch(addItem({

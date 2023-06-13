@@ -5,10 +5,26 @@ import { Link, Routes, Route } from 'react-router-dom';
 import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, 
   LoginRegister, UpdateProductForm, 
   UpdateUserForm, AddProductForm, Checkout, PastOrder } from './pages';
+import {addItem} from '../store';
 
 const App = ()=> {
   const { auth } = useSelector(state => state);
+  const newcart = useSelector(state=>state.cart);
+      console.log(newcart);
   const dispatch = useDispatch();
+
+  let cart = JSON.parse(window.localStorage.getItem('cart'));
+  console.log('line 17 app')
+
+  if(auth.id && cart !== null){
+    console.log(cart.lineItems);
+      cart.lineItems.forEach(async(e)=>{
+        await dispatch(addItem({product: e.product, quantity: Number(e.quantity)}));
+      })
+      window.localStorage.removeItem("cart");
+      console.log(newcart);
+  }
+
   useEffect(()=> {
     dispatch(loginWithToken());
     dispatch(fetchProducts());
@@ -22,12 +38,14 @@ const App = ()=> {
   
     if(!auth.id){
       window.localStorage.setItem('cart', JSON.stringify(cart));
+      console.log(cart);
     }
   }, []);
   
   useEffect(()=> {
     if(auth.id){
       dispatch(fetchCart());
+      //window.localStorage.removeItem('cart');
     } 
   }, [auth]);
   

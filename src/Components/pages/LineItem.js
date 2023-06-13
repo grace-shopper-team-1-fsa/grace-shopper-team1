@@ -44,6 +44,11 @@ const LineItem = (props) => {
         const cart = JSON.parse(window.localStorage.getItem('cart'));
         const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
         modifyItem.quantity = Number(ev.target.value);
+        cart.total = 0;
+        cart.lineItems.forEach(e=> {
+            console.log(cart.total);
+            cart.total += e.product.price*e.quantity
+        });
         window.localStorage.setItem('cart', JSON.stringify(cart));
     }
         setOpen(false);
