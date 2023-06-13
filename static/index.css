@@ -39,9 +39,39 @@ a {
 .loginRegisterBox {
   flex: 1;
 }
+.loginRegisterBox h2 {
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.formDivider {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 50%;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.inputContainer input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+.inputContainer button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #796556;
+  color: #fff;
+  cursor: pointer;
+  width: 100px;
+}
 @media (max-width: 600px) {
   .loginRegister {
-    display: flex;
     flex-direction: column;
   }
 }
