@@ -12,7 +12,9 @@ const App = ()=> {
   const newcart = useSelector(state=>state.cart);
   const dispatch = useDispatch();
 
-  if(!auth.id){
+  const cart = JSON.parse(window.localStorage.getItem('cart'));
+
+  if(!auth.id && cart === null){
     let cart = {
       lineItems: [],
       total: 0,
@@ -20,7 +22,7 @@ const App = ()=> {
     window.localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  const cart = JSON.parse(window.localStorage.getItem('cart'));
+  
 
   if(auth.id && cart !== null){
     console.log(cart.lineItems);
