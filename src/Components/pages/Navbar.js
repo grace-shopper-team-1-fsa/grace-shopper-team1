@@ -9,17 +9,17 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = useSelector(state => state.auth);
-  let lineItems = [];
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  let lineItems = useSelector(state=>state.cart.lineItems);
 
-  if(user.id){
-    lineItems = useSelector(state => state.cart.lineItems);
-  } else {
+  useEffect(() => {
+    setDropdownOpen(false);
+  }, [location.pathname]);
+
+  if(!user.id){
     const cart = JSON.parse(window.localStorage.getItem('cart'));
     lineItems = cart.lineItems;
   }
-  
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -29,10 +29,6 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
-  useEffect(() => {
-    setDropdownOpen(false);
-  }, [location.pathname]);
 
   return (
     <nav>
