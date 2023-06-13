@@ -20,11 +20,11 @@ export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
 export const createOrder = createAsyncThunk("createOrder", async()=>{
   try{
     const token = window.localStorage.getItem('token');
-    const {data} = await axios.post('/api/orders/', addItem, {
+    const {data} = await axios.post('/api/orders/', null, {
       headers:{
         authorization: token
       }
-    });
+    }); // added null instead of addItems 
     return data;
   }catch(er){
     console.log(er);
@@ -52,9 +52,9 @@ const ordersSlice = createSlice({
     .addCase(fetchOrders.fulfilled, (state, action)=>{
       return action.payload;
     })
-    .addCase(updateIsCart.fulfilled, (state, action) => {
+    .addCase(createOrder.fulfilled, (state, action) => {
       //state.status = 'succeeded';
-      state.isCart = action.payload.isCart;
+      return [...state, action.payload]
     })
   }
 })

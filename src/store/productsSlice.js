@@ -10,7 +10,6 @@ export const fetchProducts = createAsyncThunk('fetchProducts', async()=>{
     }
 })
 
-
 export const fetchProductById = createAsyncThunk('fetchProductById', async (id) => {
   try {
     const { data } = await axios.get(`/api/products/${id}`);
@@ -29,7 +28,6 @@ export const addProduct = createAsyncThunk('addProduct', async(product)=>{
         console.log(er);
     }
 })
-
 
 export const updateProduct = createAsyncThunk('updateProduct', async (formData) => {
   const { id } = formData;
@@ -60,16 +58,12 @@ const productsSlice = createSlice({
       return action.payload;
     })
     .addCase(fetchProductById.fulfilled, (state, action)=>{
-      
       const index = state.findIndex(product => product.id === action.payload.id);
-
-      if (index !== -1) {
-        
-        state[index] = action.payload;
-      } else {
-        
-        state.push(action.payload);
-      }
+        if (index !== -1) {       
+          state[index] = action.payload;
+        } else {
+          state.push(action.payload);
+        }
     })
     .addCase(addProduct.fulfilled, (state, action)=>{
       return [...state, action.payload];

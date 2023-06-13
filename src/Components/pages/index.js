@@ -15,3 +15,4 @@ export {default as Checkout} from './Checkout.js';
 export {default as CartSummary} from './CartSummary.js';
 export {default as PastOrder} from './PastOrder.js';
 export {default as ReviewForm} from './ReviewForm.js';
+export {default as OrderLine} from './OrderLine.js'

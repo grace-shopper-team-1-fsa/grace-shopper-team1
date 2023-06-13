@@ -108,6 +108,9 @@ const syncAndSeed = async()=> {
   const cart = await ethyl.getCart();
   await ethyl.addToCart({ product: War, quantity: 3});
   await ethyl.addToCart({ product: Daphne, quantity: 2});
+  await ethyl.createOrder();
+  await ethyl.addToCart({ product: War, quantity: 3});
+  await ethyl.addToCart({ product: Daphne, quantity: 2});
   return {
     users: {
       moe,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllUsers, updateIsCart } from '../../store';
+import { fetchAllUsers, createOrder, fetchCart } from '../../store';
 import CartSummary from './CartSummary';
 import CartSummaryTotals from './CartSummaryTotals';
 
@@ -51,8 +51,7 @@ const Checkout = () => {
     const handlePostalCodeChange = (e) => setPostalCode(e.target.value);
 
     useEffect(() => {
-        dispatch(fetchAllUsers())
-        
+        dispatch(fetchAllUsers())   
     }, [dispatch])
 
     const fullAddress = `${addressLine1}, ${addressLine2}, ${city}, ${state}, ${postalCode}, ${country}`;
@@ -64,6 +63,8 @@ const Checkout = () => {
     }
     const closeModalAndSubmit = (e) => {
         e.preventDefault
+        dispatch(createOrder())
+        dispatch(fetchCart())
         setOpen(false)
         navigate('/')
     }

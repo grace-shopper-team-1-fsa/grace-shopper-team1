@@ -2,16 +2,26 @@ const express = require('express');
 const router = express.Router();
 const { User, Order } = require('../../db');
 
+// Previous GET Router
+// router.get('/', async(req, res, next)=> {
+//   try {
+//     const order = await Order.findAll();;
+//     res.send(order)
+//   }
+//   catch(ex){
+//     next(ex);
+//   }
+// });
+
 router.get('/', async(req, res, next)=> {
   try {
-    const order = await Order.findAll();;
-    res.send(order)
+    const user = await User.findByToken(req.headers.authorization);
+    res.send(await user.getOrders());
   }
   catch(ex){
     next(ex);
   }
 });
-
 
 router.post('/', async(req, res, next)=> {
   try {
@@ -22,6 +32,7 @@ router.post('/', async(req, res, next)=> {
     next(ex);
   }
 });
+
 
 router.get('/cart', async(req, res, next)=> {
   try {

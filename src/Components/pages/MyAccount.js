@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAllUsers, fetchOrders } from '../../store';
-import { OrderLine } from './OrderLine';
+import { OrderLine } from './';
 
 const MyAccount = () => {
   const dispatch = useDispatch();
   const userAuthObj = useSelector(state => state.auth);
   const user = useSelector(state => state.users.usersList.find(e => e.id === userAuthObj.id));
   const orders = useSelector(state => state.orders).filter(order => order.isCart === false);
+  console.log('ORDERS FROM MYACCOUNT', orders)
 
   useEffect(() => {
     dispatch(fetchAllUsers());
@@ -45,7 +46,7 @@ const MyAccount = () => {
         </div>
       </div>
       {orders.length > 0 ? (
-        orders.map(order => <OrderHistoryLine key={order.id} order={order} />)
+        orders.map(order => <OrderLine key={order.id} order={order} />)
       ) : (
         <p className='my-account-p'>No order history</p>
       )}
