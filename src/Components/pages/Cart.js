@@ -28,7 +28,9 @@ const Cart = () =>{
     const navigate = useNavigate();
 
     useEffect(()=>{
-        dispatch(fetchCart());
+        if(auth.id){
+            dispatch(fetchCart());
+        }
         dispatch(fetchProducts());
     }, [dispatch]);
 

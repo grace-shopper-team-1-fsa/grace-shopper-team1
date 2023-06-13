@@ -9,7 +9,15 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = useSelector(state => state.auth);
-  const lineItems = useSelector(state => state.cart.lineItems);
+  let lineItems = [];
+
+  if(user.id){
+    lineItems = useSelector(state => state.cart.lineItems);
+  } else {
+    const cart = JSON.parse(window.localStorage.getItem('cart'));
+    lineItems = cart.lineItems;
+  }
+  
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
