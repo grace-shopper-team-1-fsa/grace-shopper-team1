@@ -24,10 +24,18 @@ a {
 }
 .home {
   display: flex;
-  flex-wrap: wrap;
   font-family: 'Big Caslon', sans-serif;
   font-size: 20px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.product-search-bar {
+  width: 100%;
+  margin: 10px 20px 10px 20px;
+}
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
 }
 .productCard {
   margin: 25px 25px 25px 25px;
@@ -277,7 +285,6 @@ label {
 }
 input[type="text"],
 textarea {
-  width: 300px;
   padding: 0.5rem;
   font-size: 1rem;
 }
@@ -319,7 +326,6 @@ label {
 }
 input[type="text"],
 textarea {
-  width: 300px;
   padding: 0.5rem;
   font-size: 1rem;
   padding-left: 20px;
