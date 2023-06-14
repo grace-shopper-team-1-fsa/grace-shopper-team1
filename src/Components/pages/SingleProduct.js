@@ -55,45 +55,47 @@ const SingleProduct = () => {
       <Link to="/" className="back-link">
         Back to Vases
       </Link>
-      <div className="product-page-box">
-        <div className="product-image">
-          <img src={product.image} alt={product.name} />
+      <div className='product-page-section'>
+        <div className="product-page-box">
+          <div className="product-image">
+            <img src={product.image} alt={product.name} />
+          </div>
         </div>
-      </div>
 
-      <div className="product-page-box">
-        <div className="product-name">
-          <h1>{product.name}</h1>
+        <div className="product-page-box">
+          <div className="product-name">
+            <h1>{product.name}</h1>
+          </div>
+          <div className="product-description">
+            <p>{product.description}</p>
+          </div>
+          <div className="product-price">
+            <p>Price: ${product.price}</p>
+          </div>
+          <div className="product-quantity">
+            <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+          </div>
+          <div className="product-rating">
+            <p>Rating: {product.rating} / 5</p>
+          </div>
+          <div className="product-reviews">
+            {reviews.map((review) => (
+              <div key={review.id}>
+                <h3>{review.name}</h3>
+                <p>Rating: {review.rating} / 5</p>
+                <p>{review.description}</p>
+              </div>
+            ))}
+          </div>
+          <button className="add-to-cart" onClick={handleClick}>
+            Add to Cart
+          </button>
+          <button onClick={() => setOpen(true)}>Write a review!</button>
+          <ReactModal isOpen={open}>
+            <ReviewForm open={open} />
+            <button onClick={() => setOpen(false)}>Cancel</button>
+          </ReactModal>
         </div>
-        <div className="product-description">
-          <p>{product.description}</p>
-        </div>
-        <div className="product-price">
-          <p>Price: ${product.price}</p>
-        </div>
-        <div className="product-quantity">
-          <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-        </div>
-        <div className="product-rating">
-          <p>Rating: {product.rating} / 5</p>
-        </div>
-        <div className="product-reviews">
-          {reviews.map((review) => (
-            <div key={review.id}>
-              <h3>{review.name}</h3>
-              <p>Rating: {review.rating} / 5</p>
-              <p>{review.description}</p>
-            </div>
-          ))}
-        </div>
-        <button className="add-to-cart" onClick={handleClick}>
-          Add to Cart
-        </button>
-        <button onClick={() => setOpen(true)}>Write a review!</button>
-        <ReactModal isOpen={open}>
-          <ReviewForm open={open} />
-          <button onClick={() => setOpen(false)}>Cancel</button>
-        </ReactModal>
       </div>
     </div>
   );
