@@ -14,7 +14,7 @@ const LineItem = (props) => {
 
     const deleteItem = () => {
         if(!guest){
-            const payload={product: product, quantity: lineItem.quantity};
+            const payload={product: product, quantityToRemove: lineItem.quantity};
             dispatch(removeItem(payload));
         } else {
             const cart = JSON.parse(window.localStorage.getItem('cart'));

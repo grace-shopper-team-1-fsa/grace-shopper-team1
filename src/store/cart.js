@@ -2,7 +2,8 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 
 const initialState={
-  lineItems: []
+  lineItems: [],
+  total: 0
 }
 
 export const fetchCart = createAsyncThunk("fetchCart", async()=>{
@@ -20,6 +21,8 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
 })
 
 export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
+  console.log("quantity from store", typeof removeItems.quantity)
+  console.log("price from store", typeof removeItems.product.price)
   try{
     const token = window.localStorage.getItem('token');
     const {data} = await axios.put('/api/orders/cart', removeItems, {
@@ -34,6 +37,7 @@ export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
 })
 
 export const addItem = createAsyncThunk("addItem", async(addItem)=>{
+  
   try{
     const token = window.localStorage.getItem('token');
     const {data} = await axios.post('/api/orders/cart', addItem, {

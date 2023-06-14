@@ -34,8 +34,8 @@ const Product = conn.define('product', {
     defaultvalue: '/static/images/Default.gif',
   },
   price: {
-    type: DECIMAL (10,2),
-    allowNull: false,
+    type: DOUBLE,
+    allowNull: 0,
     validate: {
       notEmpty: true
     }

@@ -38,9 +38,12 @@ const Cart = () =>{
             <div className='basket'>
                 <h2 className='shopping-cart-header'>Shopping Cart</h2>
                 { cart.lineItems.length > 0 ?
-                    cart.lineItems.map(lineItem=>{
-                        return <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
-                    })
+                    cart.lineItems.map((lineItem, idx)=> (
+                        <div key={idx} >
+                            <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
+                        </div>
+                        )   
+                    )
                 : <p className='cart-is-empty'>Cart is Empty</p>}
             </div>
             <CartSummary total={cart.total}/>
