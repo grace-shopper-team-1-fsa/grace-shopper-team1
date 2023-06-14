@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const UpdateProduct = (props) => {
-    const {product, lineItem, updateQuantity} = props;
+    const {lineItem, updateQuantity} = props;
+    const product = lineItem.product;
     const tabs = ['options', 'details'];
     const [active, setActive] = useState(tabs[0]);
     const [quantity, setQuantity] = useState(lineItem.quantity);
