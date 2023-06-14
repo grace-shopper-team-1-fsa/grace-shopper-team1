@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, fetchProducts } from '../../store';
 import {useNavigate} from 'react-router-dom';
 import {LineItem} from './';
 import {CartSummary} from './';
+import ReactModal from 'react-modal';
+import LoginRegister from './LoginRegister';
+
 
 const Cart = () =>{
     const {auth} = useSelector(state=>state);
@@ -11,6 +14,7 @@ const Cart = () =>{
     let cart = useSelector(state=>state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [toggleOpen, setToggleOpen] = useState(false);
 
     useEffect(()=>{
         if(auth.id){
@@ -34,6 +38,11 @@ const Cart = () =>{
         navigate('/checkout');
     }
 
+    const handleLoginFromCheckout = () => {
+        setToggleOpen(false);
+        navigate('/checkout');
+    }
+
     return (
         <div>
             <div className='basket'>
@@ -48,7 +57,19 @@ const Cart = () =>{
                 : <p className='cart-is-empty'>Cart is Empty</p>}
             </div>
             <CartSummary total={cart.total}/>
-            <button className='to-checkout-button' onClick={handleClick}>Continue to Checkout</button>
+            { auth.id ? (
+                <button className='to-checkout-button' onClick={handleClick}>
+                    Continue to Checkout
+                </button>
+                ) : (
+                    <div>
+                        <button className='to-checkout-button' onClick={() => setToggleOpen(true)}>Please Login to Continue</button>
+                        <ReactModal isOpen={toggleOpen} ariaHideApp={false}>
+                            <LoginRegister onLoginFromRegister={handleLoginFromCheckout} /> 
+                        </ReactModal>
+                    </div>
+                )
+            }
         </div>
   );
         
