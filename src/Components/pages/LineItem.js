@@ -29,28 +29,28 @@ const LineItem = (props) => {
         ev.preventDefault();
         if(!guest){
         const quantityDiff = Number(ev.target.value) - lineItem.quantity;
-        if(quantityDiff < 0){
-            const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
-            dispatch(removeItem(payload));
-        } else{
-            const payload = {product: product, quantity: quantityDiff};
-            dispatch(addItem(payload));
-        }
-    } else {
-        if(ev.target.value == 0){
-            deleteItem();
-        }
+            if(quantityDiff < 0){
+                const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
+                dispatch(removeItem(payload));
+            } else{
+                const payload = {product: product, quantity: quantityDiff};
+                dispatch(addItem(payload));
+            }
+        } else {
+            if(ev.target.value == 0){
+                deleteItem();
+            }
 
-        lineItem.quantity = Number(ev.target.value);
-        const cart = JSON.parse(window.localStorage.getItem('cart'));
-        const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
-        modifyItem.quantity = Number(ev.target.value);
-        cart.total = 0;
-        cart.lineItems.forEach(e=> {
-            cart.total += e.product.price*e.quantity
-        });
-        window.localStorage.setItem('cart', JSON.stringify(cart));
-    }
+            lineItem.quantity = Number(ev.target.value);
+            const cart = JSON.parse(window.localStorage.getItem('cart'));
+            const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
+            modifyItem.quantity = Number(ev.target.value);
+            cart.total = 0;
+            cart.lineItems.forEach(e=> {
+                cart.total += e.product.price*e.quantity
+            });
+            window.localStorage.setItem('cart', JSON.stringify(cart));
+        }
         setOpen(false);
     }
 
