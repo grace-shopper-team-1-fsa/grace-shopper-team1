@@ -62,37 +62,37 @@ const Checkout = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-            <label>Email<span style={{ color: 'red' }}>*</span></label>
-            <input  name="email" value={userEmail} onChange={handleEmailChange}
-                placeholder={`${user.email}`}required />
-            <label>First Name</label>
-            <input name="firstName" value={userFirstName} onChange={handleFirstNameChange}
-                placeholder={`${user.firstName}`} />
-            <label>Last Name</label>
-            <input name="lastName" value={userLastName} onChange={handleLastNameChange}
-                placeholder={`${user.lastName}`} />
-            <h3>Shipping</h3>
-             <label>Address Line 1</label>
-            <input  type="text" value={addressLine1}onChange={handleAddressLine1Change}/>
-            <label>Address Line 2</label>
-            <input type="text" value={addressLine2}onChange={handleAddressLine2Change}
-                placeholder='Apartment, Suite, Unit, Building, Floor' />
-            <label>City</label>
-            <input type="text" value={city} onChange={handleCityChange}  />
-            <label>State</label>
-            <input type="text" value={state}  onChange={handleStateChange}  />
-            <label>Postal Code</label>
-            <input type="text" value={postalCode} onChange={handlePostalCodeChange}  />
-            <label>Country</label>
-            <input  type="text" value={country} onChange={handleCountryChange}  />
-            <label>Card Number</label>
-            <input  name="cardNumber" />
-            <label>Expiration Date</label>
-            <input type="text" name="expiration" placeholder="MM/YY"/>
-            <label>Phone Number</label>
-            <input type="text" name="phonenumber" value={userPhoneNumber}onChange={handlePhoneNumberChange} placeholder="555-555-5555"/>
-             <button type="submit" >Confirm Order</button>
+            <form className="checkout-form-container" onSubmit={handleSubmit}>
+                <label>Email<span style={{ color: 'red' }}>*</span></label>
+                <input  name="email" value={userEmail} onChange={handleEmailChange}
+                    placeholder={`${user.email}`}required />
+                <label>First Name</label>
+                <input name="firstName" value={userFirstName} onChange={handleFirstNameChange}
+                    placeholder={`${user.firstName}`} />
+                <label>Last Name</label>
+                <input name="lastName" value={userLastName} onChange={handleLastNameChange}
+                    placeholder={`${user.lastName}`} />
+                <h3>Shipping</h3>
+                <label>Address Line 1</label>
+                <input  type="text" value={addressLine1}onChange={handleAddressLine1Change}/>
+                <label>Address Line 2</label>
+                <input type="text" value={addressLine2}onChange={handleAddressLine2Change}
+                    placeholder='Apartment, Suite, Unit, Building, Floor' />
+                <label>City</label>
+                <input type="text" value={city} onChange={handleCityChange}  />
+                <label>State</label>
+                <input type="text" value={state}  onChange={handleStateChange}  />
+                <label>Postal Code</label>
+                <input type="text" value={postalCode} onChange={handlePostalCodeChange}  />
+                <label>Country</label>
+                <input  type="text" value={country} onChange={handleCountryChange}  />
+                <label>Card Number</label>
+                <input  name="cardNumber" />
+                <label>Expiration Date</label>
+                <input type="text" name="expiration" placeholder="MM/YY"/>
+                <label>Phone Number</label>
+                <input type="text" name="phonenumber" value={userPhoneNumber}onChange={handlePhoneNumberChange} placeholder="555-555-5555"/>
+                <button type="submit" >Confirm Order</button>
             </form>
             <div className='lineModify'>
                 <ReactModal isOpen={open} contentLabel="" ariaHideApp={true}>
