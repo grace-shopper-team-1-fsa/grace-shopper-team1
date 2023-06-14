@@ -54,10 +54,11 @@ const Checkout = () => {
         setOpen(true)
     }
     const closeModalAndSubmit = (e) => {
-        e.preventDefault
-        dispatch(createOrder())
-        setOpen(false)
-        navigate('/')
+        e.preventDefault();
+        dispatch(createOrder());
+        setOpen(false);
+        navigate('/');
+        window.location.reload();
     }
 
     return (
