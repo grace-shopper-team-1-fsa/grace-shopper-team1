@@ -169,12 +169,18 @@ li {
   flex-grow: 1;
   text-decoration: underline;
 }
-.about-us-header,
-.about-us-p {
-  margin: 10px 20px 10px 20px;
-}
 .about-us-header {
-  border-bottom: 1px solid #9D958F;
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 4px solid #232504;
+  border-bottom: none;
+}
+.about-us-p {
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: justify;
 }
 .link:hover {
   text-decoration: underline;

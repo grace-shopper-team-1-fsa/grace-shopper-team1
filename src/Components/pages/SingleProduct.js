@@ -41,7 +41,7 @@ const SingleProduct = () => {
       const cart = JSON.parse(window.localStorage.getItem('cart'));
       const match = cart.lineItems.find((e) => e.product.id === product.id);
       if (match) {
-        match.quantity += quantity;
+        match.quantity += Number(quantity);
       } else {
         cart.lineItems.push({ product: product, quantity: quantity, productId: product.id });
       }
@@ -72,7 +72,7 @@ const SingleProduct = () => {
           <p>Price: ${product.price}</p>
         </div>
         <div className="product-quantity">
-          <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+          <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
         </div>
         <div className="product-rating">
           <p>Rating: {product.rating} / 5</p>
