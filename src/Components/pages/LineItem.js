@@ -18,6 +18,7 @@ const LineItem = (props) => {
             dispatch(removeItem(payload));
         } else {
             const cart = JSON.parse(window.localStorage.getItem('cart'));
+            console.log(cart);
             cart.lineItems = cart.lineItems.filter(e=> product.id !== e.product.id);
             window.localStorage.setItem('cart', JSON.stringify(cart));
         }
