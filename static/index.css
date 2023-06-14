@@ -387,28 +387,54 @@ button[type="submit"] {
 .admin-product-container {
   border-top: 1px solid #9D958F;
 }
-.custom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.75);
+.checkout-form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
-.custom-content {
-  position: fixed;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  border: 1px solid #ccc;
-  background: #fff;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 4px;
+.checkout-group-general {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60rem;
+}
+.checkout-group-general input {
+  width: 25rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-top: 15px;
+}
+.checkout-group-shipping {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60rem;
+  height: 25rem;
+}
+.checkout-group-shipping input {
+  width: 17rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  margin-top: 15px;
+  width: 25rem;
+}
+.checkout-group-shipping input::placeholder {
+  color: #999999 !important;
+  font-size: 13px;
+  margin-left: 0;
+}
+.checkout-group-cc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60rem;
+}
+.checkout-group-phone {
+  display: flex;
+}
+input:focus {
   outline: none;
-  padding: 20px;
-}
-.form-input {
-  width: 50px;
 }
