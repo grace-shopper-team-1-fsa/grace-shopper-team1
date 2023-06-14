@@ -16,7 +16,7 @@ const OrderLine = (props) => {
                 <p>Date: {order.updatedAt}</p>
             </div>
             <div className='orderCell'>
-                <p>${order.total}</p>
+                <p>${order.total.toFixed(2)}</p>
             </div>
         </div>
         </Link>

@@ -9,11 +9,11 @@ const CartSummary = (props) => {
         <div>
             <div className='summaryRow'>
                 <p>Items: </p>
-                <p>${total}</p>
+                <p>${total.toFixed(2)}</p>
             </div>
             <div className='totalRow'>
                 <p>Total</p>
-                <p>${total}</p>
+                <p>${total.toFixed(2)}</p>
             </div>
         </div>    
     </div>
