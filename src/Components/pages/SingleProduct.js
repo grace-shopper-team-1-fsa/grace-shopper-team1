@@ -73,7 +73,7 @@ const SingleProduct = () => {
             <p>Price: ${product.price}</p>
           </div>
           <div className="product-quantity">
-            <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+            <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(Math.abs(e.target.value))}/>
           </div>
           <div className="product-rating">
             <p>Rating: {product.rating} / 5</p>
