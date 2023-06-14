@@ -24,10 +24,18 @@ a {
 }
 .home {
   display: flex;
-  flex-wrap: wrap;
   font-family: 'Big Caslon', sans-serif;
   font-size: 20px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.product-search-bar {
+  width: 100%;
+  margin: 10px 20px 10px 20px;
+}
+.product-cards {
+  display: flex;
+  flex-wrap: wrap;
 }
 .productCard {
   margin: 25px 25px 25px 25px;
@@ -277,7 +285,6 @@ label {
 }
 input[type="text"],
 textarea {
-  width: 300px;
   padding: 0.5rem;
   font-size: 1rem;
 }
@@ -319,7 +326,6 @@ label {
 }
 input[type="text"],
 textarea {
-  width: 300px;
   padding: 0.5rem;
   font-size: 1rem;
   padding-left: 20px;
@@ -352,4 +358,29 @@ button[type="submit"] {
 }
 .admin-product-container {
   border-top: 1px solid #9D958F;
+}
+.custom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.custom-content {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+.form-input {
+  width: 50px;
 }

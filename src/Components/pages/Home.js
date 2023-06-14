@@ -18,18 +18,21 @@ const Home = () =>{
     return(
         <div className="home">
             <input
+                className = 'product-search-bar'
                 type="text"
                 onChange={e => setQuery(e.target.value)}
                 value={query}
                 placeholder="Search products"
             />
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} />
-                ))
-            ) : (
-                <p>No products found matching your search.</p>
-            )}
+            <div className = 'product-cards'>
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map(product => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                ) : (
+                    <p>No products found matching your search.</p>
+                )}
+            </div>
         </div>
     )
 }
