@@ -6,6 +6,11 @@ const initialState={
   total: 0
 }
 
+const orderCart = (cart) => {
+  cart.lineItems.sort((a, b) => (a.createdAt < b.createdAt) ? 1: -1);
+  return cart;
+}
+
 export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   try{
     const token = window.localStorage.getItem('token');
@@ -21,8 +26,6 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
 })
 
 export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
-  console.log("quantity from store", typeof removeItems.quantity)
-  console.log("price from store", typeof removeItems.product.price)
   try{
     const token = window.localStorage.getItem('token');
     const {data} = await axios.put('/api/orders/cart', removeItems, {
@@ -57,16 +60,20 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: (builder)=>{
     builder.addCase(fetchCart.fulfilled, (state, action)=>{
+      orderCart(action.payload);
       return action.payload;
     }),
     builder.addCase(removeItem.fulfilled, (state, action)=>{
+      orderCart(action.payload);
       return action.payload;
     }),
     builder.addCase(addItem.fulfilled, (state, action)=>{
-      console.log(action.payload)
+      orderCart(action.payload);
       return action.payload;
     })
   }
 })
 
 export default cartSlice.reducer;
+
+
