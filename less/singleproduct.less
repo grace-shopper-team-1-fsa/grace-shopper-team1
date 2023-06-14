@@ -4,30 +4,36 @@ img {
 }
 
 .back-link {
-    position: absolute;
     top: 45px;
     left: 20px;
     padding: 10px;
     color: #000;
     text-decoration: underline;
-  }
+    margin: 50px 10px 0px 10px;
+}
   
-  .back-link:hover {
+.back-link:hover {
     color: #666;
-  }
+}
   
-  .back-link:visited {
+.back-link:visited {
     color: #000;
-  }
+}
   
 
 
 .product-page {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .product-page-box {
     flex: 1;
+}
+
+.product-page-section {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .product-image, .product-name, .product-description, .product-price, .product-rating, .product-reviews, .add-to-cart {
