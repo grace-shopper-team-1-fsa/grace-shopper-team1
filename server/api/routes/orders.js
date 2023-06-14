@@ -46,6 +46,7 @@ router.get('/cart', async(req, res, next)=> {
 
 router.post('/cart', async(req, res, next)=> {
   try {
+    console.log('reaching the route');
     const user = await User.findByToken(req.headers.authorization);
     res.send(await user.addToCart(req.body));
   }
