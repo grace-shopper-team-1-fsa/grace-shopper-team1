@@ -35,7 +35,7 @@ const Product = conn.define('product', {
   },
   price: {
     type: DOUBLE,
-    allowNull: 0,
+    allowNull: false,
     validate: {
       notEmpty: true
     }
