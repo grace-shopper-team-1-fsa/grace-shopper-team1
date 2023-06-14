@@ -62,41 +62,85 @@ const Checkout = () => {
     }
 
     return (
-        <div>
-            <form className="checkout-form-container" onSubmit={handleSubmit}>
-                <label>Email<span style={{ color: 'red' }}>*</span></label>
-                <input  name="email" value={userEmail} onChange={handleEmailChange}
-                    placeholder={`${user.email}`}required />
-                <label>First Name</label>
-                <input name="firstName" value={userFirstName} onChange={handleFirstNameChange}
-                    placeholder={`${user.firstName}`} />
-                <label>Last Name</label>
-                <input name="lastName" value={userLastName} onChange={handleLastNameChange}
-                    placeholder={`${user.lastName}`} />
-                <h3>Shipping</h3>
-                <label>Address Line 1</label>
-                <input  type="text" value={addressLine1}onChange={handleAddressLine1Change}/>
-                <label>Address Line 2</label>
-                <input type="text" value={addressLine2}onChange={handleAddressLine2Change}
-                    placeholder='Apartment, Suite, Unit, Building, Floor' />
-                <label>City</label>
-                <input type="text" value={city} onChange={handleCityChange}  />
-                <label>State</label>
-                <input type="text" value={state}  onChange={handleStateChange}  />
-                <label>Postal Code</label>
-                <input type="text" value={postalCode} onChange={handlePostalCodeChange}  />
-                <label>Country</label>
-                <input  type="text" value={country} onChange={handleCountryChange}  />
-                <label>Card Number</label>
-                <input  name="cardNumber" />
-                <label>Expiration Date</label>
-                <input type="text" name="expiration" placeholder="MM/YY"/>
-                <label>Phone Number</label>
-                <input type="text" name="phonenumber" value={userPhoneNumber}onChange={handlePhoneNumberChange} placeholder="555-555-5555"/>
+        <div className="checkout-form-container" >
+            <form onSubmit={handleSubmit}>
+                <div className="checkout-group-general">
+                    <h4>Email<span style={{ color: 'red' }}>*</span></h4>
+                    <input  
+                        name="email" 
+                        value={userEmail} 
+                        onChange={handleEmailChange}
+                        placeholder={`${user.email}`}
+                        required 
+                />
+                </div>
+                <div className="checkout-group-shipping">
+                    <h4>Shipping</h4>
+                    <input 
+                        
+                        name="firstName" 
+                        value={userFirstName} 
+                        onChange={handleFirstNameChange}
+                        placeholder={"First Name"} 
+                    />        
+                    <input
+                        name="lastName" 
+                        value={userLastName} 
+                        onChange={handleLastNameChange}
+                        placeholder={"Last Name"} 
+                    />   
+                    <input  
+                        value={addressLine1}
+                        onChange={handleAddressLine1Change} 
+                        placeholder="Addres Line 1"
+                    />
+                    
+                    <input  
+                        value={addressLine2}
+                        onChange={handleAddressLine2Change}
+                        placeholder='Address Line 2: Apartment, Suite, Unit, Building, Floor' 
+                    />
+                    <input  
+                        value={city} 
+                        onChange={handleCityChange} 
+                        placeholder="City"
+                    />
+                    
+                    <input  
+                        value={state}  
+                        onChange={handleStateChange} 
+                        placeholder="State"
+                    />
+                    
+                    <input  
+                        value={postalCode} 
+                        onChange={handlePostalCodeChange}  
+                        placeholder="Postal Code"
+                    />
+                    
+                    <input   
+                        value={country} 
+                        onChange={handleCountryChange}  
+                        placeholder="Country"
+                    />
+                </div>
+                <div className="checkout-group-cc">
+                    <label>Card Number</label>
+                    <input  name="cardNumber" />
+                    <label>Expiration Date</label>
+                    <input type="text" name="expiration" placeholder="MM/YY"/>
+                </div>
+                <div className="checkout-group-phone">
+                    <label>Phone Number</label>
+                    <input type="text" name="phonenumber" value={userPhoneNumber}onChange={handlePhoneNumberChange} placeholder="555-555-5555"/>
+                </div>
                 <button type="submit" >Confirm Order</button>
             </form>
             <div className='lineModify'>
-                <ReactModal isOpen={open} contentLabel="" ariaHideApp={true}>
+                <ReactModal 
+                isOpen={open} 
+                // contentLabel="" 
+                ariaHideApp={false}>
                     {/* <CartSummary items={lineItems}/> */}
                     <CartSummaryTotals items={lineItems}/>
                     <h3>Confirm Details</h3>
