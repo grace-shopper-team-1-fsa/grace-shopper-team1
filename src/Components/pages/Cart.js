@@ -65,8 +65,8 @@ const Cart = () =>{
                     <div>
                         <button className='to-checkout-button' onClick={() => setToggleOpen(true)}>Please Login to Continue</button>
                         <ReactModal 
-                            // overlayClassName="custom-overlay"
-                            // className="custom-content"
+                            overlayClassName="custom-overlay"
+                            className="custom-content"
                             isOpen={toggleOpen}
                             ariaHideApp={false}>
                             <LoginRegister onLoginFromRegister={handleLoginFromCheckout} /> 
