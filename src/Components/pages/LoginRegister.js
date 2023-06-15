@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { attemptLogin } from '../../store';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addUserProfile } from '../../store/user.js';
 
 const LoginRegister = (props) => {
   const handleLoginFromCheckout = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const auth = useSelector(state => state.auth)
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -23,7 +24,9 @@ const LoginRegister = (props) => {
     ev.preventDefault();
     dispatch(attemptLogin(credentials));
     handleLoginFromCheckout;
-    navigate('/');
+    if (auth.error===true) {
+      navigate('/');
+    }
   };
 
   const register = async (ev) => {
@@ -44,6 +47,11 @@ const LoginRegister = (props) => {
         <h2>Returning users</h2>
         <hr className="formDivider" />
         <form onSubmit={login}>
+            {auth.error === true && (
+              <div>
+                <p>Invalid username or password!</p>
+              </div>
+            )}
           <div className="inputContainer">
             <input
               placeholder="email"
