@@ -14,7 +14,7 @@ const SingleProduct = () => {
   const reviews = useSelector((state) =>
     state.reviews.reviewsList.filter((review) => review.productId === id)
   );
-  const { auth } = useSelector((state) => state);
+  const {auth}  = useSelector((state) => state);
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
 
@@ -80,10 +80,11 @@ const SingleProduct = () => {
           </div>
           <div className="product-reviews">
             {reviews.map((review) => (
-              <div key={review.id}>
-                <h3>{review.name}</h3>
-                <p>Rating: {review.rating} / 5</p>
+              <div className="product-review" key={review.id}>
+               <h3>{review.name}</h3>
+                <h5>Rating: {review.rating} / 5</h5>
                 <p>{review.description}</p>
+                <p> review from {auth.firstName}</p>
               </div>
             ))}
           </div>

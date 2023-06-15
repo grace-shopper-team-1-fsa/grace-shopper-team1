@@ -8,21 +8,23 @@ const CartSummaryTotals = (props) => {
     })
 
     return(
-        <div>
-            <p>Summary</p>
-            <div>
-            {
-                itemsToCalc.items.map(item => {
-                    return (
-                        <div key={item.id}>
-                            <p>Name: {item.product.name}</p>
-                            <p>Quantity: {item.quantity}</p>
-                            <p>Subtotal: ${item.quantity * item.product.price}</p>
-                        </div>)
-                })
-            }
+        <div className='cartsummary-container'>
+            <p>Order Summary</p>
+            <div className="cartsummary-items">
+            {itemsToCalc.items.map(item => (
+                <div className="cartsummary-item" key={item.id}>
+                <div className="cartsummary-labels">
+                    <p className="cartsummary-label">Product Name:</p>
+                    <p className="cartsummary-label">Subtotal:</p>
+                </div>
+                <div className="cartsummary-details">
+                    <p className="cartsummary-detail">{item.product.name} (×{item.quantity})</p>
+                    <p className="cartsummary-detail">$ {item.quantity * item.product.price}</p>
+                </div>
+                </div>
+            ))}
+            <p className='cartsummary-detail-total'>Total: $ {runningTotal}</p>
             </div>
-                <p>Total: {runningTotal}</p>
         </div>
     )
 }

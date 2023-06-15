@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    //margin-top: 20px;
 }
 
 //General
@@ -26,8 +26,7 @@
     flex-direction: column;
     align-items: center;
     width: 60rem;
-    height: 25rem;
-    
+    height: 20rem;
 }
 
 .checkout-group-shipping input{
@@ -39,32 +38,87 @@
 }
 
 .checkout-group-shipping input::placeholder {
-    color: #999999 !important;
-    font-size: 13px;
+    color: #999999;
+    font-size: 12px;
     margin-left: 0;
-    
 } 
 
 //Credit Card
 .checkout-group-cc {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 60rem;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.checkout-group-cc input {
+    width: 17rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 15px;
+    width: 25rem;
 }
 
-.checkout-group-cc {
-    
+.checkout-group-cc input::placeholder {
+    color: #999999;
+    font-size: 13px;
+    margin-left: 0;
+} 
+
+.checkout-group-cc input:last-child {
+    //width: 20rem;
+    //display: flex;
+    //margin-left: 0;
 }
 
-.checkout-group-phone {
-display: flex;
+.checkout-group-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;  
+}
+
+.checkout-group-confirm button:last-child {
+    width: 20%;
 }
 
 input:focus {
     outline: none;
   }
 
+  .checkout-confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .checkout-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-right: 20px;
+  }
+  
+  .checkout-label p {
+    margin: 0;
+  }
+  
+  .checkout-details p {
+    margin: 0;
+  }
+  
+  .checkout-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .checkout-buttons button {
+    margin-right: 10px;
+  }
+  
+  
 
 // .checkout-group-shipping,
 // .checkout-group-cc {
