@@ -93,14 +93,6 @@ const SingleProduct = () => {
                 ))
               )
             }
-            {/* {reviews.map((review) => (
-              <div className="product-review" key={review.id}>
-               <h3>{review.name}</h3>
-                <h5>Rating: {review.rating} / 5</h5>
-                <p>{review.description}</p>
-                <p> review from {auth.firstName}</p>
-              </div>
-            ))} */}
           </div>
           <button className="add-to-cart" onClick={handleClick}>
             Add to Cart
@@ -109,6 +101,8 @@ const SingleProduct = () => {
           <ReactModal 
             isOpen={open}
             ariaHideApp={false}
+            overlayClassName="review-modal-overlay"
+            className="review-modal-content"
           >
             <ReviewForm open={open} />
             <button onClick={() => setOpen(false)}>Cancel</button>
