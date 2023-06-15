@@ -10,11 +10,16 @@ const Navbar = () => {
   const location = useLocation();
   const user = useSelector(state => state.auth);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const lineItems = useSelector(state=>state.cart.lineItems);
+  let lineItems = useSelector(state=>state.cart.lineItems);
 
   useEffect(() => {
     setDropdownOpen(false);
   }, [location.pathname]);
+
+  if(!user.id){
+    const cart = JSON.parse(window.localStorage.getItem('cart'));
+    lineItems = cart.lineItems;
+  }
 
   const handleLogout = () => {
     dispatch(logout());
@@ -56,10 +61,10 @@ const Navbar = () => {
         <li>
           <div className="nav-link-container">
             <Link to="/cart">Cart 
-              ({lineItems.length > 0 ?
+              ({
                 lineItems.reduce((acc,value) => {
                   return Number(acc)+ Number(value.quantity);
-                },0) : 0
+                },0)
               })
             </Link>
           </div>

@@ -3,12 +3,14 @@ import axios from 'axios';
 
 export const fetchOrders = createAsyncThunk("fetchOrders", async()=>{
   try{
+    console.log('fetching orders')
     const token = window.localStorage.getItem('token');
     const response = await axios.get('/api/orders', {
       headers: {
         authorization: token
       }
     });
+    console.log(response.data);
     return response.data;
   }catch(err){
     console.log(err)
