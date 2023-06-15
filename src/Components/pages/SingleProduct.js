@@ -66,11 +66,11 @@ const SingleProduct = () => {
           <div className="product-name">
             <h1>{product.name}</h1>
           </div>
-          <div className="product-description">
-            <p>{product.description}</p>
-          </div>
           <div className="product-price">
             <p>Price: ${product.price}</p>
+          </div>
+          <div className="product-description">
+            <p>{product.description}</p>
           </div>
           <div className="product-quantity">
             <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(Math.abs(e.target.value))}/>
