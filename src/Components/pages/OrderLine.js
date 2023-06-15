@@ -6,9 +6,8 @@ const OrderLine = (props) => {
     console.log(order)
 
     return(
-        <Link to={`/order/${order.id}`}>
         
-         <div className='orderRow'>
+        <div className='orderRow'>
             <div className='orderCell'>
                 <p>Confirmation Number: {order.id}</p>
             </div>
@@ -16,10 +15,14 @@ const OrderLine = (props) => {
                 <p>Date: {order.updatedAt}</p>
             </div>
             <div className='orderCell'>
-                <p>${order.total.toFixed(2)}</p>
+                <p>$     {order.total.toFixed(2)}</p>
+            </div>
+            <div className="orderCell">
+             <Link to={`/order/${order.id}`}>
+                <p>View Order Details</p>
+            </Link>
             </div>
         </div>
-        </Link>
     )
 }
 
