@@ -2,10 +2,12 @@ import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchProducts} from '../../store/productsSlice';
 import {ProductCard} from './';
+import { fetchCart } from '../../store';
 
 const Home = () =>{
     const dispatch = useDispatch();
     const products = useSelector(state => state.products);
+    //const cart = useSelector(state=>state.cart)
     const [query, setQuery] = useState('');
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(query.toLowerCase())
@@ -13,6 +15,7 @@ const Home = () =>{
     
     useEffect(()=>{
         dispatch(fetchProducts())
+        dispatch(fetchCart())
     }, [dispatch])
 
     return(

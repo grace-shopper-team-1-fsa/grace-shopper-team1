@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { attemptLogin } from '../../store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUserProfile } from '../../store/user.js';
+import { fetchCart } from '../../store';
 
-const LoginRegister = ({ onLoginFromRegister }) => {
+const LoginRegister = (props) => {
+  const {handleLoginFromCheckout} = props;
+  const {isCart} = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
@@ -18,11 +21,15 @@ const LoginRegister = ({ onLoginFromRegister }) => {
     setCredentials({ ...credentials, [ev.target.name]: ev.target.value });
   };
 
-  const login = (ev) => {
+  const login = async(ev) => {
     ev.preventDefault();
-    dispatch(attemptLogin(credentials));
-    navigate('/');
-    onLoginFromRegister();
+    await dispatch(attemptLogin(credentials));
+    if(isCart){
+      handleLoginFromCheckout;
+    } else {
+      navigate('/');
+    }
+    
   };
 
   const register = async (ev) => {
@@ -30,11 +37,15 @@ const LoginRegister = ({ onLoginFromRegister }) => {
     await dispatch(addUserProfile({ email, password, permissions: false }));
     credentials.email = email;
     credentials.password = password;
-    dispatch(attemptLogin(credentials));
+    await dispatch(attemptLogin(credentials));
     setEmail('');
     setPassword('');
-    navigate('/');
-    onLoginFromRegister();
+
+    if(isCart){
+      handleLoginFromCheckout;
+    } else{
+      navigate('/');
+    }
   };
 
   return (

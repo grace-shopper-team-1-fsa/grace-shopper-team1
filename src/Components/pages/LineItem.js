@@ -10,7 +10,6 @@ const LineItem = (props) => {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(typeof lineItem.quantity);
     const deleteItem = () => {
         const payload={product: lineItem.product, quantityToRemove: lineItem.quantity};
         dispatch(removeItem(payload));

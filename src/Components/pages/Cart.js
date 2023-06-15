@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {LineItem} from './';
 import {CartSummary} from './';
 import ReactModal from 'react-modal';
 import LoginRegister from './LoginRegister';
+import { fetchCart } from '../../store';
 
-
-const Cart = () =>{
+const Cart = (props) =>{
     const {auth} = useSelector(state=>state);
-    const cart = useSelector(state=>state.cart);
-    console.log(cart);
+    const {cart} = props;
+    //const {cart} = props;
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [toggleOpen, setToggleOpen] = useState(false);
-   
+
     const handleClick = () =>{
         navigate('/checkout');
     }
@@ -47,7 +48,7 @@ const Cart = () =>{
                         <ReactModal 
                             isOpen={toggleOpen}
                             ariaHideApp={false}>
-                            <LoginRegister onLoginFromRegister={handleLoginFromCheckout} /> 
+                            <LoginRegister handleLoginFromCheckout={handleLoginFromCheckout} isCart={true}/> 
                         </ReactModal>
                     </div>
                 )

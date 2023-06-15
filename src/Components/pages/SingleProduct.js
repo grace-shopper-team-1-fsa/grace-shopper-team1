@@ -14,13 +14,10 @@ const SingleProduct = () => {
   const reviews = useSelector((state) =>
     state.reviews.reviewsList.filter((review) => review.productId === id)
   );
-  const { auth } = useSelector((state) => state);
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchProductById(id));
-    dispatch(fetchAllReviews());
     setOpen(false);
   }, [dispatch, id]);
 
@@ -29,25 +26,12 @@ const SingleProduct = () => {
   }
 
   const handleClick = () => {
-    if (auth.id) {
       dispatch(
         addItem({
           product: product,
-          quantity: quantity,
+          quantity: Number(quantity),
         })
       );
-      window.location.reload();
-    } else {
-      const cart = JSON.parse(window.localStorage.getItem('cart'));
-      const match = cart.lineItems.find((e) => e.product.id === product.id);
-      if (match) {
-        match.quantity += Number(quantity);
-      } else {
-        cart.lineItems.push({ product: product, quantity: quantity, productId: product.id });
-      }
-      window.localStorage.setItem('cart', JSON.stringify(cart));
-      window.location.reload();
-    }
   };
 
   return (
@@ -73,7 +57,7 @@ const SingleProduct = () => {
             <p>Price: ${product.price}</p>
           </div>
           <div className="product-quantity">
-            <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(Math.abs(e.target.value))}/>
+            <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(Math.abs(e.target.value))}/>
           </div>
           <div className="product-rating">
             <p>Rating: {product.rating} / 5</p>
