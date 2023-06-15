@@ -24,7 +24,9 @@ const LoginRegister = (props) => {
     ev.preventDefault();
     dispatch(attemptLogin(credentials));
     handleLoginFromCheckout;
-    navigate('/');
+    if (auth.id) {
+      navigate('/');
+    }
   };
 
   const register = async (ev) => {
