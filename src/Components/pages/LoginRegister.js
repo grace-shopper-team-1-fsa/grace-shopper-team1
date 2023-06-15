@@ -24,9 +24,7 @@ const LoginRegister = (props) => {
     ev.preventDefault();
     dispatch(attemptLogin(credentials));
     handleLoginFromCheckout;
-    if (auth.error===true) {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   const register = async (ev) => {
@@ -49,7 +47,7 @@ const LoginRegister = (props) => {
         <form onSubmit={login}>
             {auth.error === true && (
               <div>
-                <p>Invalid username or password!</p>
+                <p>Invalid email or password!</p>
               </div>
             )}
           <div className="inputContainer">
