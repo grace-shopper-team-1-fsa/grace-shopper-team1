@@ -6,26 +6,50 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const LineItem = (props) => {
-    const {lineItem} = props;
+    const {product, guest} = props;
+    let {lineItem} = props;
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const deleteItem = () => {
-        const payload={product: lineItem.product, quantityToRemove: lineItem.quantity};
-        dispatch(removeItem(payload));
+        if(!guest){
+            const payload={product: product, quantityToRemove: lineItem.quantity};
+            dispatch(removeItem(payload));
+        } else {
+            const cart = JSON.parse(window.localStorage.getItem('cart'));
+            console.log(cart);
+            cart.lineItems = cart.lineItems.filter(e=> product.id !== e.product.id);
+            window.localStorage.setItem('cart', JSON.stringify(cart));
+        }
         navigate('/cart');
     }
 
     const updateQuantity=(ev)=>{
         ev.preventDefault();
+        if(!guest){
         const quantityDiff = Number(ev.target.value) - lineItem.quantity;
             if(quantityDiff < 0){
-                const payload = {product: lineItem.product, quantityToRemove: Math.abs(quantityDiff)};
+                const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
                 dispatch(removeItem(payload));
             } else{
-                const payload = {product: lineItem.product, quantity: quantityDiff};
+                const payload = {product: product, quantity: quantityDiff};
                 dispatch(addItem(payload));
             }
+        } else {
+            if(ev.target.value == 0){
+                deleteItem();
+            }
+
+            lineItem.quantity = Number(ev.target.value);
+            const cart = JSON.parse(window.localStorage.getItem('cart'));
+            const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
+            modifyItem.quantity = Number(ev.target.value);
+            cart.total = 0;
+            cart.lineItems.forEach(e=> {
+                cart.total += e.product.price*e.quantity
+            });
+            window.localStorage.setItem('cart', JSON.stringify(cart));
+        }
         setOpen(false);
     }
 
@@ -33,14 +57,14 @@ const LineItem = (props) => {
         <div className='line'>
             <div className='lineDetail'>
                 <div className='lineImg'>
-                    <img className="line-item-image" src={window.location.origin + `${lineItem.product.image}`} alt="Image"/>
+                    <img className="line-item-image" src={window.location.origin + `${product.image}`} alt="Image"/>
                 </div>
                 <div className='lineDescription'>
-                    <p>{lineItem.product.name}</p>
+                    <p>{product.name}</p>
                 </div>
                 <div className='linePrice'>
                     <p>Price</p>
-                    <p>{lineItem.product.price}</p>
+                    <p>{product.price}</p>
                 </div>
                 <div className='lineQty'>
                     <p>Qty</p>
@@ -50,7 +74,7 @@ const LineItem = (props) => {
             <div className='lineModify'>
                 <button className="line-modify-button" onClick={setOpen}>Edit</button>
                 <ReactModal isOpen={open} contentLabel="Update product page" ariaHideApp={false}>
-                    <UpdateProduct lineItem={lineItem} updateQuantity={updateQuantity}/>
+                    <UpdateProduct product={product} lineItem={lineItem} updateQuantity={updateQuantity}/>
                     <button onClick={()=>setOpen(false)}>CANCEL</button>
                 </ReactModal>
                 <button className="line-modify-button">Save For Later</button>

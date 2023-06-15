@@ -86,7 +86,7 @@ export const removeItem = createAsyncThunk("removeItem", async(removeItems)=>{
 })
 
 export const addItem = createAsyncThunk("addItem", async(addItem)=>{
-  console.log(addItem);
+  
   try{
     const token = window.localStorage.getItem('token');
     if(token){

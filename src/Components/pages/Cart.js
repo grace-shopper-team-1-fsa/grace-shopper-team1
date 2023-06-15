@@ -31,7 +31,7 @@ const Cart = (props) =>{
                 { cart.lineItems.length > 0 ?
                     cart.lineItems.map((lineItem, idx)=> (
                         <div key={idx} >
-                            <LineItem key={lineItem.id} lineItem={lineItem}/>
+                            <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
                         </div>
                         )   
                     )
@@ -46,6 +46,8 @@ const Cart = (props) =>{
                     <div>
                         <button className='to-checkout-button' onClick={() => setToggleOpen(true)}>Please Login to Continue</button>
                         <ReactModal 
+                            overlayClassName="custom-overlay"
+                            className="custom-content"
                             isOpen={toggleOpen}
                             ariaHideApp={false}>
                             <LoginRegister handleLoginFromCheckout={handleLoginFromCheckout} isCart={true}/> 

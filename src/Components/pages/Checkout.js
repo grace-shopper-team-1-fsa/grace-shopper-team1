@@ -61,6 +61,10 @@ const Checkout = () => {
         window.location.reload();
     }
 
+    const cancelCheckout = (e) => {
+        navigate('/cart')
+    }
+
     return (
         <div className="checkout-form-container" >
             <form onSubmit={handleSubmit}>
@@ -71,7 +75,7 @@ const Checkout = () => {
                         value={userEmail} 
                         onChange={handleEmailChange}
                         placeholder={`${user.email}`}
-                        required 
+                        //required 
                 />
                 </div>
                 <div className="checkout-group-shipping">
@@ -123,36 +127,68 @@ const Checkout = () => {
                         onChange={handleCountryChange}  
                         placeholder="Country"
                     />
+                    <input 
+                        name="phonenumber" 
+                        value={userPhoneNumber}
+                        onChange={handlePhoneNumberChange} 
+                        placeholder="Phone Number (555-555-5555)"/>
                 </div>
                 <div className="checkout-group-cc">
-                    <label>Card Number</label>
-                    <input  name="cardNumber" />
-                    <label>Expiration Date</label>
-                    <input type="text" name="expiration" placeholder="MM/YY"/>
+                    <label>Payment</label>
+                    <input
+                        type="password"
+                        name="cardNumber" 
+                        placeholder="Card Number"
+                    />
+                    <input 
+                        name="expiration" 
+                        placeholder="Expiration Date MM/YY"
+                    />
+                    <input 
+                        name="expiration" 
+                        placeholder="CCV"
+                    />
                 </div>
-                <div className="checkout-group-phone">
-                    <label>Phone Number</label>
-                    <input type="text" name="phonenumber" value={userPhoneNumber}onChange={handlePhoneNumberChange} placeholder="555-555-5555"/>
+                <div className="checkout-group-confirm">
+                    <button type="submit" >Confirm Order</button>
+                    <button type="submit" onClick={cancelCheckout} >Go back</button>
                 </div>
-                <button type="submit" >Confirm Order</button>
             </form>
             <div className='lineModify'>
                 <ReactModal 
-                isOpen={open} 
-                // contentLabel="" 
+                isOpen={open}
+                overlayClassName="checkout-modal-overlay"
+                className="checkout-modal-content"
                 ariaHideApp={false}>
                     {/* <CartSummary items={lineItems}/> */}
                     <CartSummaryTotals items={lineItems}/>
-                    <h3>Confirm Details</h3>
-                    <p>Name: {userFirstName} {userLastName}</p>
-                    <p>Email: {userEmail}</p>
-                    <p>Address: </p>
-                    <p>{addressLine1}</p>
-                    <p>{addressLine2}</p>
-                    <p>{city}, {state}, {postalCode}</p>
-                    <p>Phone Number: {userPhoneNumber}</p>
-                    <button onClick={()=>setOpen(false)}>CANCEL</button>
-                    <button onClick={closeModalAndSubmit}>Confirm</button>
+                    <div className="checkout-confirmation">
+                        <h3>Confirm Details</h3>
+                        <div className="checkout-row">
+                            <div className="checkout-label">
+                                <p>Name:</p>
+                                <p>Email:</p>
+                                <p>Phone:</p>
+                                <p>Address:</p>
+                            </div>
+                            <div className="checkout-details">
+                                <p>{userFirstName} {userLastName}</p>
+                                <p>{userEmail}</p>
+                                <p>{userPhoneNumber}</p>
+                                <p>{addressLine1}</p>
+                                <p>{addressLine2}</p>
+                                <p>{city}, {state}, {postalCode}</p>
+                            </div>
+                        </div>
+                        <div className="checkout-row">
+                        </div>
+                        <div className="checkout-buttons">
+                            <button onClick={() => setOpen(false)}>CANCEL</button>
+                            <button onClick={closeModalAndSubmit}>Confirm</button>
+                        </div>
+                        </div>
+
+
                 </ReactModal>
             </div>
         </div>

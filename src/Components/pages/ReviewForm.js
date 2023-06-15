@@ -46,13 +46,20 @@ const ReviewForm = () => {
                 onChange={handleTitleChange}
             />
             <label>Rating</label>
-            <select value={reviewRating} onChange={handleRatingChange}>
-                <option value={1} selected>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-            </select>
+            
+            <div className="rating" value={reviewRating} onChange={handleRatingChange}>
+                <input type="radio" name="rating" value="5" id="5"/>
+                <label for="5"/>
+                <input type="radio" name="rating" value="4" id="4"/>
+                <label for="4"/>
+                <input type="radio" name="rating" value="3" id="3"/>
+                <label for="3"/>
+                <input type="radio" name="rating" value="2" id="2"/>
+                <label for="2"/>
+                <input type="radio" name="rating" value="1" id="1"/>
+                <label for="1"/>
+            </div>
+
             <label>Review</label>
             <textarea  name={reviewBody} onChange={handleReviewBodyChange}rows="4" cols="50" placeholder="write a review!"></textarea>
             <button>Submit Review!</button>
