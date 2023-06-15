@@ -15,7 +15,7 @@ Review.belongsTo(Product);
 
 const syncAndSeed = async()=> {
   await conn.sync({ force: true });
-  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Ariadne] = await Promise.all([
+  const [moe, lucy, larry, ethyl, Essense, Daphne, War, Timeless, Fire, Ariadne, Fortress, Resolute, Emerald_vision, Ametrine] = await Promise.all([
     User.create({ 
       password: '123',
       firstName: 'Moe',
@@ -58,50 +58,73 @@ const syncAndSeed = async()=> {
     }),
     Product.create({ 
       name: 'Essense',
-      description: 'Introducing our exquisite reproduction of a medieval vase \"Essense\", meticulously crafted to capture the essence of the era. This dark-colored masterpiece is a testament to the artistry and intricate details that defined medieval craftsmanship. Every facet of this reproduction has been carefully recreated, ensuring an authentic portrayal of the original medieval vase. From the graceful curves to the ornate patterns, each detail has been meticulously replicated to bring the essence of the medieval period into your space. The dark color palette adds a touch of mystery and elegance to the vase, making it a captivating centerpiece that demands attention. Its deep hues create a dramatic contrast, accentuating the intricate details that adorn its surface. The craftsmanship involved in creating this reproduction is a testament to the dedication and skill of our artisans. They have carefully studied historical references and employed traditional techniques to ensure an accurate representation of medieval artistry. Display this stunning reproduction in your home or office to evoke a sense of medieval charm and sophistication. Whether placed on a mantel, displayed in a curio cabinet, or gracing a prominent spot in your living space, this dark-colored vase is sure to become a cherished heirloom, captivating all who behold its beauty. Own a piece of history with our reproduction of a medieval vase, an embodiment of dark elegance and intricate craftsmanship.',
+      description: 'Introducing our exquisite reproduction of a medieval vase "Essense". Meticulously crafted to capture the essence of the era, this dark-colored masterpiece is a testament to the artistry and intricate details that defined medieval craftsmanship. Display this stunning reproduction in your home or office to evoke a sense of medieval charm and sophistication.',
       rating: 4,
       image: '/static/images/Essense.png',
       price: 189.99
     }),
     Product.create({ 
       name: 'Daphne',
-      description: 'Our stunning white vase \"Daphne\", a perfect blend of elegance and simplicity. Crafted with meticulous attention to detail, this vase exemplifies refined beauty and timeless style. The pristine white color radiates purity and offers a versatile complement to any decor theme. Its clean lines and smooth contours create a sense of harmony and balance, adding a touch of sophistication to your space. The white hue enhances the vases ability to showcase your favorite flowers and arrangements, allowing their vibrant colors to truly shine. Whether displayed as a standalone piece or as part of a curated collection, this white vase is sure to become a captivating focal point in any room. Elevate your home or office with the understated charm of our white vase, a symbol of grace and elegance that transcends trends and captures the essence of timeless beauty.',
+      description: 'Discover the captivating beauty of "Daphne", our stunning white vase. Meticulously crafted with meticulous attention to detail, this vase exemplifies refined beauty and timeless style. Elevate your home or office decor with the understated charm and elegance of our white vase. The pristine white color radiates purity and offers a versatile complement to any decor theme. Its clean lines and smooth contours create a sense of harmony and balance, adding a touch of sophistication to your space. The white hue enhances the vase\'s ability to showcase your favorite flowers and arrangements, allowing their vibrant colors to truly shine. Whether displayed as a standalone piece or as part of a curated collection, this white vase is sure to become a captivating focal point in any room. Embrace the enchanting allure of "Daphne" and experience the everlasting elegance it brings to your surroundings.',
       rating: 5,
       image: '/static/images/Daphne.png',
       price: 224.99
-    }),
+    }), 
     Product.create({ 
       name: 'War',
-      description: 'Behold our extraordinary brown vase \"War\", a captivating work of art that brings ancient battle scenes to life. Immerse yourself in the grandeur of history with this meticulously crafted masterpiece. The rich brown color evokes a sense of warmth and earthiness, providing a fitting canvas for the epic battle scene depicted on its surface. Every detail of the battle has been intricately sculpted, showcasing the bravery and valor of warriors engaged in an intense clash. From the meticulous armor to the expressions of determination on their faces, the level of artistry is awe-inspiring. The brown hues create a sense of antiquity, as if this vase is a relic from a bygone era. Whether displayed on a mantel, showcased in a museum-like setting, or as a conversation-starting centerpiece, this brown vase will transport you to the heart of an ancient battlefield. Embrace the spirit of warriors past with this extraordinary vase, an embodiment of history and art that will leave a lasting impression.',
+      description: 'Experience the awe-inspiring presence of "War", our extraordinary brown vase. Crafted as a captivating work of art, it brings ancient battle scenes to life. Immerse yourself in the grandeur of history with this meticulously crafted masterpiece. Embrace the spirit of warriors past with this extraordinary vase.',
       rating: 5,
       image: '/static/images/War.png',
       price: 189.99
     }),
     Product.create({ 
       name: 'Timeless',
-      description: 'Introducing our beautiful white and blue porcelain vase \"Timeless\", a true masterpiece of elegance and craftsmanship. This stunning vase combines the timeless allure of white porcelain with the delicate beauty of intricate blue vines and details. The pure white background serves as a canvas for the enchanting blue patterns that gracefully wind their way around the vase, evoking a sense of harmony and serenity. Each vine and intricate detail is meticulously hand-painted, showcasing the skill and artistry of our talented artisans. The combination of white and blue creates a mesmerizing contrast, capturing the essence of refined sophistication. This porcelain vase is more than just a decorative piece; it is a testament to the rich heritage of porcelain craftsmanship. Display it proudly in your home or office, and let its beauty and elegance be a focal point of admiration. With its delicate charm and timeless appeal, this white and blue porcelain vase with vines and intricate details is sure to evoke a sense of grace and enchantment in any setting.',
+      description: 'Introducing our beautiful white and blue porcelain vase "Timeless". This exquisite piece is meticulously handcrafted to embody the timeless elegance and impeccable craftsmanship. The pure white background serves as a pristine canvas, while the delicate blue patterns delicately wind their way around the vase, evoking a sense of grace and serenity. Each vine and intricate detail is meticulously hand-painted by our talented artisans, showcasing their dedication and skill. Display this magnificent vase proudly in your home or office, and let its beauty become a captivating focal point of admiration. With its delicate charm and timeless appeal, this white and blue porcelain vase is sure to evoke a sense of grace and enchantment in any setting.',
       rating: 3,
       image: '/static/images/Timeless.png',
       price: 249.99
-    }),
+    }),    
     Product.create({ 
       name: 'Fire',
-      description: 'Introducing our exquisite red crystal vase \"Fire\", a breathtaking symbol of opulence and refined beauty. Crafted with precision and artistry, this elegant masterpiece showcases the allure of red crystal in all its splendor. The deep, rich hue of the crystal radiates warmth and passion, creating a captivating focal point in any space. Every facet of this vase has been carefully shaped to enhance the play of light, adding an ethereal glow to its surroundings. The graceful curves and flawless craftsmanship exude sophistication, making it a statement piece that commands attention. Whether displayed on a grand dining table or as a luxurious accent on a mantle, this red crystal vase exudes elegance and elevates the ambiance of any room. The brilliance of the red crystal is a testament to the skill of our master craftsmen who have created a piece that combines beauty, artistry, and timeless allure. Indulge in the allure of luxury with our red crystal vase, a testament to the exquisite beauty that only crystal can bring.',
+      description: 'Introducing our exquisite red crystal vase "Fire", a breathtaking symbol of opulence and refined beauty. Crafted with precision and artistry, this elegant masterpiece showcases the allure of red crystal in all its splendor. The deep, rich hue of the crystal radiates warmth and passion, creating a captivating focal point in any space. Every facet of this vase has been carefully shaped to enhance the play of light, adding an ethereal glow to its surroundings. The graceful curves and flawless craftsmanship exude sophistication, making it a statement piece that commands attention. Whether displayed on a grand dining table, an entryway console, or as a luxurious accent on a mantle, this red crystal vase elevates the ambiance of any room, infusing it with an air of elegance and enchantment. Indulge in the allure of luxury with our red crystal vase, a testament to the exquisite beauty that only crystal can bring.',
       rating: 5,
       image: '/static/images/Fire.png',
       price: 329.99
-    }),
+    }),    
     Product.create({ 
       name: 'Ariadne',
-      description: "The \"Ariadne\" Medieval Reproduction Vase is a beautifully handcrafted tribute to the past. This piece captures the robust form of medieval craftsmanship while showcasing intricate, labyrinthine patterns inspired by the era. Named after the Greek princess known for her intelligence, this vase marries strength with elegance. Every detail of the \"Ariadne\" is meticulously crafted from high-quality materials that evoke the period's authentic resources. This vase's timeless aesthetic makes it a versatile addition to any space, effortlessly enhancing both traditional and rustic interiors. The \"Ariadne\" is more than a decor item - it's a slice of history, a narrative in ceramic, a testament to artistry and tradition. It's a gift that connects you to an era of knights and castles, a true masterpiece that celebrates the intricate details of a time long past.",
+      description: 'Immerse yourself in the rich heritage of the past with "Ariadne", our beautifully handcrafted Medieval Reproduction Vase. This exquisite piece pays homage to the robust form of medieval craftsmanship, capturing its essence with meticulous attention to detail. The vase showcases intricate, labyrinthine patterns inspired by the era, offering a glimpse into the artistry and ingenuity of ancient artisans. "Ariadne" is more than just a decor item; its a slice of history, a narrative in ceramic that tells the tale of the bygone era. Its presence serves as a testament to artistry and tradition, a timeless piece that transcends time and space. Display "Ariadne" proudly in your home or office, and let its beauty transport you to a world steeped in history and craftsmanship.',
       rating: 3,
       image: '/static/images/Ariadne.png',
       price: 279.99
+    }),           
+    Product.create({ 
+      name: 'Ametrine',
+      description: "A magnificent reproduction of a medieval tall floor vase dubbed \"Ametrine\", exuding timeless elegance and regal charm. Crafted with meticulous attention to detail, this stunning piece features a pristine white body adorned with exquisite purple accents, reminiscent of the opulent artistry of a bygone era. Standing gracefully at an impressive height, it commands attention and serves as a captivating focal point in any space. Whether displayed as a standalone masterpiece or filled with lush botanical arrangements, this vase is sure to elevate your decor with its majestic allure.'",
+      rating: 5,
+      image: '/static/images/Ametrine.png',
+      price: 479.99
     }),
-    Review.create({
-      name: 'Timeless Vase',
-      rating: 1,
-      description: "Not great",
+    Product.create({ 
+      name: 'Emerald Vision',
+      description: "'Emerald Vision' is an enchanting desk top vase that embodies the essence of nature's beauty. Crafted with precision, this captivating piece showcases translucent green glass, reminiscent of a mesmerizing emerald gem. Its delicate curves and flawless design effortlessly elevate any space, adding a touch of elegance and serenity. Whether displaying a single bloom or a curated arrangement, 'Emerald Vision' grants a glimpse into a world of tranquility and inspires a sense of wonder in every beholder.",
+      rating: 3,
+      image: '/static/images/Emerald Vision.png',
+      price: 189.99
+    }),
+    Product.create({ 
+      name: 'Resolute',
+      description: "'Resolute' is a remarkable square-shaped vase that exudes an air of strength and sophistication. Crafted with meticulous artistry, this extraordinary piece is made of hammered silver, showcasing a shimmering surface that reflects light with grace. Its intricate details and masterful design speak to the unwavering commitment to excellence. 'Resolute' stands as a testament to the power of timeless craftsmanship, effortlessly elevating any space with its undeniable charm. Whether displayed alone or filled with a striking floral arrangement, it leaves an indelible impression on all who encounter it, a symbol of resolute beauty and enduring elegance.",
+      rating: 4,
+      image: '/static/images/Resolute.png',
+      price: 149.99
+    }),
+    Product.create({ 
+      name: 'Fortress',
+      description: "'Fortress' is an awe-inspiring short and round vase that transports you to the medieval era. Its captivating design features intricate scenes from the outer walls of a stronghold, depicting the grandeur and strength of a bygone era. Crafted with meticulous attention to detail, this remarkable piece evokes a sense of history and adventure. The round shape and compact size make it a versatile addition to any space, adding a touch of medieval charm. Whether displaying a single stem or a small arrangement, 'Fortress' becomes a testament to the resilience and power that echoes through the ages, preserving the spirit of the past in a timeless masterpiece.",
+      rating: 5,
+      image: '/static/images/Fortress.png',
+      price: 279.99
     }),
   ]);
 
