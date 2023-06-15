@@ -31,7 +31,7 @@ const Cart = (props) =>{
                 { cart.lineItems.length > 0 ?
                     cart.lineItems.map((lineItem, idx)=> (
                         <div key={idx} >
-                            <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
+                            <LineItem key={lineItem.id} lineItem={lineItem}/>
                         </div>
                         )   
                     )

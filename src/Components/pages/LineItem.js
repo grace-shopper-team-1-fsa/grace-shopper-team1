@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const LineItem = (props) => {
-    const {product, guest} = props;
     let {lineItem} = props;
+    const product = lineItem.product;
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
