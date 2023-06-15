@@ -69,7 +69,7 @@ const Cart = () =>{
                             className="custom-content"
                             isOpen={toggleOpen}
                             ariaHideApp={false}>
-                            <LoginRegister onLoginFromRegister={handleLoginFromCheckout} /> 
+                            <LoginRegister handleLoginFromCheckout={handleLoginFromCheckout} /> 
                         </ReactModal>
                     </div>
                 )
