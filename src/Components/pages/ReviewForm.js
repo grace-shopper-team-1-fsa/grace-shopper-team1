@@ -47,7 +47,7 @@ const ReviewForm = () => {
             />
             <label>Rating</label>
             
-            <div class="rating" value={reviewRating} onChange={handleRatingChange}>
+            <div className="rating" value={reviewRating} onChange={handleRatingChange}>
                 <input type="radio" name="rating" value="5" id="5"/>
                 <label for="5"/>
                 <input type="radio" name="rating" value="4" id="4"/>
