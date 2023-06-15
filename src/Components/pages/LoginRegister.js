@@ -21,12 +21,13 @@ const LoginRegister = (props) => {
   };
 
   const login = (ev) => {
-    ev.preventDefault();
-    dispatch(attemptLogin(credentials));
-    handleLoginFromCheckout;
-    if (auth.id) {
-      navigate('/');
-    }
+      ev.preventDefault();
+      dispatch(attemptLogin(credentials)).then(() => {
+        if (!auth.error) {
+          navigate('/');
+        }
+      });
+      handleLoginFromCheckout;
   };
 
   const register = async (ev) => {
