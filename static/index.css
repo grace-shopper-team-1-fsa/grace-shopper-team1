@@ -559,6 +559,39 @@ input:focus {
   margin-top: 10px;
   text-align: right;
 }
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rating:not(:checked) > label {
+  font-size: 20px;
+  cursor: pointer;
+  color: #ccc;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+.rating > input:checked ~ label {
+  color: #ffc700;
+}
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
 .product-review {
   display: flex;
   flex-direction: column;
@@ -580,4 +613,35 @@ input:focus {
   border: none;
   padding-bottom: 10px;
   border-bottom: 1px solid grey;
+}
+.account-link {
+  padding-top: 10px;
+  padding-left: 10px;
+  color: #0B0C10;
+  text-decoration: underline;
+}
+.account-link:visited {
+  color: #0B0C10;
+}
+.account-link:hover {
+  color: #666;
+}
+.order-header {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.product-image {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.lineImg img {
+  max-width: 450px;
+  max-height: 600px;
+}
+.order-number {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #232504;
 }
