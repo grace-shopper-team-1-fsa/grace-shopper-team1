@@ -11,22 +11,15 @@ const LineItem = (props) => {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const deleteItem = () => {
-        if(!guest){
-            const payload={product: product, quantityToRemove: lineItem.quantity};
-            dispatch(removeItem(payload));
-        } else {
-            const cart = JSON.parse(window.localStorage.getItem('cart'));
-            console.log(cart);
-            cart.lineItems = cart.lineItems.filter(e=> product.id !== e.product.id);
-            window.localStorage.setItem('cart', JSON.stringify(cart));
-        }
+        const payload={product: product, quantityToRemove: lineItem.quantity};
+        dispatch(removeItem(payload));
         navigate('/cart');
     }
 
     const updateQuantity=(ev)=>{
         ev.preventDefault();
-        if(!guest){
         const quantityDiff = Number(ev.target.value) - lineItem.quantity;
             if(quantityDiff < 0){
                 const payload = {product: product, quantityToRemove: Math.abs(quantityDiff)};
@@ -35,21 +28,7 @@ const LineItem = (props) => {
                 const payload = {product: product, quantity: quantityDiff};
                 dispatch(addItem(payload));
             }
-        } else {
-            if(ev.target.value == 0){
-                deleteItem();
-            }
-
-            lineItem.quantity = Number(ev.target.value);
-            const cart = JSON.parse(window.localStorage.getItem('cart'));
-            const modifyItem = cart.lineItems.find(e=> product.id === e.product.id);
-            modifyItem.quantity = Number(ev.target.value);
-            cart.total = 0;
-            cart.lineItems.forEach(e=> {
-                cart.total += e.product.price*e.quantity
-            });
-            window.localStorage.setItem('cart', JSON.stringify(cart));
-        }
+       
         setOpen(false);
     }
 
