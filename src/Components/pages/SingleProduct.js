@@ -79,20 +79,37 @@ const SingleProduct = () => {
             <p>Rating: {product.rating} / 5</p>
           </div>
           <div className="product-reviews">
-            {reviews.map((review) => (
+            <h2>Reviews</h2>
+            {
+              reviews.length === 0 ? (
+                <p>No reviews yet</p>
+              ) : (
+                reviews.map((review) => (
+                  <div className="product-review" key={review.id}>
+                   <h3>{review.name}</h3>
+                    <h5>Rating: {review.rating} / 5</h5>
+                    <p>{review.description}</p>
+                  </div>
+                ))
+              )
+            }
+            {/* {reviews.map((review) => (
               <div className="product-review" key={review.id}>
                <h3>{review.name}</h3>
                 <h5>Rating: {review.rating} / 5</h5>
                 <p>{review.description}</p>
                 <p> review from {auth.firstName}</p>
               </div>
-            ))}
+            ))} */}
           </div>
           <button className="add-to-cart" onClick={handleClick}>
             Add to Cart
           </button>
           <button onClick={() => setOpen(true)}>Write a review!</button>
-          <ReactModal isOpen={open}>
+          <ReactModal 
+            isOpen={open}
+            ariaHideApp={false}
+          >
             <ReviewForm open={open} />
             <button onClick={() => setOpen(false)}>Cancel</button>
           </ReactModal>
