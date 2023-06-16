@@ -23,7 +23,8 @@ const App = ()=> {
     if(auth.id){
       dispatch(fetchOrders());
       dispatch(fetchAllUsers());
-    } 
+    }
+    dispatch(fetchCart()) 
   }, [auth]);
 
   return (
@@ -31,7 +32,7 @@ const App = ()=> {
       <Navbar numCartItems={cart.lineItems.length>0 ? cart.lineItems.reduce(
       (accumulator, currentValue) => accumulator + currentValue.quantity,0):0} auth={auth} cart={cart}/>
       <Routes>
-        <Route path='/cart' element={ <Cart cart={cart}/> } />
+        <Route path='/cart' element={ <Cart cart={cart} auth={auth}/> } />
         <Route path='/'element={<Home />} />
         <Route path='/product/:id' element={<SingleProduct/>} />
         <Route path='/login' element={<LoginRegister/>} />

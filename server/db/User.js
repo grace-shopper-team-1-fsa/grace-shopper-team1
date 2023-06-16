@@ -114,8 +114,6 @@ User.prototype.getCart = async function(){
 User.prototype.addToCart = async function({ product, quantity}){
   const quantityNum = Number(quantity);
   const cart = await this.getCart();
-  console.log('cart in prototype model')
-  console.log(cart)
   let lineItem = cart.lineItems.find( lineItem => {
     return lineItem.productId === product.id; 
   });
@@ -127,8 +125,6 @@ User.prototype.addToCart = async function({ product, quantity}){
     await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity: quantity });
   }
   cart.total += Number(product.price) * quantityNum;
-  console.log("product price", typeof product.price)
-  console.log("cart.total", typeof cart.total)
   console.log(cart)
   await cart.save();
   return this.getCart();

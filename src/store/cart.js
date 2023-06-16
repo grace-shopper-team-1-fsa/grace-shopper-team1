@@ -37,8 +37,6 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
           console.log('above is in for each')
         })
         window.localStorage.removeItem("cart");
-        //console.log('reaching 33')
-        //console.log(data);
         const response = await axios.get('/api/orders/cart', {
           headers: {
             authorization: token
@@ -90,6 +88,7 @@ export const addItem = createAsyncThunk("addItem", async(addItem)=>{
   try{
     const token = window.localStorage.getItem('token');
     if(token){
+      console.log('line 91 add item')
       const {data} = await axios.post('/api/orders/cart', addItem, {
         headers:{
           authorization: token
