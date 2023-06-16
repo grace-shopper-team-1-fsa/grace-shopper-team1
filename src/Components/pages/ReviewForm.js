@@ -61,8 +61,8 @@ const ReviewForm = () => {
             </div>
 
             <label>Review</label>
-            <textarea  name={reviewBody} onChange={handleReviewBodyChange}rows="4" cols="50" placeholder="write a review!"></textarea>
-            <button>Submit Review!</button>
+            <textarea  name={reviewBody} onChange={handleReviewBodyChange}rows="4" cols="50" placeholder="write a review"></textarea>
+            <button>Submit Review</button>
         </form>     
             :  
             <div>

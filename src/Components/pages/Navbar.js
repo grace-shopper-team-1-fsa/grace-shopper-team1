@@ -44,7 +44,7 @@ const Navbar = (props) => {
           <li>
             <Link to="/about">About Us</Link>
           </li>
-          {Object.keys(user).length > 0 && (
+          {user.id && (
             <>
               <li>
                 <Link to="/myaccount">My Account</Link>
@@ -68,7 +68,7 @@ const Navbar = (props) => {
             </Link>
           </div>
         </li>
-        {Object.keys(user).length > 0 ? (
+        {user.id ? (
           <li>
             <div className="nav-link-container">
               <button onClick={handleLogout}>Logout</button>
