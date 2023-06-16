@@ -7,16 +7,15 @@ import { fetchCart } from '../../store';
 const Home = () =>{
     const dispatch = useDispatch();
     const products = useSelector(state => state.products);
-    //const cart = useSelector(state=>state.cart)
     const [query, setQuery] = useState('');
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(query.toLowerCase())
       );
     
-    useEffect(()=>{
-        dispatch(fetchProducts())
-        dispatch(fetchCart())
-    }, [dispatch])
+   // useEffect(()=>{
+       // dispatch(fetchProducts())
+        //dispatch(fetchCart())
+   // }, [dispatch])
 
     return(
         <div className="home">

@@ -5,14 +5,11 @@ import {LineItem} from './';
 import {CartSummary} from './';
 import ReactModal from 'react-modal';
 import LoginRegister from './LoginRegister';
-import { fetchCart } from '../../store';
 
 const Cart = (props) =>{
     const {auth} = useSelector(state=>state);
     const {cart} = props;
-    //const {cart} = props;
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const [toggleOpen, setToggleOpen] = useState(false);
 
     const handleClick = () =>{

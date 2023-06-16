@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { attemptLogin } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserProfile } from '../../store/user.js';
-import { fetchCart } from '../../store';
 
 const LoginRegister = (props) => {
   const {handleLoginFromCheckout} = props;
