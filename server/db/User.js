@@ -122,11 +122,9 @@ User.prototype.addToCart = async function({ product, quantity}){
     await lineItem.save();
   }
   else {
-    await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity });
+    await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity: quantity });
   }
   cart.total += Number(product.price) * quantityNum;
-  console.log("product price", typeof product.price)
-  console.log("cart.total", typeof cart.total)
   console.log(cart)
   await cart.save();
   return this.getCart();

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchProducts} from '../../store/productsSlice';
 import {ProductCard} from './';
+import { fetchCart } from '../../store';
 
 const Home = () =>{
     const dispatch = useDispatch();
@@ -11,9 +12,10 @@ const Home = () =>{
         product.name.toLowerCase().includes(query.toLowerCase())
       );
     
-    useEffect(()=>{
-        dispatch(fetchProducts())
-    }, [dispatch])
+   // useEffect(()=>{
+       // dispatch(fetchProducts())
+        //dispatch(fetchCart())
+   // }, [dispatch])
 
     return(
         <div className="home">

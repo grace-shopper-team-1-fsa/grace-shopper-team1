@@ -22,7 +22,6 @@ app.get('/:id', async(req, res, next)=>{
 
 app.post('/', async(req, res, next)=>{
     try{
-        console.log('route receiving: '+ req.body)
         res.status(201).send(await User.create(req.body));
     } catch(ex){
         next(ex)

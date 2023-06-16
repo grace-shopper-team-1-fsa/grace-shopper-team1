@@ -5,48 +5,34 @@ import { Link, Routes, Route } from 'react-router-dom';
 import { Admin, Cart, Home, MyAccount, Navbar, SingleProduct, About, 
   LoginRegister, UpdateProductForm, 
   UpdateUserForm, AddProductForm, Checkout, PastOrder } from './pages';
-import {addItem} from '../store';
 
 const App = ()=> {
   const { auth } = useSelector(state => state);
-  const newcart = useSelector(state=>state.cart);
   const dispatch = useDispatch();
-  const cart = JSON.parse(window.localStorage.getItem('cart'));
+  const {cart} = useSelector(state=>state);
 
+  
   useEffect(()=> {
     dispatch(loginWithToken());
     dispatch(fetchProducts());
     dispatch(fetchAllReviews());
+    dispatch(fetchCart());
   }, []);
   
   useEffect(()=> {
     if(auth.id){
-      dispatch(fetchCart());
       dispatch(fetchOrders());
       dispatch(fetchAllUsers());
-    } 
+    }
+    dispatch(fetchCart()) 
   }, [auth]);
 
-  if(!auth.id && cart === null){
-    let cart = {
-      lineItems: [],
-      total: 0,
-    }
-    window.localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  if(auth.id && cart !== null){
-      cart.lineItems.forEach(async(e)=>{
-        await dispatch(addItem({product: e.product, quantity: Number(e.quantity)}));
-      })
-      window.localStorage.removeItem("cart");
-  }
-  
   return (
     <div>
-      <Navbar />
+      <Navbar numCartItems={cart.lineItems.length>0 ? cart.lineItems.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.quantity,0):0} auth={auth} cart={cart}/>
       <Routes>
-        <Route path='/cart' element={ <Cart /> } />
+        <Route path='/cart' element={ <Cart cart={cart} auth={auth}/> } />
         <Route path='/'element={<Home />} />
         <Route path='/product/:id' element={<SingleProduct/>} />
         <Route path='/login' element={<LoginRegister/>} />

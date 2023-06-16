@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addUserProfile } from '../../store/user.js';
 
 const LoginRegister = (props) => {
-  const handleLoginFromCheckout = props;
+  const {handleLoginFromCheckout} = props;
+  const {isCart} = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = useSelector(state => state.auth)
@@ -35,11 +36,15 @@ const LoginRegister = (props) => {
     await dispatch(addUserProfile({ email, password, permissions: false }));
     credentials.email = email;
     credentials.password = password;
-    dispatch(attemptLogin(credentials));
+    await dispatch(attemptLogin(credentials));
     setEmail('');
     setPassword('');
-    handleLoginFromCheckout;
-    navigate('/');
+
+    if(isCart){
+      handleLoginFromCheckout;
+    } else{
+      navigate('/');
+    }
   };
 
   return (

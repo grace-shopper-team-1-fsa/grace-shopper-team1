@@ -1,38 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCart, fetchProducts } from '../../store';
 import {useNavigate} from 'react-router-dom';
 import {LineItem} from './';
 import {CartSummary} from './';
 import ReactModal from 'react-modal';
 import LoginRegister from './LoginRegister';
 
-
-const Cart = () =>{
+const Cart = (props) =>{
     const {auth} = useSelector(state=>state);
-    let guest = false;
-    let cart = useSelector(state=>state.cart);
-    const dispatch = useDispatch();
+    const {cart} = props;
     const navigate = useNavigate();
     const [toggleOpen, setToggleOpen] = useState(false);
-
-    useEffect(()=>{
-        if(auth.id){
-            dispatch(fetchCart());
-        }
-        dispatch(fetchProducts());
-    }, [dispatch]);
-
-    if(!auth.id){
-        cart = JSON.parse(window.localStorage.getItem('cart'));
-        cart.total = 0;
-        cart.lineItems.forEach(e=> {
-            cart.total += e.product.price*e.quantity
-        });
-        window.localStorage.setItem('cart', JSON.stringify(cart));
-        guest = true;
-    }
-   
+    //const cart = useSelector(state=>state.cart)
 
     const handleClick = () =>{
         navigate('/checkout');
@@ -50,7 +29,7 @@ const Cart = () =>{
                 { cart.lineItems.length > 0 ?
                     cart.lineItems.map((lineItem, idx)=> (
                         <div key={idx} >
-                            <LineItem key={lineItem.id} guest={guest} lineItem={lineItem} product={lineItem.product}/>
+                            <LineItem key={lineItem.id} lineItem={lineItem}/>
                         </div>
                         )   
                     )
@@ -69,7 +48,7 @@ const Cart = () =>{
                             className="custom-content"
                             isOpen={toggleOpen}
                             ariaHideApp={false}>
-                            <LoginRegister handleLoginFromCheckout={handleLoginFromCheckout} /> 
+                            <LoginRegister handleLoginFromCheckout={handleLoginFromCheckout} isCart={true}/> 
                         </ReactModal>
                     </div>
                 )

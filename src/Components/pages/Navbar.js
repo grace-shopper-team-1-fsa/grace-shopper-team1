@@ -3,23 +3,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation} from 'react-router-dom';
 
 import { logout } from '../../store/auth';
+import { fetchCart } from '../../store';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const user = useSelector(state => state.auth);
+  const user = useSelector(state=>state.auth);
+  console.log(user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  let lineItems = useSelector(state=>state.cart.lineItems);
+  const {numCartItems, auth} = props;
+  //const lineItems = useSelector(state=>state.cart.lineItems);
 
   useEffect(() => {
     setDropdownOpen(false);
   }, [location.pathname]);
 
-  if(!user.id){
-    const cart = JSON.parse(window.localStorage.getItem('cart'));
-    lineItems = cart.lineItems;
-  }
+  //useEffect(()=>{
+    //dispatch(fetchCart());
+  //}, [numCartItems]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -61,10 +63,7 @@ const Navbar = () => {
         <li>
           <div className="nav-link-container">
             <Link to="/cart">Cart 
-              ({
-                lineItems.reduce((acc,value) => {
-                  return Number(acc)+ Number(value.quantity);
-                },0)
+              ({numCartItems
               })
             </Link>
           </div>
