@@ -7,13 +7,11 @@ const initialState={
 }
 
 const orderCart = (cart) => {
-  console.log(cart);
   cart.lineItems.sort((a, b) => (a.createdAt < b.createdAt) ? 1: -1);
   return cart;
 }
 
 export const fetchCart = createAsyncThunk("fetchCart", async()=>{
-  console.log('in fetchcart');
   try{
     const token = window.localStorage.getItem('token');
     const cart = JSON.parse(window.localStorage.getItem('cart'));
@@ -23,11 +21,8 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
           authorization: token
         }
       });
-      console.log('inToken')
-      console.log(data)
-      console.log(cart)
+
       if(cart.lineItems !== null && cart.lineItems.length > 0){
-        console.log('in cart not null')
         let newCart = {};
         for(let i = 0; i < cart.lineItems.length; i++){
           newCart = await axios.post('/api/orders/cart', cart.lineItems[i], {
@@ -40,7 +35,6 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
         window.localStorage.removeItem("cart");
         return newCart.data;
       }
-      console.log(data);
       return data;
     } else if(cart === null){
       window.localStorage.setItem('cart', JSON.stringify(initialState));
@@ -84,7 +78,6 @@ export const addItem = createAsyncThunk("addItem", async(addItem)=>{
   try{
     const token = window.localStorage.getItem('token');
     if(token){
-      console.log('line 91 add item')
       const {data} = await axios.post('/api/orders/cart', addItem, {
         headers:{
           authorization: token
