@@ -8,10 +8,10 @@ import LoginRegister from './LoginRegister';
 
 const Cart = (props) =>{
     const {auth} = useSelector(state=>state);
-    const {cart} = props;
+    //const {cart} = props;
     const navigate = useNavigate();
     const [toggleOpen, setToggleOpen] = useState(false);
-    //const cart = useSelector(state=>state.cart)
+    const cart = useSelector(state=>state.cart)
 
     const handleClick = () =>{
         navigate('/checkout');
@@ -19,6 +19,7 @@ const Cart = (props) =>{
 
     const handleLoginFromCheckout = () => {
         setToggleOpen(false);
+
         navigate('/checkout');
     }
 

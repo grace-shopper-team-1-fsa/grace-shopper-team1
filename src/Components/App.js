@@ -10,6 +10,7 @@ const App = ()=> {
   const { auth } = useSelector(state => state);
   const dispatch = useDispatch();
   const {cart} = useSelector(state=>state);
+  const {orders} = useSelector(state=>state);
 
   
   useEffect(()=> {

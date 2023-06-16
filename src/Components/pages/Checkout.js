@@ -53,9 +53,9 @@ const Checkout = () => {
         e.preventDefault();
         setOpen(true)
     }
-    const closeModalAndSubmit = (e) => {
+    const closeModalAndSubmit = async(e) => {
         e.preventDefault();
-        dispatch(createOrder());
+        await dispatch(createOrder());
         setOpen(false);
         navigate('/');
         window.location.reload();

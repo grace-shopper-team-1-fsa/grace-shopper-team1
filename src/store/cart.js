@@ -7,6 +7,7 @@ const initialState={
 }
 
 const orderCart = (cart) => {
+  console.log(cart);
   cart.lineItems.sort((a, b) => (a.createdAt < b.createdAt) ? 1: -1);
   return cart;
 }
@@ -16,35 +17,30 @@ export const fetchCart = createAsyncThunk("fetchCart", async()=>{
   try{
     const token = window.localStorage.getItem('token');
     const cart = JSON.parse(window.localStorage.getItem('cart'));
-    console.log(token)
     if(token){
-      console.log('made it in token')
       const {data} = await axios.get('/api/orders/cart', {
         headers: {
           authorization: token
         }
       });
-      if(cart !== null){
-        console.log('made it in cart not null new user')
-      
-        cart.lineItems.forEach(async(e)=>{
-          await axios.post('/api/orders/cart', e, {
+      console.log('inToken')
+      console.log(data)
+      console.log(cart)
+      if(cart.lineItems !== null && cart.lineItems.length > 0){
+        console.log('in cart not null')
+        let newCart = {};
+        for(let i = 0; i < cart.lineItems.length; i++){
+          newCart = await axios.post('/api/orders/cart', cart.lineItems[i], {
             headers:{
               authorization: token
             }
           });
-          
-          console.log('above is in for each')
-        })
+        }
+
         window.localStorage.removeItem("cart");
-        const response = await axios.get('/api/orders/cart', {
-          headers: {
-            authorization: token
-          }
-        });
-       console.log(response.data);
-        return response.data;
+        return newCart.data;
       }
+      console.log(data);
       return data;
     } else if(cart === null){
       window.localStorage.setItem('cart', JSON.stringify(initialState));
