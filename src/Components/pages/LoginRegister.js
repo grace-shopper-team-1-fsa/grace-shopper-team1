@@ -8,7 +8,7 @@ const LoginRegister = (props) => {
   const handleLoginFromCheckout = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const auth = useSelector(state => state.auth);
+  let auth = useSelector(state => state.auth);
   
   const [credentials, setCredentials] = useState({
     email: '',
@@ -24,8 +24,8 @@ const LoginRegister = (props) => {
   const login = (ev) => {
       ev.preventDefault();
       dispatch(attemptLogin(credentials)).then(() => {
-        if (!auth.error) {
-          navigate('/');
+        if (auth['id']) {
+          navigate('/')
         }
       });
       handleLoginFromCheckout;
