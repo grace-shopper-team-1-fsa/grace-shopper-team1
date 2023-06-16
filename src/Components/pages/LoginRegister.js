@@ -24,7 +24,8 @@ const LoginRegister = (props) => {
   const login = (ev) => {
       ev.preventDefault();
       dispatch(attemptLogin(credentials)).then(() => {
-        if (auth['id']) {
+        if (auth.id) {
+          console.log(auth.id)
           navigate('/')
         }
       });
@@ -49,9 +50,9 @@ const LoginRegister = (props) => {
         <h2>Returning users</h2>
         <hr className="formDivider" />
         <form onSubmit={login}>
-            {auth.error === true && (
+            {auth.error===true && (
               <div>
-                <p>Invalid email or password!</p>
+                <p>Invalid email and/or password!</p>
               </div>
             )}
           <div className="inputContainer">

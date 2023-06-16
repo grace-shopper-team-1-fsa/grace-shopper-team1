@@ -51,6 +51,14 @@ const User = conn.define('user', {
       notEmpty: true
     }
   },
+  error: {
+    type: BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+    validate: {
+      notEmpty: true
+    }
+  }
 });
 
 User.prototype.createOrder = async function(){

@@ -1,6 +1,8 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
-const initialState = {};
+const initialState = {
+  error: false,
+};
 
 export const loginWithToken = createAsyncThunk("loginWithToken", async (_, { rejectWithValue }) => {
   const token = window.localStorage.getItem('token');
@@ -68,7 +70,6 @@ const authSlice = createSlice({
       return {
         ...state,
         error: true,
-        errorMessage: 'Incorrect username or password',
       }
     })
   }
