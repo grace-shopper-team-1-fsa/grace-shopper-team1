@@ -24,7 +24,7 @@ const LoginRegister = (props) => {
   const login = (ev) => {
       ev.preventDefault();
       dispatch(attemptLogin(credentials)).then(() => {
-        if (auth.id) {
+        if (!auth.error) {
           navigate('/');
         }
       });
