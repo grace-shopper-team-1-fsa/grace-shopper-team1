@@ -21,7 +21,6 @@ const App = ()=> {
   
   useEffect(()=> {
     if(auth.id){
-      dispatch(fetchCart());
       dispatch(fetchOrders());
       dispatch(fetchAllUsers());
     } 
