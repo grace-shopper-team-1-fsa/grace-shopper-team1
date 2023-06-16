@@ -8,7 +8,8 @@ const LoginRegister = (props) => {
   const handleLoginFromCheckout = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const auth = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth);
+  
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
