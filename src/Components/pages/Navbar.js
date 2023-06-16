@@ -10,7 +10,6 @@ const Navbar = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = useSelector(state=>state.auth);
-  console.log(user);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const {numCartItems, auth} = props;
   //const lineItems = useSelector(state=>state.cart.lineItems);

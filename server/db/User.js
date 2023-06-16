@@ -125,7 +125,6 @@ User.prototype.addToCart = async function({ product, quantity}){
     await conn.models.lineItem.create({ orderId: cart.id, productId: product.id, quantity: quantity });
   }
   cart.total += Number(product.price) * quantityNum;
-  console.log(cart)
   await cart.save();
   return this.getCart();
 };
@@ -145,7 +144,6 @@ User.prototype.removeFromCart = async function({ product, quantityToRemove}){
     await lineItem.destroy();
   }
   cart.total -= Number(product.price) * quantityNum;
-  console.log(cart)
   await cart.save();
   return this.getCart();
 };
