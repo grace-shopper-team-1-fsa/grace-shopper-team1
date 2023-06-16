@@ -61,7 +61,11 @@ const SingleProduct = () => {
             <p>Rating: {product.rating} / 5</p>
           </div>
           <div className="product-reviews">
-            <h2>Reviews</h2>
+            <span>
+              <h2>Reviews</h2>
+              <button onClick={() => setOpen(true)}>Leave our product a review</button>
+            </span>
+            
             {
               reviews.length === 0 ? (
                 <p>No reviews yet</p>
@@ -79,7 +83,7 @@ const SingleProduct = () => {
           <button className="add-to-cart" onClick={handleClick}>
             Add to Cart
           </button>
-          <button onClick={() => setOpen(true)}>Write a review!</button>
+         
           <ReactModal 
             isOpen={open}
             ariaHideApp={false}
