@@ -23,13 +23,12 @@ const LoginRegister = (props) => {
 
   const login = (ev) => {
       ev.preventDefault();
-      dispatch(attemptLogin(credentials)).then(() => {
-        if (auth.id) {
-          console.log(auth.id)
-          navigate('/')
+      dispatch(attemptLogin(credentials)).then((result) => {
+        console.log(result.payload.error);
+        if (result.payload.error===false) {
+          navigate('/');
         }
       });
-      handleLoginFromCheckout;
   };
 
   const register = async (ev) => {
